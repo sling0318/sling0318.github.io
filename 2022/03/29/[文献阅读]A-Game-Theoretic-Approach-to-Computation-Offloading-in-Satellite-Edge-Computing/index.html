@@ -18,19 +18,22 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="摘要与主要贡献 提出了卫星边缘计算中计算卸载策略优化的博弈论方法，建立了一个计算卸载博弈框架，并基于排队论计算了任务的响应时间和能量消耗，作为优化性能的度量。提出了一种迭代算法来搜索博弈的纳什平衡。表明基于游戏的卸载策略可以大大降低设备的平均成本。 考虑到卫星引起的间歇性通信，只有在窗口期才能够进行通信，并假设卫星上只部署一个MEC服务器 KPI：响应时延宇能耗  系统模型应用场景       一">
+    <meta name="description" content="提出了一个计算卸载游戏框架，以排队论为优化性能的指标，计算了任务的响应时间和能耗，并提出了一种迭代算法来找到纳什均衡。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[文献阅读] A Game-Theoretic Approach to Computation Offloading in Satellite Edge Computing 卫星边缘计算中计算卸载的博弈方法">
 <meta property="og:url" content="http://example.com/2022/03/29/[%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB]A-Game-Theoretic-Approach-to-Computation-Offloading-in-Satellite-Edge-Computing/index.html">
 <meta property="og:site_name" content="生灵">
-<meta property="og:description" content="摘要与主要贡献 提出了卫星边缘计算中计算卸载策略优化的博弈论方法，建立了一个计算卸载博弈框架，并基于排队论计算了任务的响应时间和能量消耗，作为优化性能的度量。提出了一种迭代算法来搜索博弈的纳什平衡。表明基于游戏的卸载策略可以大大降低设备的平均成本。 考虑到卫星引起的间歇性通信，只有在窗口期才能够进行通信，并假设卫星上只部署一个MEC服务器 KPI：响应时延宇能耗  系统模型应用场景       一">
+<meta property="og:description" content="提出了一个计算卸载游戏框架，以排队论为优化性能的指标，计算了任务的响应时间和能耗，并提出了一种迭代算法来找到纳什均衡。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-29T06:30:43.000Z">
-<meta property="article:modified_time" content="2022-03-29T09:11:46.527Z">
+<meta property="article:modified_time" content="2022-03-29T09:33:28.875Z">
 <meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
 <meta property="article:tag" content="文献阅读">
+<meta property="article:tag" content="博弈论">
+<meta property="article:tag" content="边缘计算">
+<meta property="article:tag" content="计算卸载">
 <meta name="twitter:card" content="summary">
 
 
@@ -142,7 +145,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,7 +198,7 @@
     
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="name" content="[文献阅读] A Game-Theoretic Approach to Computation Offloading in Satellite Edge Computing 卫星边缘计算中计算卸载的博弈方法 | 生灵">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="提出了一个计算卸载游戏框架，以排队论为优化性能的指标，计算了任务的响应时间和能耗，并提出了一种迭代算法来找到纳什均衡。">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -211,7 +214,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-03-29 14:30:43 / 修改时间：17:11:46" itemprop="dateCreated datePublished" datetime="2022-03-29T14:30:43+08:00">2022-03-29</time>
+      <time title="创建时间：2022-03-29 14:30:43 / 修改时间：17:33:28" itemprop="dateCreated datePublished" datetime="2022-03-29T14:30:43+08:00">2022-03-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -226,6 +229,7 @@
   
 </div>
 
+            <div class="post-description">提出了一个计算卸载游戏框架，以排队论为优化性能的指标，计算了任务的响应时间和能耗，并提出了一种迭代算法来找到纳什均衡。</div>
         </div>
       </header>
 
@@ -477,6 +481,9 @@ $𝑥_{𝑖}^{,}$,用拉格朗日法求解梯度，例如
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag"># 文献阅读</a>
+              <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" rel="tag"># 博弈论</a>
+              <a href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" rel="tag"># 边缘计算</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%8D%B8%E8%BD%BD/" rel="tag"># 计算卸载</a>
           </div>
 
         
@@ -514,7 +521,7 @@ $𝑥_{𝑖}^{,}$,用拉格朗日法求解梯度，例如
   </span>
   <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>

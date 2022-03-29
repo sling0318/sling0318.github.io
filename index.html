@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="生灵">
@@ -136,7 +136,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -204,7 +204,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-03-29 14:30:43 / 修改时间：17:11:46" itemprop="dateCreated datePublished" datetime="2022-03-29T14:30:43+08:00">2022-03-29</time>
+      <time title="创建时间：2022-03-29 14:30:43 / 修改时间：17:33:28" itemprop="dateCreated datePublished" datetime="2022-03-29T14:30:43+08:00">2022-03-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -226,241 +226,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="摘要与主要贡献"><a href="#摘要与主要贡献" class="headerlink" title="摘要与主要贡献"></a>摘要与主要贡献</h1><ul>
-<li><font size = 3>提出了卫星边缘计算中计算卸载策略优化的博弈论方法，建立了一个计算卸载博弈框架，并基于排队论计算了任务的响应时间和能量消耗，作为优化性能的度量。提出了一种迭代算法来搜索博弈的纳什平衡。表明基于游戏的卸载策略可以大大降低设备的平均成本。</font></li>
-<li><font size = 3>考虑到卫星引起的间歇性通信，只有在窗口期才能够进行通信，并假设卫星上只部署一个MEC服务器</font></li>
-<li>KPI：<font size = 3>响应时延宇能耗</font></li>
-</ul>
-<h1 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h1><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>  <img src ="https://thumbnail1.baidupcs.com/thumbnail/4ae98a089j092cce04dbd224f70f8965?fid=1245131195-250528-440211229848578&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-gsXzcqwp%2bdTIkjfoiDmgFwWeV%2b4%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8949575027056316459&dp-callid=0&time=1648533600&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1" alt = "drawing" width="400" align = "left"></p>
- <font size = 3> 
- 一组远程地面设备位于一个小的固定区域，一组卫星在轨道上。任务可以在设备上本地执行，也可以通过卫星-地面通信卸载到部署在卫星上的边缘计算服务器上。由于间歇性的地面-卫星通信，设备在任何时候都不能将任务卸载到卫星上，即只有在卫星飞越时才会卸载任务。
- <br/></br>
- <br/></br>
-  <br/></br>
- </font>
-
-
-<p><img src ="https://thumbnail1.baidupcs.com/thumbnail/6cbd1dcbanca7cdce465d9854206b18a?fid=1245131195-250528-309961252194506&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-0OYrHJe6Gh45qQWINDMbJSg0LFo%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8949620524151903662&dp-callid=0&time=1648533600&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=" alt = "drawing" width="380" align = "left"></p>
-<font size = 3>将边缘计算场景抽象为左图，不可移动设备记为N={1,2,…,N},有覆盖区域卫星记为M={1,2,…M},由于星上资源有限，我们假设卫星上只部署了一台边缘计算服务器。显然，如果所有任务都在设备上本地执行或卸载到卫星上，则等待执行的时间和队列中的功耗将大幅增加。因此，需要对每个设备的计算卸载策略进行优化，以提高性能。 <br/></br>
-<br/></br>
-<br/></br>
- </font>
-
-<h2 id="轨道模型"><a href="#轨道模型" class="headerlink" title="轨道模型"></a>轨道模型</h2><p><img src = "https://thumbnail1.baidupcs.com/thumbnail/2f3bc016fjc160a1d729f4f703d3683b?fid=1245131195-250528-747858197566359&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-T5USn8CndEBlA%2f%2f1I8tLMUPZB3c%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8949790291840483932&dp-callid=0&time=1648533600&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1" width = "400"></p>
-<font size = 3>根据仰角𝛼的正负，正就是可以通信，负无法通信,假设地面的设备距离很近，他们在一个固定的很小的区域内，因此它们与卫星的几何关系相同。
-</font>
-<img src = "https://thumbnail1.baidupcs.com/thumbnail/3d88da773r37e5c171045203dde93927?fid=1245131195-250528-687501558706771&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-7S95GQNB3KNRlPvDR0mQiLWP8c0%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8949828554077737055&dp-callid=0&time=1648537200&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1
-" width = "400">
-
-> 定义一个（轨道）周期内的通信时间
-  𝜃={𝜃1,𝜃2,...𝜃𝑀}    0≤𝜃𝑗≤1
-𝜃𝑗表示设备在轨道周期内可以与卫星j通信的时间的百分比。
-
-
-## 通信模型
->* <font size = 3>只考虑上传时间，忽略返回结果的下载时间（结果数据远远小于上传数据）</font>
-
-<font size = 3>移动设备i到卫星j的上行链路数据速率𝑅𝑖,𝑗<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>R</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>=</mo><mi>B</mi><msub><mi>log</mi><mrow><mn>2</mn></mrow></msub><mo data-mjx-texclass="NONE">⁡</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mn>1</mn><mo>+</mo><mfrac><mrow><msub><mi>p</mi><mrow><mi>i</mi></mrow></msub><msub><mi>g</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub></mrow><mrow><msub><mi>σ</mi><mrow><mn>0</mn></mrow></msub><mo>+</mo><munder><mo data-mjx-texclass="OP">∑</mo><mrow><mi>s</mi><mo>∈</mo><msub><mrow><mi mathvariant="bold">N</mi></mrow><mrow><mo>,</mo><mi>s</mi><mo>≠</mo><mi>i</mi></mrow></msub></mrow></munder><msub><mi>p</mi><mrow><mi>s</mi></mrow></msub><msub><mi>g</mi><mrow><mi>s</mi><mo>,</mo><mi>j</mi></mrow></msub></mrow></mfrac><mo data-mjx-texclass="CLOSE">)</mo></mrow></math></font>
-
-<font size = 3>B表示信道带宽，Pi表示设备i的发射功率，𝑔𝑖,𝑗表示设备i与卫星j之间的信道增益，σ0表示背景噪声功率
-</font>
-
-<blockquote>
-<font size = 3>可以得知
-* 任务的传输速率𝑅𝑖,𝑗与设备的发射功率𝑃𝑖成正相关
-* 过高的发射功率𝑃𝑖会导致过多的能量消耗
-* 过多设备的卸载，将导致速率降低
-</font>
-
-</blockquote>
-<h2 id="计算模型"><a href="#计算模型" class="headerlink" title="计算模型"></a>计算模型</h2><font size = 3>假设每个移动设备可以生成一系列同类任务。 设备i生成的任务可以用所需的资源和数据大小来表示，即
-Taski = {ci，di},$𝐶_{(𝑚)}^{𝑖}$和$𝐶_{(𝑠)}^{𝑗}$是设备和卫星的计算能力，为随机变量，用一秒CPU周期数表示 。
-均值表示为$\bar{(𝑐_𝑖)}$,$\bar{(𝑑_𝑖)}$，二阶矩为$\bar{(c_𝑖^2)}$ 和$\bar{(d_𝑖^2 )}$
-</font>
-
-<font size = 3>设备i在本地执行并和分流到卫星的任务的百分比定义为设备i的计算分流策略
-𝐱𝑖={𝑥𝑖,0,𝑥𝑖,1...𝑥𝑖,𝑀}
-</font>
-
-<p><img src = "https://thumbnail1.baidupcs.com/thumbnail/347ca990dsca50915b4c253d657c25f1?fid=1245131195-250528-173204021630012&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-tmDu5NUzhUDZS69GH2m%2bohqpoHc%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8950727242684883327&dp-callid=0&time=1648537200&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1
-" ></p>
-<blockquote>
-<font size = 3>约束条件
-* <font size = 3>百分比大于0（0表示不往该设备卸载）</font>
-* <font size = 3>所有的百分比相加为1</font>
-* <font size = 3>隐含：每个都要小于1</font>
-</font>
-
-</blockquote>
-<h1 id="博弈论模型"><a href="#博弈论模型" class="headerlink" title="博弈论模型"></a>博弈论模型</h1><font size = 3>
-令𝑋=𝑋1∗𝑋2∗...𝑋𝑁是所有设备策略组合的集合,所有设备的整体策略我们可以用𝐱={𝐱1,𝐱2,…,𝐱𝑁} 表示，中间的𝐱𝐢表示设备i的策略 
-
-$𝐱_{−𝐢}=({𝐱_{1},...𝐱_{𝑖−1},𝐱_{𝑖+1}…,𝐱_{𝑁}})∈𝑋$表示除玩家𝑖以外的所有玩家策略的向量 
-
-KPI(性能指标)选择平均响应时间和平均功耗作为性能指标，成本函数计算如下 
-
-$P_{𝑖}(𝑥_{𝑖}, 𝑥_{(−𝑖)}) = 𝑇_{𝑖} + 𝜇_{𝑖}𝐸_{𝑖}$
-</font>
-
-<p><img src = "https://thumbnail1.baidupcs.com/thumbnail/d1b96023aq90cb89160aa51cb593cd21?fid=1245131195-250528-588789813655240&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Q5XiJGfml9rAY301MxLRk5DGOtI%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8950869683707917472&dp-callid=0&time=1648540800&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1
-" ></p>
-<p><img src = "https://thumbnail1.baidupcs.com/thumbnail/9f7a9bdcelb8c223eaf77d0a7780c981?fid=1245131195-250528-231984495873814&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-tuYN04t1YCCuh5v2RGNbwochffI%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8950869683707917472&dp-callid=0&time=1648540800&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1
-" ></p>
-<font size = 3>一个典型的博弈论问题。
-要优化的目标函数不仅与其策略有关，而且与其他参与者策略有关。
-</font>
-
-<h2 id="计算任务卸载到卫星"><a href="#计算任务卸载到卫星" class="headerlink" title="计算任务卸载到卫星"></a>计算任务卸载到卫星</h2><h3 id="卸载的平均响应时间"><a href="#卸载的平均响应时间" class="headerlink" title="卸载的平均响应时间"></a>卸载的平均响应时间</h3><font size = 3>计算任务从移动设备i分流到卫星j，需要执行三个步骤：卸载任务，在卫星上执行，返回结果
-由于卫星的高动态性，i不能总是和j通信，因此需要考虑通信的等待时间
-卸载的平均响应时间
-</font>
-<img src = "https://thumbnail1.baidupcs.com/thumbnail/df386231eo3d8a446acd75e922fcb425?fid=1245131195-250528-809044880939159&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-cB1ZJAlebAdd9IJzIDNrEfWvSgE%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8951020948016963525&dp-callid=0&time=1648540800&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1
-" >
-
-><font size = 2.5>个人思考：要是卫星刚好快离开通信区域时任务才卸载，那等结果返回时应该是要加上一个卫星的周期，此公式并不严谨
-</font>
-
-<font size = 3>卫星轨道引起的等待时间与设备i到卫星j通信的时间百分比有关，通信百分比为𝜃𝑗，卸载平均等待时间和平均等待结果返回时间为
-</font>
-<img src = "https://thumbnail1.baidupcs.com/thumbnail/4487a01fara44e4fbab613085e83db7f?fid=1245131195-250528-908079013802275&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-NmkxmUzn8QKcGcyymuHOZaesJLk%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8951110494302855469&dp-callid=0&time=1648540800&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1
-" >
-<font size = 3>𝑇𝑗≫T_(𝑖,𝑗)^sat+ T_(𝑖,𝑗)^(𝑤_𝑞𝑢𝑒), 𝑇𝑗是卫星j的轨道周期</font>
-><font size = 2.5>个人思考：不是很明白这两个公式的含义，如果算平均时间，根据均值定理（8）公式分母应该是上标-下标，（9）公式同理
-</font>
-
-<font size = 3>根据M/G/1排队理论，卫星j上任务的平均排队等待时间为</font>
-<img src = "https://thumbnail1.baidupcs.com/thumbnail/6c61e6d53u0a06349106393f4719a721?fid=1245131195-250528-986321186128276&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-2H0qjJBc0FA6v6jn46LNB1ACmLQ%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8951154438478239674&dp-callid=0&time=1648540800&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1
-" >
-><font size = 2.5>采用M/G/1排队模型，使用p-k公式计算平均等待时间
-</font>
-
-<font size = 3>总式子</font>
-<img src = "https://thumbnail1.baidupcs.com/thumbnail/fe26f961dt597c827aa7febaf1c586bd?fid=1245131195-250528-776127809476243&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-RuPA8kVgjO%2fIhn2dGxAHCrSIUC0%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8951191869754509951&dp-callid=0&time=1648540800&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1
-" >
-
-### 卸载到卫星的能耗
-
-<font size = 3>由$E_{(𝑖,𝑗)}^𝑡𝑟𝑎𝑛𝑠$平均传输消耗， $E_{(𝑖,𝑗)}^sat$平均处理消耗<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msubsup><mi>E</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow><mrow><mtext>trans&nbsp;</mtext></mrow></msubsup><mo>=</mo><msub><mi>p</mi><mrow><mi>i</mi></mrow></msub><msubsup><mi>T</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow><mrow><mtext>trans&nbsp;</mtext></mrow></msubsup><mo>=</mo><mfrac><mrow><msub><mi>p</mi><mrow><mi>i</mi></mrow></msub><mrow><mover><mi>d</mi><mo stretchy="false">¯</mo></mover></mrow></mrow><msub><mi>R</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub></mfrac></math></font>
-
-
-<font size = 3>$𝑃_{𝑖}$为i的传输消耗</font>
-<font size = 3>由于CPU的能耗与CPU的频率的平方成正比，得
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msubsup><mi>E</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow><mrow><mi>s</mi><mi>a</mi><mi>t</mi></mrow></msubsup><mo>=</mo><mi>κ</mi><msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msubsup><mi>C</mi><mrow><mi>j</mi></mrow><mrow><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></msubsup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mrow><mn>2</mn></mrow></msup><mrow><mover><mi>c</mi><mo stretchy="false">¯</mo></mover></mrow></math></font>
-
-<font size = 3>其中κ是取决于芯片架构的有效开关电容
-</font>
-<font size = 3>总式子
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>E</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>=</mo><msubsup><mi>E</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow><mrow><mtext>trans&nbsp;</mtext></mrow></msubsup><mo>+</mo><msubsup><mi>E</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow><mrow><mi>s</mi><mi>a</mi><mi>t</mi></mrow></msubsup><mo>=</mo><mfrac><mrow><msub><mi>p</mi><mrow><mi>i</mi></mrow></msub><mrow><mover><mi>d</mi><mo stretchy="false">¯</mo></mover></mrow></mrow><msub><mi>R</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub></mfrac><mo>+</mo><mi>κ</mi><msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msubsup><mi>C</mi><mrow><mi>j</mi></mrow><mrow><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></msubsup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mrow><mn>2</mn></mrow></msup><mrow><mover><mi>c</mi><mo stretchy="false">¯</mo></mover></mrow></math>
-</font>
-
-<h2 id="分流到本地执行"><a href="#分流到本地执行" class="headerlink" title="分流到本地执行"></a>分流到本地执行</h2><font size = 3>同样采用M/G/1排队模型
-执行任务的平均响应时间$𝑇_{(𝑖,0)}$ = 在i上的平均等待时间$T_{(𝑖,0)}^{(𝑤𝑞𝑢𝑒)}$ + 平均执行时间$T_{(𝑖,0)}^{loc}$
-</font>
-
-<font size = 3>执行时延
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msubsup><mi>T</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow><mrow><mi>l</mi><mi>o</mi><mi>c</mi></mrow></msubsup><mo>=</mo><mfrac><mrow><mover><mi>c</mi><mo stretchy="false">¯</mo></mover></mrow><msubsup><mi>C</mi><mrow><mi>i</mi></mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></msubsup></mfrac></math>
-</font>
-
-<font size = 3>本地排队时延<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msubsup><mi>T</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow><mrow><mi>l</mi><mi>o</mi><mi>c</mi></mrow></msubsup><mo>=</mo><mfrac><mrow><mover><mi>c</mi><mo stretchy="false">¯</mo></mover></mrow><msubsup><mi>C</mi><mrow><mi>i</mi></mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></msubsup></mfrac><msubsup><mi>T</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow><mrow><mtext>wait&nbsp;</mtext></mrow></msubsup><mo>=</mo><mfrac><msub><mi>λ</mi><mrow><mi>i</mi></mrow></msub><mrow><mn>2</mn><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mn>1</mn><mo>−</mo><msub><mi>ρ</mi><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow></mrow></mfrac><mfrac><mover><msup><mi>c</mi><mrow><mn>2</mn></mrow></msup><mo accent="false">¯</mo></mover><msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msubsup><mi>C</mi><mrow><mi>i</mi></mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></msubsup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mrow><mn>2</mn></mrow></msup></mfrac><mo>=</mo><mfrac><mrow><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><msub><mi>λ</mi><mrow><mi>i</mi></mrow></msub><mover><msup><mi>c</mi><mrow><mn>2</mn></mrow></msup><mo accent="false">¯</mo></mover></mrow><mrow><mn>2</mn><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msubsup><mi>C</mi><mrow><mi>i</mi></mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></msubsup><mo>−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><msub><mi>λ</mi><mrow><mi>i</mi></mrow></msub><mrow><mover><mi>c</mi><mo stretchy="false">¯</mo></mover></mrow><mo data-mjx-texclass="CLOSE">)</mo></mrow><msubsup><mi>C</mi><mrow><mi>i</mi></mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></msubsup></mrow></mfrac></math>
-</font>
-
-<font size = 3>本地排队时延<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>T</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><mo>=</mo><msubsup><mi>T</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow><mrow><mi>w</mi><mo>−</mo><mi>q</mi><mi>u</mi><mi>e</mi></mrow></msubsup><mo>+</mo><msubsup><mi>T</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow><mrow><mi>l</mi><mi>o</mi><mi>c</mi></mrow></msubsup><mo>=</mo><mfrac><mrow><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><msub><mi>λ</mi><mrow><mi>i</mi></mrow></msub><mover><msup><mi>c</mi><mrow><mn>2</mn></mrow></msup><mo accent="false">¯</mo></mover></mrow><mrow><mn>2</mn><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msubsup><mi>C</mi><mrow><mi>i</mi></mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></msubsup><mo>−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><msub><mi>λ</mi><mrow><mi>i</mi></mrow></msub><mrow><mover><mi>c</mi><mo stretchy="false">¯</mo></mover></mrow><mo data-mjx-texclass="CLOSE">)</mo></mrow><msubsup><mi>C</mi><mrow><mi>i</mi></mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></msubsup></mrow></mfrac><mo>+</mo><mfrac><mrow><mover><mi>c</mi><mo stretchy="false">¯</mo></mover></mrow><msubsup><mi>C</mi><mrow><mi>i</mi></mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></msubsup></mfrac></math>
-</font>
-
-<font size = 3>能耗
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>E</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><mo>=</mo><mi>κ</mi><msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msubsup><mi>C</mi><mrow><mi>i</mi></mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></msubsup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mrow><mn>2</mn></mrow></msup><mrow><mover><mi>c</mi><mo stretchy="false">¯</mo></mover></mrow></math>
-</font>
-
-<font size = 3>其中κ是取决于芯片架构的有效开关电容</font>
-
-<h2 id="总式子"><a href="#总式子" class="headerlink" title="总式子"></a>总式子</h2><blockquote>
-<p><font size = 3>时延</p>
-</blockquote>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>T</mi><mrow><mi>i</mi></mrow></msub><mo>=</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msubsup><mi>T</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow><mrow><mtext>wait&nbsp;</mtext></mrow></msubsup><mo>+</mo><msubsup><mi>T</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow><mrow><mi>l</mi><mi>o</mi><mi>c</mi></mrow></msubsup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>+</mo><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>M</mi></mrow></munderover><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><msub><mi>T</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub></math></font>
-
-><font size = 3>能耗
-
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>E</mi><mrow><mi>i</mi></mrow></msub><mo>=</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><msub><mi>E</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><mo>+</mo><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>M</mi></mrow></munderover><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><msub><mi>E</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub></math>
-
-<p>&lt;/font&gt;</p>
-<h1 id="纳什均衡的证明和唯一性证明"><a href="#纳什均衡的证明和唯一性证明" class="headerlink" title="纳什均衡的证明和唯一性证明"></a>纳什均衡的证明和唯一性证明</h1><font size = 3>在博弈中，如果每个参与者在已知其他参与者的策略下，采用最优策略来应付，那么我们就达到了一个纳什均衡，同时也意味着没有人能通过改变自己的策略，获得更好的结果。</font>
-
-<blockquote>
-<font size = 3>占优策略</font>
-
-<ul>
-<li><font size = 3>在选择策略时，有一个策略的效用总是大于其他所有策略的效用时，我们把这类策略称为占优策略。</font>
-
-</li>
-</ul>
-<font size = 3>占优策略纳什均衡</font>
-
-<ul>
-<li><font size = 3>当所有参与者的最优回应时选择他们的占优策略时，这时达到的纳什均衡称为占优策略。</font>
-</font>
-
-</li>
-</ul>
-</blockquote>
-<font size = 3>定理1
->
->非合作博弈，至少存在一个纳什均衡
->* 条件1:策略空间𝑋_𝑖  是欧几里得空间的非空，凸且紧凑的子集
->* 条件2:成本函数P_𝑖(𝑥_𝑖, 𝑥_(−𝑖)) 连续且在𝑋_𝑖  为凸
-</font>
-
-<font size = 3>定理2
->一个连续的二次可微函数P(x)，其中x = (x1, x2，…xM)当且仅当其二阶偏导数的Hessian矩阵为正定时，为凸。
-</font>
-
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi mathvariant="bold">H</mi></mrow><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">(</mo><mrow><mi mathvariant="bold">x</mi></mrow><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><mi>P</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>i</mi></mrow></msub><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>j</mi></mrow></msub></mrow></mfrac><mo data-mjx-texclass="CLOSE">]</mo></mrow><mrow><mi>M</mi><mo>×</mo><mi>M</mi></mrow></msub></math>
-
-
-<font size = 3>黑塞矩阵</font>
-
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>H</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo><mo>=</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnalign="center center center center" columnspacing="1em" rowspacing="4pt"><mtr><mtd><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msubsup><mi>x</mi><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></msubsup></mrow></mfrac></mtd><mtd><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mn>1</mn></mrow></msub><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mn>2</mn></mrow></msub></mrow></mfrac></mtd><mtd><mo>⋯</mo></mtd><mtd><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mn>1</mn></mrow></msub><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub></mrow></mfrac></mtd></mtr><mtr><mtd><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mn>1</mn></mrow></msub></mrow></mfrac></mtd><mtd><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msubsup><mi>x</mi><mrow><mn>2</mn></mrow><mrow><mn>2</mn></mrow></msubsup></mrow></mfrac></mtd><mtd><mo>⋯</mo></mtd><mtd><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mn>2</mn></mrow></msub><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub></mrow></mfrac></mtd></mtr><mtr><mtd><mrow><mo>⋮</mo></mrow></mtd><mtd><mrow><mo>⋮</mo></mrow></mtd><mtd><mo>⋱</mo></mtd><mtd><mrow><mo>⋮</mo></mrow></mtd></mtr><mtr><mtd><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mn>1</mn></mrow></msub></mrow></mfrac></mtd><mtd><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mn>2</mn></mrow></msub></mrow></mfrac></mtd><mtd><mo>⋯</mo></mtd><mtd><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><msubsup><mi>x</mi><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></msubsup></mrow></mfrac></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow></math>
-
-<font size = 3>计算</font>
-
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi mathvariant="bold">H</mi></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>P</mi><mrow><mi>i</mi></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mrow><mi mathvariant="bold">x</mi></mrow><mrow><mi>i</mi></mrow></msub><mo>,</mo><msub><mrow><mi mathvariant="bold">x</mi></mrow><mrow><mo>−</mo><mi>i</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>=</mo><msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><msub><mi>P</mi><mrow><mi>i</mi></mrow></msub></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi></mrow></msub></mrow></mfrac><mo data-mjx-texclass="CLOSE">]</mo></mrow><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mi>M</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub></math>
-
-<font size = 3>为正定矩阵，根据定理2位凸</font>
-
-<font size = 3>根据式子</font>
-
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><munder><mo data-mjx-texclass="OP">∑</mo><mrow><mstyle scriptlevel="1"><mtable columnspacing="0em" rowspacing="0.1em"><mtr><mtd><mi>k</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mo>…</mo><mi>M</mi></mtd></mtr><mtr><mtd><mi>k</mi><mo>≠</mo><mi>j</mi></mtd></mtr></mtable></mstyle></mrow></munder><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">|</mo><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><msub><mi>P</mi><mrow><mi>i</mi></mrow></msub></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi></mrow></msub></mrow></mfrac><mo data-mjx-texclass="CLOSE">|</mo></mrow><mo>=</mo><mn>0</mn><mo>&lt;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">|</mo><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mrow><mn>2</mn></mrow></msup><msub><mi>P</mi><mrow><mi>i</mi></mrow></msub></mrow><mrow><mi mathvariant="normal">∂</mi><msubsup><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow><mrow><mn>2</mn></mrow></msubsup></mrow></mfrac><mo data-mjx-texclass="CLOSE">|</mo></mrow><mo>,</mo><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><mi mathvariant="normal">∀</mi><mi>i</mi><mo>∈</mo><mrow><mi mathvariant="bold">N</mi></mrow></math>
-
-
-<font size = 3>证明其是占优可解且纳什均衡唯一
-</font>
-
-<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p><img src = "https://thumbnail1.baidupcs.com/thumbnail/16282bbedn00b86018e9560f04aef76b?fid=1245131195-250528-396296546107221&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-tTAeUQs53bjuae%2b2Kz0WxgwquoQ%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8951779945399523334&dp-callid=0&time=1648544400&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1"></p>
-<font size = 3>初始分布为$𝑥_{𝑖}= (1/(M+1), 1/(M+1), ..., 1/(M+1))$
-
-在每次迭代中，每个设备都会搜索当前情况下的最优卸载策略$𝑥_{𝑖}^{,}$,和计算最小代价函数$P_𝑖(𝑥_𝑖^,)$ 。𝜀 代表精度需求
-
-$𝑥_{𝑖}^{,}$,用拉格朗日法求解梯度，例如
-
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi mathvariant="normal">∇</mi><mi>L</mi><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mrow><mi mathvariant="bold">x</mi></mrow><mrow><mi>i</mi></mrow></msub><mo>,</mo><mi>ϕ</mi><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>=</mo><mn>0</mn><mo stretchy="false">⇔</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable columnalign="left" columnspacing="1em" rowspacing="4pt"><mtr><mtd><mfrac><mrow><mi mathvariant="normal">∂</mi><msub><mi>P</mi><mrow><mi>i</mi></mrow></msub></mrow><mrow><mi mathvariant="normal">∂</mi><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub></mrow></mfrac><mo>=</mo><mi>ϕ</mi><mo>,</mo><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><mi>j</mi><mo>∈</mo><mrow><mi mathvariant="bold">M</mi></mrow></mtd></mtr><mtr><mtd><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>M</mi></mrow></munderover><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>=</mo><mn>1</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></math>
-
-根据纳什均衡的特点，只有当成本函数减少时，策略才会更新。当两个策略足够接近时，算法终止。
-最后的收敛策略$𝑋^∗$是任务卸载游戏的纳什均衡。
-
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">∥</mo><msub><mrow><mi mathvariant="bold">x</mi></mrow><mrow><mi>i</mi></mrow></msub><mo>−</mo><msub><mrow><mi mathvariant="bold">x</mi></mrow><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="CLOSE">∥</mo></mrow><mo>=</mo><msqrt><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>N</mi></mrow></munderover><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>M</mi></mrow></munderover><msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">|</mo><msubsup><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msubsup><mo>−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mo data-mjx-texclass="CLOSE">|</mo></mrow><mrow><mn>2</mn></mrow></msup></msqrt><mo>&lt;</mo><mi>ε</mi></math>
-
-</font>
-
-<h1 id="实验仿真"><a href="#实验仿真" class="headerlink" title="实验仿真"></a>实验仿真</h1><blockquote>
-<font size = 3>论文中实验仿真对比的算法为全本地卸载，随机卸载，平均卸载，对比的算法均为最简单的卸载算法，意义不大</font>
-
-</blockquote>
-<font size = 3>具体实验仿真参考论文</font>
-
-<font size = 3></font>
-
-<h1 id="论文地址"><a href="#论文地址" class="headerlink" title="论文地址"></a>论文地址</h1><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8945402">Wang, Yuxuan, et al. “A game-theoretic approach to computation offloading in satellite edge computing.” IEEE Access 8 (2019): 12510-12520.</a></p>
-<hr>
-
+          <p>提出了一个计算卸载游戏框架，以排队论为优化性能的指标，计算了任务的响应时间和能耗，并提出了一种迭代算法来找到纳什均衡。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/29/%5B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%5DA-Game-Theoretic-Approach-to-Computation-Offloading-in-Satellite-Edge-Computing/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -573,7 +347,7 @@ $𝑥_{𝑖}^{,}$,用拉格朗日法求解梯度，例如
   </span>
   <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
