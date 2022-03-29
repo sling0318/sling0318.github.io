@@ -28,7 +28,7 @@
 <meta property="og:description" content="提出了一个计算卸载游戏框架，以排队论为优化性能的指标，计算了任务的响应时间和能耗，并提出了一种迭代算法来找到纳什均衡。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-29T06:30:43.000Z">
-<meta property="article:modified_time" content="2022-03-29T09:33:28.875Z">
+<meta property="article:modified_time" content="2022-03-29T09:43:06.425Z">
 <meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
 <meta property="article:tag" content="文献阅读">
 <meta property="article:tag" content="博弈论">
@@ -214,7 +214,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-03-29 14:30:43 / 修改时间：17:33:28" itemprop="dateCreated datePublished" datetime="2022-03-29T14:30:43+08:00">2022-03-29</time>
+      <time title="创建时间：2022-03-29 14:30:43 / 修改时间：17:43:06" itemprop="dateCreated datePublished" datetime="2022-03-29T14:30:43+08:00">2022-03-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -242,6 +242,7 @@
 <li><font size = 3>考虑到卫星引起的间歇性通信，只有在窗口期才能够进行通信，并假设卫星上只部署一个MEC服务器</font></li>
 <li>KPI：<font size = 3>响应时延宇能耗</font></li>
 </ul>
+<hr>
 <h1 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h1><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>  <img src ="https://thumbnail1.baidupcs.com/thumbnail/4ae98a089j092cce04dbd224f70f8965?fid=1245131195-250528-440211229848578&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-gsXzcqwp%2bdTIkjfoiDmgFwWeV%2b4%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8949575027056316459&dp-callid=0&time=1648533600&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1" alt = "drawing" width="400" align = "left"></p>
  <font size = 3> 
  一组远程地面设备位于一个小的固定区域，一组卫星在轨道上。任务可以在设备上本地执行，也可以通过卫星-地面通信卸载到部署在卫星上的边缘计算服务器上。由于间歇性的地面-卫星通信，设备在任何时候都不能将任务卸载到卫星上，即只有在卫星飞越时才会卸载任务。
@@ -253,6 +254,8 @@
 
 <p><img src ="https://thumbnail1.baidupcs.com/thumbnail/6cbd1dcbanca7cdce465d9854206b18a?fid=1245131195-250528-309961252194506&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-0OYrHJe6Gh45qQWINDMbJSg0LFo%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8949620524151903662&dp-callid=0&time=1648533600&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=" alt = "drawing" width="380" align = "left"></p>
 <font size = 3>将边缘计算场景抽象为左图，不可移动设备记为N={1,2,…,N},有覆盖区域卫星记为M={1,2,…M},由于星上资源有限，我们假设卫星上只部署了一台边缘计算服务器。显然，如果所有任务都在设备上本地执行或卸载到卫星上，则等待执行的时间和队列中的功耗将大幅增加。因此，需要对每个设备的计算卸载策略进行优化，以提高性能。 <br/></br>
+<br/></br>
+<br/></br>
 <br/></br>
 <br/></br>
  </font>
@@ -303,6 +306,7 @@ Taski = {ci，di},$𝐶_{(𝑚)}^{𝑖}$和$𝐶_{(𝑠)}^{𝑗}$是设备和卫
 </font>
 
 </blockquote>
+<hr>
 <h1 id="博弈论模型"><a href="#博弈论模型" class="headerlink" title="博弈论模型"></a>博弈论模型</h1><font size = 3>
 令𝑋=𝑋1∗𝑋2∗...𝑋𝑁是所有设备策略组合的集合,所有设备的整体策略我们可以用𝐱={𝐱1,𝐱2,…,𝐱𝑁} 表示，中间的𝐱𝐢表示设备i的策略 
 
@@ -394,6 +398,7 @@ $P_{𝑖}(𝑥_{𝑖}, 𝑥_{(−𝑖)}) = 𝑇_{𝑖} + 𝜇_{𝑖}𝐸_{𝑖}$
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>E</mi><mrow><mi>i</mi></mrow></msub><mo>=</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><msub><mi>E</mi><mrow><mi>i</mi><mo>,</mo><mn>0</mn></mrow></msub><mo>+</mo><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>M</mi></mrow></munderover><msub><mi>x</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><msub><mi>E</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub></math>
 
 <p>&lt;/font&gt;</p>
+<hr>
 <h1 id="纳什均衡的证明和唯一性证明"><a href="#纳什均衡的证明和唯一性证明" class="headerlink" title="纳什均衡的证明和唯一性证明"></a>纳什均衡的证明和唯一性证明</h1><font size = 3>在博弈中，如果每个参与者在已知其他参与者的策略下，采用最优策略来应付，那么我们就达到了一个纳什均衡，同时也意味着没有人能通过改变自己的策略，获得更好的结果。</font>
 
 <blockquote>
@@ -445,6 +450,7 @@ $P_{𝑖}(𝑥_{𝑖}, 𝑥_{(−𝑖)}) = 𝑇_{𝑖} + 𝜇_{𝑖}𝐸_{𝑖}$
 <font size = 3>证明其是占优可解且纳什均衡唯一
 </font>
 
+<hr>
 <h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p><img src = "https://thumbnail1.baidupcs.com/thumbnail/16282bbedn00b86018e9560f04aef76b?fid=1245131195-250528-396296546107221&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-tTAeUQs53bjuae%2b2Kz0WxgwquoQ%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8951779945399523334&dp-callid=0&time=1648544400&size=c1600_u900&quality=90&vuk=1245131195&ft=image&autopolicy=1"></p>
 <font size = 3>初始分布为$𝑥_{𝑖}= (1/(M+1), 1/(M+1), ..., 1/(M+1))$
 
@@ -461,6 +467,7 @@ $𝑥_{𝑖}^{,}$,用拉格朗日法求解梯度，例如
 
 </font>
 
+<hr>
 <h1 id="实验仿真"><a href="#实验仿真" class="headerlink" title="实验仿真"></a>实验仿真</h1><blockquote>
 <font size = 3>论文中实验仿真对比的算法为全本地卸载，随机卸载，平均卸载，对比的算法均为最简单的卸载算法，意义不大</font>
 
@@ -469,6 +476,7 @@ $𝑥_{𝑖}^{,}$,用拉格朗日法求解梯度，例如
 
 <font size = 3></font>
 
+<hr>
 <h1 id="论文地址"><a href="#论文地址" class="headerlink" title="论文地址"></a>论文地址</h1><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8945402">Wang, Yuxuan, et al. “A game-theoretic approach to computation offloading in satellite edge computing.” IEEE Access 8 (2019): 12510-12520.</a></p>
 <hr>
 
