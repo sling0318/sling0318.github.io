@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="提出了基于深度强化学习的任务卸载(DRTO)算法，通过调整候选位置的个数来加速学习过程，并且卸载位置和带宽分配只依赖于当前的信道状态。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[文献阅读] Deep Reinforcement Learning-based TaskOffloading in Satellite-Terrestrial Edge ComputingNetworks 星地边缘计算网络中基于深度强化学习的任务分流 （未完成）">
+<meta property="og:url" content="http://example.com/2022/03/30/[%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB]%20%20Deep%20Reinforcement%20Learning-based%20TaskOffloading%20in%20Satellite-Terrestrial%20Edge%20ComputingNetworks%20%20%E6%98%9F%E5%9C%B0%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%88%86%E6%B5%81/index.html">
+<meta property="og:site_name" content="生灵">
+<meta property="og:description" content="提出了基于深度强化学习的任务卸载(DRTO)算法，通过调整候选位置的个数来加速学习过程，并且卸载位置和带宽分配只依赖于当前的信道状态。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-30T07:14:42.000Z">
+<meta property="article:modified_time" content="2022-03-30T10:05:42.240Z">
+<meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
+<meta property="article:tag" content="文献阅读">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="边缘计算">
+<meta property="article:tag" content="计算卸载">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/03/30/[%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB]%20%20Deep%20Reinforcement%20Learning-based%20TaskOffloading%20in%20Satellite-Terrestrial%20Edge%20ComputingNetworks%20%20%E6%98%9F%E5%9C%B0%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%88%86%E6%B5%81/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/03/30/[%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB]%20%20Deep%20Reinforcement%20Learning-based%20TaskOffloading%20in%20Satellite-Terrestrial%20Edge%20ComputingNetworks%20%20%E6%98%9F%E5%9C%B0%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%88%86%E6%B5%81/","path":"2022/03/30/[文献阅读]  Deep Reinforcement Learning-based TaskOffloading in Satellite-Terrestrial Edge ComputingNetworks  星地边缘计算网络中基于深度强化学习的任务分流/","title":"[文献阅读] Deep Reinforcement Learning-based TaskOffloading in Satellite-Terrestrial Edge ComputingNetworks 星地边缘计算网络中基于深度强化学习的任务分流 （未完成）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[文献阅读] Deep Reinforcement Learning-based TaskOffloading in Satellite-Terrestrial Edge ComputingNetworks 星地边缘计算网络中基于深度强化学习的任务分流 （未完成） | 生灵</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">生灵</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>目录</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81%E4%B8%8E%E4%B8%BB%E8%A6%81%E8%B4%A1%E7%8C%AE"><span class="nav-number">1.</span> <span class="nav-text">摘要与主要贡献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B%E4%B8%8E%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">系统模型与问题描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">卸载位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E8%8A%B1%E8%B4%B9"><span class="nav-number">2.2.</span> <span class="nav-text">卸载花费</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E5%88%B0SatEC"><span class="nav-number">2.2.1.</span> <span class="nav-text">卸载到SatEC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E5%88%B0TC"><span class="nav-number">2.2.2.</span> <span class="nav-text">卸载到TC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.3.</span> <span class="nav-text">问题描述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DRTO%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">DRTO算法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ciallo～(∠・ω< )⌒☆​"
+      src="/images/dh.png">
+  <p class="site-author-name" itemprop="name">Ciallo～(∠・ω< )⌒☆​</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">目录</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/30/[%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB]%20%20Deep%20Reinforcement%20Learning-based%20TaskOffloading%20in%20Satellite-Terrestrial%20Edge%20ComputingNetworks%20%20%E6%98%9F%E5%9C%B0%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%88%86%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dh.png">
+      <meta itemprop="name" content="Ciallo～(∠・ω< )⌒☆​">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生灵">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[文献阅读] Deep Reinforcement Learning-based TaskOffloading in Satellite-Terrestrial Edge ComputingNetworks 星地边缘计算网络中基于深度强化学习的任务分流 （未完成） | 生灵">
+      <meta itemprop="description" content="提出了基于深度强化学习的任务卸载(DRTO)算法，通过调整候选位置的个数来加速学习过程，并且卸载位置和带宽分配只依赖于当前的信道状态。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [文献阅读] Deep Reinforcement Learning-based TaskOffloading in Satellite-Terrestrial Edge ComputingNetworks 星地边缘计算网络中基于深度强化学习的任务分流 （未完成）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-30 15:14:42 / 修改时间：18:05:42" itemprop="dateCreated datePublished" datetime="2022-03-30T15:14:42+08:00">2022-03-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">收录于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文献阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">提出了基于深度强化学习的任务卸载(DRTO)算法，通过调整候选位置的个数来加速学习过程，并且卸载位置和带宽分配只依赖于当前的信道状态。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="摘要与主要贡献"><a href="#摘要与主要贡献" class="headerlink" title="摘要与主要贡献"></a>摘要与主要贡献</h1><font size = 3>
+
+<blockquote>
+<p>缩写<br>地面云（TC），基于任务卸载饿深度强化学习(DRTO)，卫星边缘计算（SatEC），深层神经网络（DNN）</p>
+</blockquote>
+<p>考虑一个SatEC，将卸载费用建模为带宽和能量消耗的加权和。以最小化卸载成本为目标，将卸载位置决策和带宽分配问题转化为MIP问题。将卸载位置决策和带宽分配问题转化为MIP问题。</p>
+<blockquote>
+<p>论文贡献</p>
+<ul>
+<li>卫星-地面协同卸载。将卸载位置的决策和带宽分配问题归纳为MIP问题</li>
+<li>无模型学习。所提出的DRTO算法只根据当前的通道状态进行卸载决策。同时，DRTO可以通过学习信道状态的实时趋势来改进其卸载策略，以适应卫星-地面网络的高动态。</li>
+<li>低时间复杂度。与传统的优化方法相比，DRTO完全不需要解决硬MIP问题。此外，我们还动态调整动作空间的大小，以加快学习过程。</li>
+</ul>
+</blockquote>
+</font>
+
+<hr>
+<h1 id="系统模型与问题描述"><a href="#系统模型与问题描述" class="headerlink" title="系统模型与问题描述"></a>系统模型与问题描述</h1><font size =3>
+
+<p><img src = "
+/Deep Reinforcement Learning-based TaskOffloading in Satellite-Terrestrial Edge ComputingNetworks images/图片1.png
+" width="500"></p>
+<p>如图1所示，LEO设备在地球表面高速飞行，并将ST（边缘设备）远程连接到地面站，TC通过光纤与地面站链接，传输时延可以忽略不计。<br>假定接入卫星总是可用的<strong>（不考虑间歇性通信？）</strong>，并考虑N&#x3D;{1,2,…,N}个ST设备和一个TC在同一介入卫星的覆盖范围内。</p>
+<p>为方便，从ST到卫星称为第一跳，从卫星到TC称为第二跳。论文中的符号如下表所示</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$x_n$</td>
+<td>第n个ST设备的卸载位置（1表示在SatEC，0表示在TC）</td>
+</tr>
+<tr>
+<td>$α_nB$</td>
+<td>第n个ST的带宽</td>
+</tr>
+<tr>
+<td>$α_{N+n}B$</td>
+<td>分配给第n个ST的任务转发的带宽</td>
+</tr>
+<tr>
+<td>B</td>
+<td>接入卫星的总带宽</td>
+</tr>
+<tr>
+<td>$P_n$</td>
+<td>第n个ST的传输能耗</td>
+</tr>
+<tr>
+<td>$P_{Sat}$</td>
+<td>接入卫星的传输能耗</td>
+</tr>
+<tr>
+<td>$h_n$</td>
+<td>第n个ST与卫星之间的信道增益</td>
+</tr>
+<tr>
+<td>$h_{TC}$</td>
+<td>接入卫星与ST之间的信道增益</td>
+</tr>
+<tr>
+<td>$N_0$</td>
+<td>接收器的噪声功率</td>
+</tr>
+<tr>
+<td>L</td>
+<td>任务大小</td>
+</tr>
+<tr>
+<td>k</td>
+<td>计算强度</td>
+</tr>
+<tr>
+<td>$f_1$</td>
+<td>SatEC服务器的CPU频率</td>
+</tr>
+<tr>
+<td>$f_0$</td>
+<td>TC的CPU频率</td>
+</tr>
+<tr>
+<td>$p_c$</td>
+<td>SatEC服务器的计算能力消耗</td>
+</tr>
+<tr>
+<td>λ</td>
+<td>延迟-能量权重参数</td>
+</tr>
+</tbody></table>
+</font>
+
+<h2 id="卸载位置"><a href="#卸载位置" class="headerlink" title="卸载位置"></a>卸载位置</h2><font size =3 >
+
+<p>对于第n个ST卸载的任务，其接入卫星可以选择本地处理或透明地转发到其连接的TC。我们定义第n个ST为$x_n$，$x_n$ &#x3D; 1表示卸载到卫星，$x_n$ &#x3D; 0表示卸载到TC。</p>
+</font>
+
+<h2 id="卸载花费"><a href="#卸载花费" class="headerlink" title="卸载花费"></a>卸载花费</h2><font size =3 >
+
+<p>主要取决于延迟和能耗，卸载到不同位置的成本不同，定义如下</p>
+<h3 id="卸载到SatEC"><a href="#卸载到SatEC" class="headerlink" title="卸载到SatEC"></a>卸载到SatEC</h3><p>其主要开销包括传输开销和计算开销。$α_n$为第n个ST的带宽比例，然后第n个ST的第一跳传输数率公式如下</p>
+<p>$C_{1,n}$ &#x3D; $α_n$B$log_2$(1+$p_nh_n&#x2F;N_0$)</p>
+<blockquote>
+<p>香农公式：C &#x3D; B$log_2$(1 + S&#x2F;N) . C为（最大）传输速率，B为带宽，S为平均功率，N为信道内噪声功率。</p>
+</blockquote>
+<p>B代表接入卫星的总带宽。$P_n$为第n个ST的传输能耗，$h_n$为第n个ST与卫星之间的信道增益，$N_0$代表接收器的噪声功率。</p>
+<p>基于第一跳的传输功率$C_{1,n}$，传输延迟为$T_{1,n}$ &#x3D; L&#x2F;$c_{1,n}$,L为任务数据大小。第n个ST的能耗为$E_{1,n}$ &#x3D; $p_nT_{1,n}$</p>
+<p>忽略排队延迟，SatEC服务器的计算延迟为$T_{1,n}^c$ &#x3D; KL&#x2F;$f_1$,k代表任务的计算强度（周期&#x2F;比特为单位），$f_1$为卫星的CPU频率（周期&#x2F;s为单位）。用于计算的能耗为$E_{1,n}^c$ &#x3D; $p_cT_{1,n}^c$,$p_c$为计算能耗。</p>
+<p>第n个ST的总延迟和总能耗为</p>
+<p>$T_n^{Sat}$ &#x3D; $T_{1,n}$ + $T_{1,n}^c$ ,    $E_n^{Sat}$ &#x3D; $E_{1,n}$ + $E_{1,n}^c$</p>
+<blockquote>
+<p>传输延迟+卫星的计算延迟，传输能耗+卫星的计算能耗</p>
+</blockquote>
+<h3 id="卸载到TC"><a href="#卸载到TC" class="headerlink" title="卸载到TC"></a>卸载到TC</h3><p>出了ST的传输成本外，还应该包括卫星的转发成本和TC的计算成本。</p>
+<p>$α_{N+n}$为第n个ST任务转发分配的带宽比例。第二跳的成本为$C_{2,n}$ &#x3D; $α_{N+n}$B$log_2$(1+$P_{Sat}h_{TC}&#x2F;N_0$),$P_{Sat}$表示卫星的传输消耗，$h_{TC}$表示接入卫星与TC之间的通道增益。</p>
+<p>ST的感知延迟和能耗为<br>$T_{2,n}$ &#x3D; L&#x2F;$C_{2,n}$,$E_{2,n}$ &#x3D; $P_{Sat}$$T_{2,n}$</p>
+<p>TC的计算延迟为$T_{2,n}^c$ &#x3D; kL&#x2F;$f_0$,$f_0$为TC的CPU计算频率，由于TC持续供电，所以忽略TC的能耗</p>
+<p>总延迟和总能耗为</p>
+<p>$T_{1,n}^{TC}$ &#x3D;$T_{1,n}$ + $T_{2,n}$ + $T_{2,n}^c$,$E_n^{TC}$ &#x3D; $E_{1,n}$ + $E_{2,n}$</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>卸载成本最小化问题的表达如下：<br><img src = "
+/Deep Reinforcement Learning-based TaskOffloading in Satellite-Terrestrial Edge ComputingNetworks images/
+图片2.png
+"></p>
+<blockquote>
+<p>P为一个混合整数规划问题，其中0-1变量于连续变量α是相互耦合的</p>
+</blockquote>
+<p>为了解决问题，本文提出了一种基于深度强化学习的任务卸载算法。具体地说采用了一个DNN来映射当前的通信状态到卸载位置，并通过增强学习来改进DNN。</p>
+<hr>
+<h1 id="DRTO算法"><a href="#DRTO算法" class="headerlink" title="DRTO算法"></a>DRTO算法</h1><p>设计一个最小卸载算法π：h $\to$ $x^*$ ，他会快速选择最佳的卸载位置 $x^*$ &#x3D; [$x_1^*,x_2^*,…,x_N^*$],仅基于当前通信状态 h &#x3D; [$h_1,h_2,..,h_N,h_{TC}$]。</p>
+<blockquote>
+<p>算法框架如下图所示</p>
+</blockquote>
+<p><img src = "
+/Deep Reinforcement Learning-based TaskOffloading in Satellite-Terrestrial Edge ComputingNetworks images/
+图片3.png
+"></p>
+<p>首先DNN获取当前通道h的输入和生成卸载位置$\hat{x}$,然后我们将松弛位置$\hat{x}$量化为k个二进制卸载位置，$x_1,x_2,..x_K$。最佳位置$x^*$是通过一系列的带宽分配凸性问题得到的。随后将新火的的通信状态卸载位置队（h,$x^*$）添加到重放存储器中。将从存储器中随机采样一批数据，以改善每个δ时间帧的DNN。<br>为了进一步减少运行时的消耗，我们动态调整K来加快学习过程。</p>
+<p>DRTO的算法如下<br><img src = "
+/Deep Reinforcement Learning-based TaskOffloading in Satellite-Terrestrial Edge ComputingNetworks images/
+图片4.png
+"  width=“200”  height = "800"></p>
+</font>
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag"># 文献阅读</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+              <a href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" rel="tag"># 边缘计算</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%8D%B8%E8%BD%BD/" rel="tag"># 计算卸载</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/29/%5B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%5DA-Game-Theoretic-Approach-to-Computation-Offloading-in-Satellite-Edge-Computing/" rel="prev" title="[文献阅读] A Game-Theoretic Approach to Computation Offloading in Satellite Edge Computing 卫星边缘计算中计算卸载的博弈方法">
+                  <i class="fa fa-chevron-left"></i> [文献阅读] A Game-Theoretic Approach to Computation Offloading in Satellite Edge Computing 卫星边缘计算中计算卸载的博弈方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
