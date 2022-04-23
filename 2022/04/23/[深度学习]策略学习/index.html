@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://example.com/深度学习imgs/图片15.png">
 <meta property="og:image" content="http://example.com/深度学习imgs/图片16.png">
 <meta property="article:published_time" content="2022-04-23T07:23:35.000Z">
-<meta property="article:modified_time" content="2022-04-23T09:25:07.913Z">
+<meta property="article:modified_time" content="2022-04-23T09:28:53.076Z">
 <meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="学习笔记">
@@ -218,7 +218,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-04-23 15:23:35 / 修改时间：17:25:07" itemprop="dateCreated datePublished" datetime="2022-04-23T15:23:35+08:00">2022-04-23</time>
+      <time title="创建时间：2022-04-23 15:23:35 / 修改时间：17:28:53" itemprop="dateCreated datePublished" datetime="2022-04-23T15:23:35+08:00">2022-04-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -344,12 +344,16 @@
 </ul>
 </li>
 <li>Muti-Step <ul>
-<li>观测m个transition:${(s_{t+i},a_{t+i},r_{t+i},s_{t+i+1})}_{i=0}^{m=-1}$<br>m-step TD target:<br><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>y</mi><mrow><mi>t</mi></mrow></msub><mo>=</mo><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></munderover><msup><mi>γ</mi><mrow><mi>i</mi></mrow></msup><mo>⋅</mo><msub><mi>r</mi><mrow><mi>t</mi><mo>+</mo><mi>i</mi></mrow></msub><mo>+</mo><msup><mi>γ</mi><mrow><mi>m</mi></mrow></msup><mo>⋅</mo><mi>v</mi><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>+</mo><mi>m</mi></mrow>&lt;/msub&gt;<mo>;</mo><mrow><mi mathvariant="bold">w</mi></mrow><mo data-mjx-texclass="CLOSE">)</mo>&lt;/mrow&gt;</math><blockquote>
-<p>Multi-Step 算法过程</p>
-</blockquote>
+<li>观测m个transition:${(s_{t+i},a_{t+i},r_{t+i},s_{t+i+1})}_{i=0}^{m=-1}$<br>m-step TD target:<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>y</mi><mrow><mi>t</mi></mrow></msub><mo>=</mo><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></munderover><msup><mi>γ</mi><mrow><mi>i</mi></mrow></msup><mo>⋅</mo><msub><mi>r</mi><mrow><mi>t</mi><mo>+</mo><mi>i</mi></mrow></msub><mo>+</mo><msup><mi>γ</mi><mrow><mi>m</mi></mrow></msup><mo>⋅</mo><mi>v</mi><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>+</mo><mi>m</mi></mrow></msub><mo>;</mo><mrow><mi mathvariant="bold">w</mi></mrow><mo data-mjx-texclass="CLOSE">)</mo></mrow></math>
+
 </li>
 </ul>
 </li>
+</ul>
+<blockquote>
+<p><strong>Multi-Step 算法过程</strong></p>
+</blockquote>
+<ul>
 <li>观测到一个从t到t+m-1的轨迹</li>
 <li>TD target: $y_{t}=\sum_{i=0}^{m-1} \gamma^{i} \cdot r_{t+i}+\gamma^{m} \cdot v\left(s_{t+m} ; \mathbf{w}\right)$.</li>
 <li>TD error: $\delta_t = v(s_t;w) - y_t$</li>
@@ -365,12 +369,12 @@
 <h1 id="REINFORCE-with-Baseline与A2C的区别"><a href="#REINFORCE-with-Baseline与A2C的区别" class="headerlink" title="REINFORCE with Baseline与A2C的区别"></a>REINFORCE with Baseline与A2C的区别</h1><p> 用的网络完全一样，只是价值网络的功能有所区别。</p>
 <ul>
 <li>A2C的价值网络为critic，用来评价Agent的表现。</li>
-<li><p>REINFORCE with Baseline的价值网络用来当作Baseline，不会评价动作的好坏，唯一用途就是降低随机梯度造成的方差。</p>
-<blockquote>
-<p>联系：<br><img src="/深度学习imgs/图片16.png"></p>
-</blockquote>
-</li>
+<li>REINFORCE with Baseline的价值网络用来当作Baseline，不会评价动作的好坏，唯一用途就是降低随机梯度造成的方差。</li>
 </ul>
+<blockquote>
+<p>联系：</p>
+</blockquote>
+<p> <img src="/深度学习imgs/图片16.png"></p>
 
     </div>
 
