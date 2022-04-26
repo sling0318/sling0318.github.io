@@ -28,13 +28,13 @@
 <meta property="og:description" content="本文考虑了动态环境下边缘计算用户间的动态计算卸载决策问题，提出了一种计算卸载博弈公式。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-02T07:42:43.000Z">
-<meta property="article:modified_time" content="2022-04-25T06:23:16.438Z">
+<meta property="article:modified_time" content="2022-04-25T07:09:41.469Z">
 <meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
 <meta property="article:tag" content="文献阅读">
+<meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="博弈论">
 <meta property="article:tag" content="边缘计算">
 <meta property="article:tag" content="计算卸载">
-<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
 
 
@@ -135,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -221,7 +221,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-25 14:23:16" itemprop="dateModified" datetime="2022-04-25T14:23:16+08:00">2022-04-25</time>
+      <time title="修改时间：2022-04-25 15:09:41" itemprop="dateModified" datetime="2022-04-25T15:09:41+08:00">2022-04-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
 
 <p>目标是找到一个纳什均衡。</p>
 <p><strong>定义1.纳什均衡</strong></p>
-<p>当策略 $x^{k,<em> } = [x^{k,</em>}], n\in N$ ,满足以下条件时，达到纳什均衡:(3)</p>
+<p>当策略 $x^{k,\ast } = [x^{k,\ast}], n\in N$ ,满足以下条件时，达到纳什均衡:(3)</p>
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>u</mi><mrow><mi>n</mi></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msubsup><mi>x</mi><mrow><mi>n</mi></mrow><mrow><mi>k</mi><mo>,</mo><mo>∗</mo></mrow></msubsup><mo>,</mo><msubsup><mi>x</mi><mrow><mo>−</mo><mi>n</mi></mrow><mrow><mi>k</mi><mo>,</mo><mo>∗</mo></mrow></msubsup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>≥</mo><msub><mi>u</mi><mrow><mi>n</mi></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msubsup><mi>x</mi><mrow><mi>n</mi></mrow><mrow><mi>k</mi></mrow></msubsup><mo>,</mo><msubsup><mi>x</mi><mrow><mo>−</mo><mi>n</mi></mrow><mrow><mi>k</mi><mo>,</mo><mo>∗</mo></mrow></msubsup><mo data-mjx-texclass="CLOSE">)</mo></mrow></math>
 
 <hr>
@@ -357,12 +357,12 @@
 <p>where</p>
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true" columnalign="right left right left right left right left right left right left" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" rowspacing="3pt"><mtr><mtd><msup><mi>V</mi><mrow><msub><mi>π</mi><mrow><msub><mi>θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub></mrow></msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow></mtd><mtd><mi></mi><mo>=</mo><mrow><mi mathvariant="double-struck">E</mi></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><msubsup><mi>R</mi><mrow><mi>n</mi></mrow><mrow><mi>k</mi></mrow></msubsup><mo>∣</mo><msubsup><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow><mrow><mi>k</mi></mrow></msubsup><mo>=</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo>,</mo><mi mathvariant="normal">Π</mi><mo>,</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">P</mi></mrow><mo>,</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">T</mi></mrow><mo data-mjx-texclass="CLOSE">]</mo></mrow></mtd></mtr><mtr><mtd><msup><mi>Q</mi><mrow><msub><mi>π</mi><mrow><msub><mi>θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub></mrow></msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow></mtd><mtd><mi></mi><mo>=</mo><mrow><mi mathvariant="double-struck">E</mi></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><msubsup><mi>R</mi><mrow><mi>n</mi></mrow><mrow><mi>k</mi></mrow></msubsup><mo>∣</mo><msubsup><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow><mrow><mi>k</mi></mrow></msubsup><mo>=</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo>,</mo><msubsup><mi>x</mi><mrow><mi>n</mi></mrow><mrow><mi>k</mi></mrow></msubsup><mo>=</mo><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub><mo>,</mo><mi mathvariant="normal">Π</mi><mo>,</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">P</mi></mrow><mo>,</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">T</mi></mrow><mo data-mjx-texclass="CLOSE">]</mo></mrow></mtd></mtr><mtr><mtd><msubsup><mi>R</mi><mrow><mi>n</mi></mrow><mrow><mi>k</mi></mrow></msubsup></mtd><mtd><mi></mi><mo>=</mo><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><mi>l</mi><mo>=</mo><mi>k</mi></mrow><mrow><mi>K</mi></mrow></munderover><msup><mi>γ</mi><mrow><mi>l</mi><mo>−</mo><mi>k</mi></mrow></msup><msubsup><mi>r</mi><mrow><mi>n</mi></mrow><mrow><mi>k</mi></mrow></msubsup></mtd></mtr></mtable></math>
 
-<p>$\Pi = {\pi_{\theta_n}}$,${n \in \mathcal{N}}$，表示所有用户的策略集。$V^{\pi_{\theta_n}}$是观测价值函数。$Q^\pi_{\theta_n}$($o_n,x_n$)是当前观测的动作价值函数，$p_n^0$是用户n的初试观测概率分布，$R_n^k$是用户在时间k内的预期未来汇报$\gamma \in $[0,1]是折扣率。</p>
+<p>$\Pi = {\pi_{\theta_n}}$,${n \in \mathcal{N}}$，表示所有用户的策略集。$V^{\pi_{\theta_n}}$是观测价值函数。$Q^\pi_{\theta_n}$($o_n,x_n$)是当前观测的动作价值函数，$\rho_n^0$是用户n的初试观测概率分布，$R_n^k$是用户在时间k内的预期未来汇报$\gamma \in $[0,1]是折扣率。</p>
 <p>因此，在将动态分散计算卸载博弈描述为多智能体POMDP后，在非合作场景下，可以通过多智能体策略梯度DRL方法来优化用户的计算卸载策略</p>
 <h1 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h1><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>如图3所示，有N个用户，每个用户都有一个称为DRL控制器的模块，该模块确定上传到边缘服务器的输入数据的大小</p>
 <p><img src = "/A_Deep_Reinforcement_Learning_Based_Offloading_Game_in_Edge_Computing_images/图片4.png" width = "800" ></p>
 <p>其中包括动作网络、价值网络、Replay Buffer、效用计算模块、内存模块、值函数优化器和策略优化器。具体地说，动作网络直接通过多个完全连接的神经网络输出根据观察到的动作。价值网络首先将观测值映射到特征向量中，然后从记忆中读取特征，通过组合这些特征可以得到最终的观测值，并通过写操作来更新其记忆。</p>
-<h2 id="动作网络与价值网络的设计"><a href="#动作网络与价值网络的设计" class="headerlink" title="动作网络与价值网络的设计"></a>动作网络与价值网络的设计</h2><p>由于用户无法分享它们观测到的数据，因此为每个用户设计了一个分散的动作网络和分散的价值网络。$\pi_{\theta_n}$,用于逼近价值函数的价值网络为$V_{\omega_n}$,$\theta_n$与$\omega_n$分别表示模型的动作网络和价值网络。</p>
+<h2 id="动作网络与价值网络的设计"><a href="#动作网络与价值网络的设计" class="headerlink" title="动作网络与价值网络的设计"></a>动作网络与价值网络的设计</h2><p>由于用户无法分享它们观测到的数据，因此为每个用户设计了一个分散的动作网络和分散的价值网络。用户n的策略的动作网络近似为$\pi_{\theta_n}$,价值函数的价值网络近似为$V_{\omega_n}$,$\theta_n$与$\omega_n$分别为动作网络和价值网络的模型参数。</p>
 <p>更准确的说，动作网络$\pi_{\theta_n}$被设计成多层全连接的神经网络，它从用户的实时观测数据$o_n^k$中确定用户n上传的输入数据$x_n^k$的大小。价值网络$V_{\omega_n}$更为复杂，它由连接层和DNC组成。DNC是一种特殊的递归神经网络，具有内部记忆模块，能够学习和记忆输入的过去隐藏状态。在DNC中，$V_{\omega_n}$估计的观测值取决于整个观测历史。带有DNC的价值网络可以使用户更快更好地收敛到均衡状态。</p>
 <h2 id="策略优化方法"><a href="#策略优化方法" class="headerlink" title="策略优化方法"></a>策略优化方法</h2><p>通过策略梯度法对每个用户的连续策略进行优化，其目标函数定义在(17)中。根据[37]中证明的策略梯度定理和[38]中提出的信赖域策略优化理论，可以计算出策略梯度为</p>
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true" columnalign="right left right left right left right left right left right left" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" rowspacing="3pt"><mtr><mtd><msub><mi mathvariant="normal">∇</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub><msub><mi>L</mi><mrow><mi>n</mi></mrow></msub></mtd><mtd><mi></mi><mo>=</mo><msub><mrow><mi mathvariant="double-struck">E</mi></mrow><mrow><msub><mi>π</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub><mo>,</mo><msubsup><mi>ρ</mi><mrow><mi>n</mi></mrow><mrow><mn>1</mn></mrow></msubsup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><msub><mi mathvariant="normal">∇</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub><mi>log</mi><mo data-mjx-texclass="NONE">⁡</mo><msub><mi>π</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><msup><mi>Q</mi><mrow><msub><mi>π</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub></mrow></msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo data-mjx-texclass="CLOSE">]</mo></mrow></mtd></mtr><mtr><mtd></mtd><mtd><mi></mi><mo>=</mo><msub><mrow><mi mathvariant="double-struck">E</mi></mrow><mrow><msub><mi>π</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub><mo>,</mo><msubsup><mi>ρ</mi><mrow><mi>n</mi></mrow><mrow><mn>1</mn></mrow></msubsup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><msub><mi mathvariant="normal">∇</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub><mi>log</mi><mo data-mjx-texclass="NONE">⁡</mo><msub><mi>π</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><msup><mi>A</mi><mrow><msub><mi>π</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub></mrow></msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo data-mjx-texclass="CLOSE">]</mo></mrow></mtd></mtr><mtr><mtd></mtd><mtd><mi></mi><mo>≈</mo><msub><mrow><mi mathvariant="double-struck">E</mi></mrow><mrow><msub><mi>π</mi><mrow><msub><mrow><mover><mi mathvariant="bold-italic">θ</mi><mo stretchy="false">^</mo></mover></mrow><mrow><mi>n</mi></mrow></msub></mrow></msub><mo>,</mo><msubsup><mi>ρ</mi><mrow><mi>n</mi></mrow><mrow><mn>1</mn></mrow></msubsup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><msub><mi>f</mi><mrow><mi>n</mi></mrow></msub><msub><mi mathvariant="normal">∇</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub><mi>log</mi><mo data-mjx-texclass="NONE">⁡</mo><msub><mi>π</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><msup><mi>A</mi><mrow><msub><mi>π</mi><mrow><msub><mi mathvariant="bold-italic">θ</mi><mrow><mi>n</mi></mrow></msub></mrow></msub></mrow></msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">o</mi><mrow><mi>n</mi></mrow></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>n</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo data-mjx-texclass="CLOSE">]</mo></mrow></mtd></mtr></mtable></math>
@@ -414,10 +414,10 @@ $o_n^,$是用户n下一时刻的状态，在训练过程期间，模拟梯度$\o
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag"># 文献阅读</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
               <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" rel="tag"># 博弈论</a>
               <a href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" rel="tag"># 边缘计算</a>
               <a href="/tags/%E8%AE%A1%E7%AE%97%E5%8D%B8%E8%BD%BD/" rel="tag"># 计算卸载</a>
-              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
           </div>
 
         

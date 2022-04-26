@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="我们提出了一种基于DRL的无模型分布式算法，其中每个设备可以在不知道任务模型和其他设备卸载决策的情况下确定自己的卸载决策。为了改进算法的长期代价估计，我们引入了LSTM、DQN和Double-DQN技术。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[文献阅读] Deep Reinforcement Learning for Task Offloading in Mobile Edge Computing Systems 移动边缘计算系统中任务卸载的深度强化学习">
+<meta property="og:url" content="http://example.com/2022/04/26/[%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB]Deep%20Reinforcement%20Learning%20for%20Task%20Offloading%20in%20Mobile%20Edge%20Computing%20Systems%E8%AF%91%E6%96%87:%20%E7%A7%BB%E5%8A%A8%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E4%B8%AD%E4%BB%BB%E5%8A%A1%E5%8D%B8%E8%BD%BD%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="生灵">
+<meta property="og:description" content="我们提出了一种基于DRL的无模型分布式算法，其中每个设备可以在不知道任务模型和其他设备卸载决策的情况下确定自己的卸载决策。为了改进算法的长期代价估计，我们引入了LSTM、DQN和Double-DQN技术。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-26T08:00:42.000Z">
+<meta property="article:modified_time" content="2022-04-26T11:28:31.414Z">
+<meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
+<meta property="article:tag" content="文献阅读">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="边缘计算">
+<meta property="article:tag" content="计算卸载">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/04/26/[%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB]Deep%20Reinforcement%20Learning%20for%20Task%20Offloading%20in%20Mobile%20Edge%20Computing%20Systems%E8%AF%91%E6%96%87:%20%E7%A7%BB%E5%8A%A8%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E4%B8%AD%E4%BB%BB%E5%8A%A1%E5%8D%B8%E8%BD%BD%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/04/26/[%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB]Deep%20Reinforcement%20Learning%20for%20Task%20Offloading%20in%20Mobile%20Edge%20Computing%20Systems%E8%AF%91%E6%96%87:%20%E7%A7%BB%E5%8A%A8%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E4%B8%AD%E4%BB%BB%E5%8A%A1%E5%8D%B8%E8%BD%BD%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/","path":"2022/04/26/[文献阅读]Deep Reinforcement Learning for Task Offloading in Mobile Edge Computing Systems译文: 移动边缘计算系统中任务卸载的深度强化学习/","title":"[文献阅读] Deep Reinforcement Learning for Task Offloading in Mobile Edge Computing Systems 移动边缘计算系统中任务卸载的深度强化学习"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[文献阅读] Deep Reinforcement Learning for Task Offloading in Mobile Edge Computing Systems 移动边缘计算系统中任务卸载的深度强化学习 | 生灵</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">生灵</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>目录</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81%E4%B8%8E%E8%AE%BA%E6%96%87%E8%B4%A1%E7%8C%AE"><span class="nav-number">1.</span> <span class="nav-text">摘要与论文贡献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">系统模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87m%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.1.</span> <span class="nav-text">移动设备m模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">任务模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E5%8D%B8%E8%BD%BD%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.1.2.</span> <span class="nav-text">任务卸载设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E9%98%9F%E5%88%97"><span class="nav-number">3.1.3.</span> <span class="nav-text">计算队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E9%98%9F%E5%88%97"><span class="nav-number">3.1.4.</span> <span class="nav-text">传输队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E8%BE%B9%E7%BC%98%E8%8A%82%E7%82%B9%E4%B8%8A"><span class="nav-number">3.2.</span> <span class="nav-text">在边缘节点上</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E7%BC%98%E8%8A%82%E7%82%B9%E4%B8%8A%E7%9A%84%E9%98%9F%E5%88%97"><span class="nav-number">3.2.1.</span> <span class="nav-text">边缘节点上的队列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MEC%E4%B8%8A%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%8D%B8%E8%BD%BD%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">MEC上的任务卸载问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#State"><span class="nav-number">4.1.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Action"><span class="nav-number">4.2.</span> <span class="nav-text">Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cost"><span class="nav-number">4.3.</span> <span class="nav-text">Cost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%A1%A8%E8%BF%B0"><span class="nav-number">4.4.</span> <span class="nav-text">问题表述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EDRL%E7%9A%84%E5%8D%B8%E8%BD%BD%E7%AE%97%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">基于DRL的卸载算法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ciallo～(∠・ω< )⌒☆​"
+      src="/images/dh.png">
+  <p class="site-author-name" itemprop="name">Ciallo～(∠・ω< )⌒☆​</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">目录</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/26/[%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB]Deep%20Reinforcement%20Learning%20for%20Task%20Offloading%20in%20Mobile%20Edge%20Computing%20Systems%E8%AF%91%E6%96%87:%20%E7%A7%BB%E5%8A%A8%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E4%B8%AD%E4%BB%BB%E5%8A%A1%E5%8D%B8%E8%BD%BD%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dh.png">
+      <meta itemprop="name" content="Ciallo～(∠・ω< )⌒☆​">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生灵">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[文献阅读] Deep Reinforcement Learning for Task Offloading in Mobile Edge Computing Systems 移动边缘计算系统中任务卸载的深度强化学习 | 生灵">
+      <meta itemprop="description" content="我们提出了一种基于DRL的无模型分布式算法，其中每个设备可以在不知道任务模型和其他设备卸载决策的情况下确定自己的卸载决策。为了改进算法的长期代价估计，我们引入了LSTM、DQN和Double-DQN技术。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [文献阅读] Deep Reinforcement Learning for Task Offloading in Mobile Edge Computing Systems 移动边缘计算系统中任务卸载的深度强化学习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-04-26 16:00:42 / 修改时间：19:28:31" itemprop="dateCreated datePublished" datetime="2022-04-26T16:00:42+08:00">2022-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">收录于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文献阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">我们提出了一种基于DRL的无模型分布式算法，其中每个设备可以在不知道任务模型和其他设备卸载决策的情况下确定自己的卸载决策。为了改进算法的长期代价估计，我们引入了LSTM、DQN和Double-DQN技术。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="摘要与论文贡献"><a href="#摘要与论文贡献" class="headerlink" title="摘要与论文贡献"></a>摘要与论文贡献</h1><ul>
+<li>CCF：A类</li>
+<li>考虑了缘节点的未知负载水平动态，提出了一种基于drl的MEC系统分布式卸载算法。在该算法中，每个移动设备可以利用局部观察到的信息，包括其任务的大小、其队列的信息和边缘节点的历史负载水平，以分散的方式确定卸载决策。此外，该算法能够处理时变的系统环境，包括新任务的到来、每个任务的计算需求以及其他移动设备的卸载决策。</li>
+</ul>
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:left">移动设备</td>
+</tr>
+<tr>
+<td style="text-align:center">n</td>
+<td style="text-align:left">边缘计算节点</td>
+</tr>
+<tr>
+<td style="text-align:center">$k_m(t)$</td>
+<td style="text-align:left">t时隙到达m的任务,若无新任务到达$k_m(t)=0$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\lambda_m(t)$</td>
+<td style="text-align:left">t时隙开始时队头任务的大小，若无新任务到达$k\lambda_m(t)=0$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\rho_m$</td>
+<td style="text-align:left">$k_m(t)$需要的处理频率</td>
+</tr>
+<tr>
+<td style="text-align:center">$l_m^{comp}(t)$</td>
+<td style="text-align:left">在计算队列上$k_m(t)$被处理完成或被丢弃的时间</td>
+</tr>
+<tr>
+<td style="text-align:center">$\delta_m^{comp}(t)$</td>
+<td style="text-align:left">在计算队列上$k_m(t)$等待被处理完成或被丢弃的时间</td>
+</tr>
+<tr>
+<td style="text-align:center">$l_m^{tran}(t)$</td>
+<td style="text-align:left">在传输队列上$k_m(t)$被处理完成或被丢弃的时间</td>
+</tr>
+<tr>
+<td style="text-align:center">$\delta_m^{tran}(t)$</td>
+<td style="text-align:left">在传输队列上$k_m(t)$等待被处理完成或被丢弃的时间</td>
+</tr>
+<tr>
+<td style="text-align:center">$k_{m,n}^{edege}(t)$</td>
+<td style="text-align:left">在边缘设备n上对应的m队列中的任务</td>
+</tr>
+<tr>
+<td style="text-align:center">$\lambda_{m,n}^{edege}(t)$</td>
+<td style="text-align:left">$k_{m,n}^{edege}(t)$的任务大小</td>
+</tr>
+<tr>
+<td style="text-align:center">$f_n^{edege}$</td>
+<td style="text-align:left">边缘设备n的处理能力</td>
+</tr>
+<tr>
+<td style="text-align:center">$q_{m,n}^{edege}(t)$</td>
+<td style="text-align:left">t时隙n中设备m任务的队列长度</td>
+</tr>
+<tr>
+<td style="text-align:center">$B_n(t)$</td>
+<td style="text-align:left">n中的活动队列集</td>
+</tr>
+<tr>
+<td style="text-align:center">$e_{m,n}^(edge)(t)$</td>
+<td style="text-align:left">t时隙结束时被遗弃的任务数</td>
+</tr>
+<tr>
+<td style="text-align:center">$l_{m,n}^{edge}(t)$</td>
+<td style="text-align:left">$k_m(t)$将要被处理时的时隙</td>
+</tr>
+<tr>
+<td style="text-align:center">$\hat{l}_{m,n}^{edge}(t)$</td>
+<td style="text-align:left">$k_m(t)$开始被处理时的时隙</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h1><p><img src = "/Deep Reinforcement Learning for Task Offloading in Mobile Edge Computing Systems imgs/图片1.png" width = "800"></p>
+<p>假设有一组时隙序列 $\mathcal{T}={1,2,…,T}$,每个时隙持续$\Delta$秒。</p>
+<h2 id="移动设备m模型"><a href="#移动设备m模型" class="headerlink" title="移动设备m模型"></a>移动设备m模型</h2><ul>
+<li>对于每个$\Delta$，我们假设移动设备要么有新任务到达，要么么有新任务到达， 且每个$\Delta$都很小(e.g. $\Delta = 0.1 $秒)。</li>
+<li>任务可以被放到计算队列(在本地处理)或者传输队列(在边缘节点上处理)。</li>
+<li>对于队列中的任务，我们假设任务处理(传输)在一个$\Delta$内完成，而下一个任务将在下一个$\Delta$开始。</li>
+</ul>
+<h3 id="任务模型"><a href="#任务模型" class="headerlink" title="任务模型"></a>任务模型</h3><ul>
+<li>$t \in \mathcal{T}$，当<strong>m</strong>有一个新的任务到达时，定义 <strong>$k_m(t)$</strong> 为该任务的索引，如果没有任务到达,$k_m(t)=0$，$ \lambda_m(t)$表示在时隙t开始时队列开头新到达的bit数，如果在t开始时有一个新的任务$k_m$(t)到达，那么$\lambda_m(t)$的大小就是$k_m(t)$的大小，否则$\lambda_m(t)$=0。</li>
+<li>将$k_m(t)$设为离散的，有$\Lambda   \equiv  {\lambda_1,\lambda_2,…,\lambda_{|\Lambda|}} , \lambda_m(t) \in \Lambda \cup {0}$。</li>
+<li>$k_m(0)$需要 <strong>$\rho_m$</strong> 的处理频率。</li>
+<li>$k_m(t)$有一个截止时间$\mathcal{T}_m$,如果$k_m(t)$在$t+\mathcal{T}_m-1$结束时没有被处理完就被丢弃。</li>
+</ul>
+<h3 id="任务卸载设计"><a href="#任务卸载设计" class="headerlink" title="任务卸载设计"></a>任务卸载设计</h3><ul>
+<li>每当有一个新任务到达时，(a)在本地计算还是卸载。(b)卸载哪个边缘服务器上。 <strong>$x_m(t)$</strong> 表示卸载地点。1：在本地计算，0:卸载到边缘服务器上。</li>
+<li>在t开始时，<strong>$\lambda(t)x_m(t)$</strong> 表示在移动设备本地计算队列的bits。<strong>$\lambda(t)(1-x_m(t))$</strong> 是移动设备m到达传输队列的bits。</li>
+<li>二元变量 <strong>$y_{m,n}(t) \in {0,1}$</strong> 表示$k_m(t)$是否系在，1:卸载，0:不卸载。为方便表示，引入向量$\textbf{y}_m = {y_{m,n}(t),n \in \mathcal{N}}$，假设每个任务只能被卸载到一个边缘服务器：</li>
+</ul>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><munder><mo data-mjx-texclass="OP">∑</mo><mrow><mi>n</mi><mo>∈</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">N</mi></mrow></mrow></munder><msub><mi>y</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mn mathvariant="double-struck">1</mn></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>x</mi><mrow><mi>m</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>,</mo><mi>m</mi><mo>∈</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">M</mi></mrow><mo>,</mo><mi>t</mi><mo>∈</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">T</mi></mrow></math>
+
+<blockquote>
+<p>其中指示器$\mathbb{1}(z \in \mathcal{Z}) = 1$ 如果$(z \in \mathcal{Z})$，否则等于0。</p>
+</blockquote>
+<h3 id="计算队列"><a href="#计算队列" class="headerlink" title="计算队列"></a>计算队列</h3><p><strong>$f_m^{device}$</strong> 表示每个时隙内的处理能力，设备m最大可以处理队列中 <strong>$\frac{f_m^{device}}{\rho_m}$</strong> bits的数据。</p>
+<ul>
+<li>如果t开始时,$k_m(t)$在队列内， <strong>$l_m^{comp}(t) \in \mathcal{T}$</strong> 表示$k_m(t)$被处理或者被丢弃的时隙。如果$k_m(t)$不放入计算队列或$k_m(t)=0$则$l_m^{comp}(t) \in \mathcal{T} = 0$。</li>
+<li><p><strong>$\delta_m^{comp}(t)$</strong> 表示$k_m(t)$放置在队列中等待处理的时隙数，移动设备将在决定放置哪个队列前计算$\delta_m^{comp}(t)$。给定$l_m^{comp}(t^{‘})， t^{‘} &lt; t$，有</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msubsup><mi>δ</mi><mrow><mi>m</mi></mrow><mrow><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">p</mi></mrow></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><munder><mo data-mjx-texclass="OP" movablelimits="true">max</mo><mrow><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo>∈</mo><mo fence="false" stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo fence="false" stretchy="false">}</mo></mrow></munder><msubsup><mi>l</mi><mrow><mi>m</mi></mrow><mrow><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">p</mi></mrow></mrow></msubsup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>−</mo><mi>t</mi><mo>+</mo><mn>1</mn><mo data-mjx-texclass="CLOSE">]</mo></mrow><mrow><mo>+</mo></mrow></msup></math>
+
+<p>其中$[z]^+ = \max \left \{ 0,z \right \} $，在t之前的所有任务要么都被处理，要么被丢弃。因此$\delta_m^{comp}(t)$确定任务$k_m(t)$应等待处理的时隙数。</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>$k_m(1)$被放在计算队列中，它的处理在时隙5内完成，那么$l_m^{comp}(1) = 5$。</li>
+<li>同时，$k_m(2)=0$，那么$l_m^{comp}(2) = 0$。</li>
+<li>在时隙3开始时，如果$k_m(3)$被放入计算队列中，那么将在时隙$l_m^{comp}(1) = 5$后处理它，因此他必须等待$\delta_m^{comp}(3) = [max \left \{ 5,0 \right \} - 3 + 1]^+ = 3$个时隙。</li>
+</ul>
+</blockquote>
+<ul>
+<li>如果m在t开始时处理$k_m(t)$，那么将在时隙$l_m^{comp}(t)$结束时完成处理或丢弃。<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable columnalign="right" columnspacing="1em" rowspacing="4pt"><mtr><mtd><msubsup><mi>l</mi><mrow><mi>m</mi></mrow><mrow><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">p</mi></mrow></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo data-mjx-texclass="OP" movablelimits="true">min</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mi>t</mi><mo>+</mo><msubsup><mi>δ</mi><mrow><mi>m</mi></mrow><mrow><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">p</mi></mrow></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mfrac><mrow><msub><mi>λ</mi><mrow><mi>m</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mrow><msubsup><mi>f</mi><mrow><mi>m</mi></mrow><mrow><mtext>device&nbsp;</mtext></mrow></msubsup><mrow><mo>/</mo></mrow><msub><mi>ρ</mi><mrow><mi>m</mi></mrow></msub></mrow></mfrac><mo data-mjx-texclass="CLOSE">]</mo></mrow><mo>−</mo><mn>1</mn><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mtd></mtr><mtr><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN" fence="true" stretchy="true" symmetric="true"></mo><mi>t</mi><mo>+</mo><msub><mi>τ</mi><mrow><mi>m</mi></mrow></msub><mo>−</mo><mn>1</mn><mo data-mjx-texclass="CLOSE">}</mo></mrow></mtd></mtr></mtable></math>
+
+</li>
+</ul>
+<blockquote>
+<p>前半段为当前时隙+等待时隙+需要处理的时间-1，表示任务被处理。后半段表示任务被丢弃。$k_m(t)$将在$\delta_m^{comp}(t)$个时隙才开始处理。</p>
+</blockquote>
+<h3 id="传输队列"><a href="#传输队列" class="headerlink" title="传输队列"></a>传输队列</h3><ul>
+<li><strong>$f_m^{tran}$</strong> 表示每个时隙从m到n的传输容量。</li>
+<li>在t开始时，$k_m(t)$被放在传输队列，同样$l_m^{tran}(t)$表示$k_m(t)$被传输或被丢弃的时隙。如果$k_m(t)$没有被放在传输队列中，$l_m^{tran}(t)=0$。</li>
+<li>同样<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msubsup><mi>δ</mi><mrow><mi>m</mi></mrow><mrow><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi></mrow></mrow></msubsup><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><munder><mo data-mjx-texclass="OP" movablelimits="true">max</mo><mrow><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo>∈</mo><mo fence="false" stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo fence="false" stretchy="false">}</mo></mrow></munder><msubsup><mi>l</mi><mrow><mi>m</mi></mrow><mrow><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi></mrow></mrow></msubsup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>−</mo><mi>t</mi><mo>+</mo><mn>1</mn><mo data-mjx-texclass="CLOSE">]</mo></mrow><mrow><mo>+</mo></mrow></msup></math>
+
+</li>
+</ul>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable columnalign="right" columnspacing="1em" rowspacing="4pt"><mtr><mtd><msubsup><mi>l</mi><mrow><mi>m</mi></mrow><mrow><mi>tran</mi></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo data-mjx-texclass="OP" movablelimits="true">min</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mi>t</mi><mo>+</mo><msubsup><mi>δ</mi><mrow><mi>m</mi></mrow><mrow><mi>tran</mi></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><munder><mo data-mjx-texclass="OP">∑</mo><mrow><mi>n</mi><mo>∈</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">N</mi></mrow></mrow></munder><mfrac><mrow><msub><mi>y</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msub><mi>λ</mi><mrow><mi>m</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><msubsup><mi>f</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mi>tran</mi></mrow></msubsup></mfrac><mo data-mjx-texclass="CLOSE">]</mo></mrow><mo>−</mo><mn>1</mn><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mtd></mtr><mtr><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN" fence="true" stretchy="true" symmetric="true"></mo><mi>t</mi><mo>+</mo><msub><mi>τ</mi><mrow><mi>m</mi></mrow></msub><mo>−</mo><mn>1</mn><mo data-mjx-texclass="CLOSE">}</mo></mrow></mtd></mtr></mtable></math>
+
+<blockquote>
+<p>前半段为当前时隙+等待时间+传输时间，后半段为丢弃时间。</p>
+</blockquote>
+<h2 id="在边缘节点上"><a href="#在边缘节点上" class="headerlink" title="在边缘节点上"></a>在边缘节点上</h2><ul>
+<li>每个n包含M个队列,每个队列对应一个传输设备。</li>
+<li>在一个时隙中的边缘节点接收到卸载任务后，该任务将在下一时隙开始时被放在响应的队列中。</li>
+<li>如果m的任务在t开始时被放在响应的队列中，记为 <strong>$k_{m,n}^{edege}(t)$</strong>。</li>
+<li>如果任务$k_m(t^{‘})$在t-1时隙放松到n中，那么$k_{m,n}^{edege}(t)=k_m(t^{‘})$。</li>
+<li>如果t开始时，没有任务在队列中，则$k_{m,n}^{edege}(t)=0$，$\lambda_{m,n}^{edege}(t) \in \Lambda \cup {0}$表示大小。</li>
+</ul>
+<h3 id="边缘节点上的队列"><a href="#边缘节点上的队列" class="headerlink" title="边缘节点上的队列"></a>边缘节点上的队列</h3><p><strong>$q_{m,n}^{edege}(t)$</strong> 表示t时隙n中m设备任务的队列长度。</p>
+<ul>
+<li>如果m队列被称为活动队列，则满足：<ul>
+<li>在时隙t开始新任务到达，即$\lambda_{m,n}^{edege}(t) &gt; 0$。</li>
+<li>在t-1时隙结束时队列不为0,$q_{m,n}^{edege}(t+1) &gt; 0$()，即队列中存在任务。</li>
+</ul>
+</li>
+<li><strong>$\mathcal{B}_n(t)$</strong> 表示n中的活动队列集。<ul>
+<li>$\mathcal{B}_{n}(t)=\left\{m \mid m \in \mathcal{M}, \lambda_{m, n}^{\text {edge }}(t)&gt;0 \text { or } q_{m, n}^{\text {edge }}(t-1)&gt;0\right\}$.</li>
+<li><strong>$B_n(t)$</strong> 表示活动队列数量，$B_n(t) = \mathcal{B}_n(t)$。</li>
+</ul>
+</li>
+<li>在时隙t内，n中的活动队列共享n的处理能力，因此n最大可以处理的任务数为：$\frac{f_n^{edege}}{\rho_nB_n(t)}$。</li>
+<li>假设一个任务在一个时隙内处理完成，那么下一个任务将在下一个时隙才开始处理。</li>
+<li>设 <strong>$e_{m,n}^{edge}(t)$</strong> 为在t时隙被丢弃的任务数，则队列长度为：<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true" columnalign="right left right left right left right left right left right left" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" rowspacing="3pt"><mtr><mtd><msubsup><mi>q</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo></mtd><mtd><mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><msubsup><mi>q</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><msubsup><mi>λ</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mrow></mtd></mtr><mtr><mtd></mtd><mtd><msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN" fence="true" stretchy="true" symmetric="true"></mo><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><mo>−</mo><mfrac><msubsup><mi>f</mi><mrow><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mrow><msub><mi>ρ</mi><mrow><mi>m</mi></mrow></msub><msub><mi>B</mi><mrow><mi>n</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mfrac><mrow><mn mathvariant="double-struck">1</mn></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mi>m</mi><mo>∈</mo><msub><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">B</mi></mrow><mrow><mi>n</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>−</mo><msubsup><mi>e</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo data-mjx-texclass="CLOSE">]</mo></mrow><mrow><mo>+</mo></mrow></msup><mo>.</mo></mtd></mtr></mtable></math>
+
+</li>
+</ul>
+<blockquote>
+<p>先前队列长度+新到达的任务数-应吹的数据-被丢弃的任务大小。</p>
+</blockquote>
+<ul>
+<li><p>同理,$l_{m,n}^{edge}(t)$表示任务处理或丢弃的时间，如果$k_{m,n}^{edge}(t) = 0$，那么$l_{m,n}^{edge}(t) = 0$。由于不确定将会被放在哪个边缘设备上，移动设备不知道$l_{m,n}^{edge}(t)$的值，知道关联任务$k_{m,n}^{edge}(t)$被处理，所以我们定义$\hat{l}_{m,n}^{edge}(t)$表示$k_{m,n}^{edge}(t)$开始处理的时隙。</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msubsup><mrow><mover><mi>l</mi><mo>^</mo></mover></mrow><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo data-mjx-texclass="OP" movablelimits="true">max</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mi>t</mi><mo>,</mo><munder><mo data-mjx-texclass="OP" movablelimits="true">max</mo><mrow><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo>∈</mo><mo fence="false" stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo fence="false" stretchy="false">}</mo></mrow></munder><msubsup><mi>l</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>+</mo><mn>1</mn><mo data-mjx-texclass="CLOSE">}</mo></mrow><mo>,</mo></math>
+</li>
+<li><p>约束：</p>
+</li>
+</ul>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable columnalign="left" columnspacing="1em" rowspacing="4pt"><mtr><mtd><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo>=</mo><msubsup><mrow><mover><mi>l</mi><mo>^</mo></mover></mrow><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mrow><msubsup><mi>l</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></munderover><mfrac><msubsup><mi>f</mi><mrow><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mrow><msub><mi>ρ</mi><mrow><mi>m</mi></mrow></msub><msub><mi>B</mi><mrow><mi>n</mi></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo data-mjx-texclass="CLOSE">)</mo></mrow></mrow></mfrac><mrow><mn mathvariant="double-struck">1</mn></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mi>m</mi><mo>∈</mo><msub><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">B</mi></mrow><mrow><mi>n</mi></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>≥</mo><msubsup><mi>λ</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo>=</mo><msubsup><mrow><mover><mi>l</mi><mo>^</mo></mover></mrow><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mrow><msubsup><mi>l</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><mn>1</mn></mrow></munderover><mfrac><msubsup><mi>f</mi><mrow><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mrow><msub><mi>ρ</mi><mrow><mi>m</mi></mrow></msub><msub><mi>B</mi><mrow><mi>n</mi></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo data-mjx-texclass="CLOSE">)</mo></mrow></mrow></mfrac><mrow><mn mathvariant="double-struck">1</mn></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mi>m</mi><mo>∈</mo><msub><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">B</mi></mrow><mrow><mi>n</mi></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>&lt;</mo><msubsup><mi>λ</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>.</mo></mtd></mtr></mtable></math>
+
+<blockquote>
+<p>第一个约束代表从$\hat{l}_{m,n}^{edge}(t)$到$l_{m,n}^{edge}(t)$的处理能力不小于${k}_{m,n}^{edge}(t)$的大小。第二个约束代表从$\hat{l}_{m,n}^{edge}(t)$到$l_{m,n}^{edge}(t)-1$的处理能力不大于${k}_{m,n}^{edge}(t)$的大小。个人推测：得有足够的能力开始处理${k}_{m,n}^{edge}(t)$？</p>
+</blockquote>
+<h1 id="MEC上的任务卸载问题"><a href="#MEC上的任务卸载问题" class="headerlink" title="MEC上的任务卸载问题"></a>MEC上的任务卸载问题</h1><h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><ul>
+<li>对于移动设备m，有 <strong>$s_m(t) = (\lambda_m(\theta), \delta_m^{comp}(t),\delta_m^{tran}(t),q_m^{edge}(t-1),H(t))$</strong> 。<ul>
+<li>向量$q_m^{edge}(t-1) = (q_{m,n}^{edge}(t-1),n \in \mathcal{N})$。</li>
+<li>矩阵$H(t)$包含了前一个T步骤(从时隙$t-T^{step}$到时隙$t-1$)时隙中每个n的负载水平。(活动队列的数量)。$H(t)$的大小为为$T^{step} \cdot N$，${H(t)}_{i,j}$表示矩阵i,j的值。<strong>对应从时隙 $t-T^{step}$ 开始的第i个时隙总边缘节点j的活动队列数量</strong> 。例如在时隙$t-T^{step}+i-1$中，${H(t)}_{i,j} = B_j(t-T^{step}+i-1)$。</li>
+</ul>
+</li>
+<li><strong>$\mathcal{S}$</strong> 为状态空间，则$\mathcal{S} = \Lambda \cdot \{0,1,…,T\}^2 \cdot \mathcal{Q}^N \cdot \{0,1,…,M\}^{T^{step} \cdot N}$。</li>
+<li>设备m在时隙开始时获得$\lambda_m(\theta), \delta_m^{comp}(t),\delta_m^{tran}(t)$。</li>
+</ul>
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>当$k_m(t)$到达时：(a)是否卸载，（b)卸载到哪里。</p>
+<ul>
+<li>动作由一个向量表示: <strong>$a_m(t)=(x_m(t),y_m(t))$</strong></li>
+</ul>
+<h2 id="Cost"><a href="#Cost" class="headerlink" title="Cost"></a>Cost</h2><ul>
+<li>用 <strong>$d_m(x_m(t),a_m(t))$</strong> 来表示任务$k_m(t)$的延迟,给定观察状态$s_m(t)$和动作$a_m(t)$，有$d_m(x_m(t),a_m(t)) = l_m^{comp}(t) - t + 1$。</li>
+<li>如果$x_m(t)=0$，即卸载到边缘节点，有：<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true" columnalign="right left right left right left right left right left right left" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" rowspacing="3pt"><mtr><mtd><msub><mi>d</mi><mrow><mi>m</mi></mrow></msub></mtd><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi mathvariant="bold-italic">s</mi><mrow><mi>m</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>,</mo><msub><mi mathvariant="bold-italic">a</mi><mrow><mi>m</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo data-mjx-texclass="CLOSE">)</mo></mrow></mtd></mtr><mtr><mtd><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><mo>=</mo></mtd><mtd><mi></mi><munder><mo data-mjx-texclass="OP">∑</mo><mrow><mi>n</mi><mo>∈</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">N</mi></mrow></mrow></munder><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo>=</mo><mi>t</mi></mrow><mrow><mi>T</mi></mrow></munderover><mrow><mn mathvariant="double-struck">1</mn></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msubsup><mi>k</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>=</mo><msub><mi>k</mi><mrow><mi>m</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo data-mjx-texclass="CLOSE">)</mo></mrow><msubsup><mi>l</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mrow><mtext>edge&nbsp;</mtext></mrow></msubsup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msup><mi>t</mi><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>−</mo><mi>t</mi><mo>+</mo><mn>1</mn></mtd></mtr></mtable></math>
+
+</li>
+</ul>
+<blockquote>
+<p>具体的说$k_m(t)$的延迟就是等待处理或丢弃的时隙数。</p>
+</blockquote>
+<ul>
+<li>Cost:<strong>$C_m(x_m(t),a_m(t)) = d_m(x_m(t),a_m(t))$</strong>,如果被任务被丢弃，则$C_m(x_m(t),a_m(t))= C$,C为一个惩罚常数，C&gt;0。如果$k_m(t) = 0$，那么$C_m(x_m(t),a_m(t))= 0$。</li>
+</ul>
+<blockquote>
+<p>后使用$C_m(t)$简化表达。</p>
+</blockquote>
+<h2 id="问题表述"><a href="#问题表述" class="headerlink" title="问题表述"></a>问题表述</h2><ul>
+<li>$π_m:\mathcal{S} \to \mathcal{A}$。</li>
+<li>目标：找到一个最优策略$π_m^{\ast}$，使得cost最小。<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msubsup><mi>π</mi><mrow><mi>m</mi></mrow><mrow><mo>∗</mo></mrow></msubsup><mo>=</mo><mi>arg</mi><mo data-mjx-texclass="NONE">⁡</mo><msub><mi>minimize</mi><mrow><msub><mi>π</mi><mrow><mi>m</mi></mrow></msub></mrow></msub><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><mrow><mi mathvariant="double-struck">E</mi></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><munder><mo data-mjx-texclass="OP">∑</mo><mrow><mi>t</mi><mo>∈</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">T</mi></mrow></mrow></munder><msup><mi>γ</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>c</mi><mrow><mi>m</mi></mrow></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>∣</mo><msub><mi>π</mi><mrow><mi>m</mi></mrow></msub><mo data-mjx-texclass="CLOSE">]</mo></mrow></math>
+
+</li>
+</ul>
+<h1 id="基于DRL的卸载算法"><a href="#基于DRL的卸载算法" class="headerlink" title="基于DRL的卸载算法"></a>基于DRL的卸载算法</h1>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" rel="tag"># 文献阅读</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+              <a href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/" rel="tag"># 边缘计算</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%8D%B8%E8%BD%BD/" rel="tag"># 计算卸载</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/24/%5B%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%5D%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6/" rel="prev" title="[深度学习]连续控制">
+                  <i class="fa fa-chevron-left"></i> [深度学习]连续控制
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTkwNy8zMjM3MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>
