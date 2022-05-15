@@ -28,7 +28,7 @@
 <meta property="og:description" content="我们提出了一种基于DRL的无模型分布式算法，其中每个设备可以在不知道任务模型和其他设备卸载决策的情况下确定自己的卸载决策。为了改进算法的长期代价估计，我们引入了LSTM、DQN和Double-DQN技术。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-26T08:00:42.000Z">
-<meta property="article:modified_time" content="2022-04-28T07:59:18.761Z">
+<meta property="article:modified_time" content="2022-05-15T11:31:54.612Z">
 <meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
 <meta property="article:tag" content="强化学习">
 <meta property="article:tag" content="文献阅读">
@@ -220,7 +220,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-28 15:59:18" itemprop="dateModified" datetime="2022-04-28T15:59:18+08:00">2022-04-28</time>
+      <time title="修改时间：2022-05-15 19:31:54" itemprop="dateModified" datetime="2022-05-15T19:31:54+08:00">2022-05-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -339,7 +339,7 @@
 <h3 id="任务模型"><a href="#任务模型" class="headerlink" title="任务模型"></a>任务模型</h3><ul>
 <li>$t \in \mathcal{T}$，当<strong>m</strong>有一个新的任务到达时，定义 <strong>$k_m(t)$</strong> 为该任务的索引，如果没有任务到达,$k_m(t)=0$，$ \lambda_m(t)$表示在时隙t开始时队列开头新到达的bit数，如果在t开始时有一个新的任务$k_m$(t)到达，那么$\lambda_m(t)$的大小就是$k_m(t)$的大小，否则$\lambda_m(t)$=0。</li>
 <li>将$k_m(t)$设为离散的，有$\Lambda   \equiv  {\lambda_1,\lambda_2,…,\lambda_{|\Lambda|}} , \lambda_m(t) \in \Lambda \cup {0}$。</li>
-<li>$k_m(0)$需要 <strong>$\rho_m$</strong> 的处理频率。</li>
+<li>$k_m(t)$需要 <strong>$\rho_m$</strong> 的处理频率。</li>
 <li>$k_m(t)$有一个截止时间$\mathcal{T}_m$,如果$k_m(t)$在$t+\mathcal{T}_m-1$结束时没有被处理完就被丢弃。</li>
 </ul>
 <h3 id="任务卸载设计"><a href="#任务卸载设计" class="headerlink" title="任务卸载设计"></a>任务卸载设计</h3><ul>
