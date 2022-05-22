@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="强化学习中的连续控制，介绍了DDRP算法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[强化学习]连续控制">
+<meta property="og:url" content="http://example.com/2022/04/24/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6/index.html">
+<meta property="og:site_name" content="生灵">
+<meta property="og:description" content="强化学习中的连续控制，介绍了DDRP算法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/深度学习imgs/图片17.png">
+<meta property="og:image" content="http://example.com/深度学习imgs/图片18.png">
+<meta property="og:image" content="http://example.com/深度学习imgs/图片19.png">
+<meta property="og:image" content="http://example.com/深度学习imgs/图片20.png">
+<meta property="article:published_time" content="2022-04-24T06:26:05.000Z">
+<meta property="article:modified_time" content="2022-05-10T11:59:05.128Z">
+<meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
+<meta property="article:tag" content="强化学习">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/深度学习imgs/图片17.png">
+
+
+<link rel="canonical" href="http://example.com/2022/04/24/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/04/24/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6/","path":"2022/04/24/[强化学习]连续控制/","title":"[强化学习]连续控制"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[强化学习]连续控制 | 生灵</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">生灵</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>目录</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6-Deterministic-Policy-Gradient-DPG"><span class="nav-number">1.</span> <span class="nav-text">确定策略梯度 Deterministic Policy Gradient, DPG</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8TD%E7%AE%97%E6%B3%95%E6%9B%B4%E6%96%B0%E4%BB%B7%E5%80%BC%E7%BD%91%E7%BB%9C"><span class="nav-number">1.1.</span> <span class="nav-text">使用TD算法更新价值网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8DPG%E6%9B%B4%E6%96%B0%E7%AD%96%E7%95%A5%E7%BD%91%E7%BB%9C"><span class="nav-number">1.2.</span> <span class="nav-text">使用DPG更新策略网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E7%AD%96%E7%95%A5"><span class="nav-number">2.</span> <span class="nav-text">随机策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E9%AB%98%E6%96%AF%E7%AD%96%E7%95%A5%E7%BD%91%E7%BB%9C"><span class="nav-number">2.2.</span> <span class="nav-text">随机高斯策略网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E8%BE%85%E5%8A%A9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">2.2.1.</span> <span class="nav-text">构造辅助神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6"><span class="nav-number">2.2.2.</span> <span class="nav-text">训练策略梯度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PPO"><span class="nav-number">3.</span> <span class="nav-text">PPO</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ciallo～(∠・ω< )⌒☆​"
+      src="/images/dh.png">
+  <p class="site-author-name" itemprop="name">Ciallo～(∠・ω< )⌒☆​</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">目录</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E8%BF%9E%E7%BB%AD%E6%8E%A7%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dh.png">
+      <meta itemprop="name" content="Ciallo～(∠・ω< )⌒☆​">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生灵">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[强化学习]连续控制 | 生灵">
+      <meta itemprop="description" content="强化学习中的连续控制，介绍了DDRP算法。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [强化学习]连续控制
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-24 14:26:05" itemprop="dateCreated datePublished" datetime="2022-04-24T14:26:05+08:00">2022-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-10 19:59:05" itemprop="dateModified" datetime="2022-05-10T19:59:05+08:00">2022-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">收录于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">强化学习中的连续控制，介绍了DDRP算法。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="确定策略梯度-Deterministic-Policy-Gradient-DPG"><a href="#确定策略梯度-Deterministic-Policy-Gradient-DPG" class="headerlink" title="确定策略梯度 Deterministic Policy Gradient, DPG"></a>确定策略梯度 Deterministic Policy Gradient, DPG</h1><ul>
+<li>使用一个确定策略网络(actor): $a=π(s;θ)$.</li>
+<li>使用一个价值网络(critic): $q(s,a;w)$.</li>
+<li>critic输出一个数值用来评价动作a的好坏。<br><img src="/深度学习imgs/图片17.png"><br>确定策略梯度 (DPG) 方法的示意图。策略网络π(s;θ)的输入是状态s,输出是动作a(d维向量)。价值网络q(s,a;w)的输入是状态s和动作a,输出是价值(实数)。我们需要更新这两个网络。</li>
+</ul>
+<h2 id="使用TD算法更新价值网络"><a href="#使用TD算法更新价值网络" class="headerlink" title="使用TD算法更新价值网络"></a>使用TD算法更新价值网络</h2><p>详见TD算法章节。可以使用Double DQN来改进网络。</p>
+<h2 id="使用DPG更新策略网络"><a href="#使用DPG更新策略网络" class="headerlink" title="使用DPG更新策略网络"></a>使用DPG更新策略网络</h2><p>训练策略网络需要价值网络的帮忙。</p>
+<blockquote>
+<ul>
+<li>价值网络 $q(s,a,;w)$评价动作a的好坏。</li>
+<li>改进θ让评价网络认为$a=π(s;θ)$更好。</li>
+<li>更新θ来让$q(s,a;w) = q(s,π(s;θ);w)$增大。</li>
+</ul>
+</blockquote>
+<ul>
+<li>目标：让$q(s,a;w)$更大，对于$a=π(s;θ)$.<br>状态s是固定的，价值网络也是固定的，那么唯一会影响价值q的因素就是策略网络的θ。所以我们计算q关于θ的梯度，做梯度上升更新θ，让q更大，这个梯度叫做<strong>DPG</strong>。</li>
+<li>DPG:<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi mathvariant="bold">g</mi></mrow><mo>=</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>q</mi><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>π</mi><mo stretchy="false">(</mo><mi>s</mi><mo>;</mo><mi mathvariant="bold-italic">θ</mi><mo stretchy="false">)</mo><mo>;</mo><mrow><mi mathvariant="bold">w</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">∂</mi><mi mathvariant="bold-italic">θ</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>a</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi mathvariant="bold-italic">θ</mi></mrow></mfrac><mo>⋅</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>q</mi><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo>;</mo><mrow><mi mathvariant="bold">w</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">∂</mi><mi>a</mi></mrow></mfrac></math>
+
+</li>
+</ul>
+<p><img src="/深度学习imgs/图片18.png"><br>使用反向传播来更新梯度。</p>
+<ul>
+<li>梯度上升:$\theta \gets \theta + \beta \cdot g$. $\beta$为学习率。</li>
+</ul>
+<h1 id="随机策略"><a href="#随机策略" class="headerlink" title="随机策略"></a>随机策略</h1><h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>先考虑动作自由度等于1，也就是所动作a是实数，动作空间$\mathcal{A} \subset \mathbb{R}$。把动作的均值记作µ(s)，标准差记作σ(s)，它们都是状态s的函数。用正态分布的概率 密度函数作为策略函数：</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>π</mi><mo stretchy="false">(</mo><mi>a</mi><mo>∣</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><msqrt><mn>6.28</mn></msqrt><mo>⋅</mo><mi>σ</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>⋅</mo><mi>exp</mi><mo data-mjx-texclass="NONE">⁡</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mo>−</mo><mfrac><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>−</mo><mi>μ</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">]</mo><mrow><mn>2</mn></mrow></msup></mrow><mrow><mn>2</mn><mo>⋅</mo><msup><mi>σ</mi><mrow><mn>2</mn></mrow></msup><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mfrac><mo data-mjx-texclass="CLOSE">)</mo></mrow></math>
+
+<p>等式的右边为正态分布的概率密度函数：$\mathcal{N}(µ,σ^2)$。<br>我们可以这样做控制:<br>    <font color ="#0000dd">1.</font>观测到当前状态s，预测均值$\hat{µ}=µ(s)$和标准差$\hat{σ}=σ(s)$。<br>    <font color ="#0000dd">2.</font>从正态分布中做随机抽样$a ∼ \mathcal{N}(\hat{µ},\hat{σ^2})$;智能体执行动作a。<br>然而我们并不知道$µ(s)$和$σ(s)$是怎么样的函数。一个很一个很自然的想法是用神经网络来近似这两个函数。把神经网络记作$µ(s;θ)$和$σ(s;θ)$，其中θ表示神经网络中的可训练参数。但实践中最好不要直接近似标准差σ，而是近似方差对数${lnσ^2}^2$。定义两个神经网络：<strong>$µ(s;θ)$和$ρ(s;θ)$</strong><br>分别用于预测均值和方差对数。可以按照下图来搭建神经网络。神经网络的输入是状态s,输出为$µ(s;θ)$和$ρ(s;θ)$。</p>
+<p><img src="/深度学习imgs/图片19.png"></p>
+<p> <font color ="#0000dd">1.</font>观测到当前状态s，计算均值$\hat{µ}=µ(s)$，方差对数$\hat{ρ}=ρ(s)$，以及方差$\hat{σ}^2 = exp(\hat{ρ})$。<br> <font color ="#0000dd">2.</font>从正态分布中做随机抽样$a ∼ \mathcal{N}(\hat{µ},\hat{σ^2})$;智能体执行动作a。 </p>
+<blockquote>
+<p>实际做控制的时候，我们只需要神经网络$µ(s;θ)$和$ρ(s;θ)$用不到真正的策略网络$π(a|s;θ)$。</p>
+</blockquote>
+<h2 id="随机高斯策略网络"><a href="#随机高斯策略网络" class="headerlink" title="随机高斯策略网络"></a>随机高斯策略网络</h2><p>上面假设的问题自由度d=1,但在实际中d往往大于1，那么此时的动作a是d维向量。此时我们需要让两个输出$µ(s;θ)$和$ρ(s;θ)$都为d维向量。<br>用标量$a_i$表示动作向量$a$的第$i$个元素。用函数$µ_i(s;θ)$和$ρ_i(s;θ)$分别表示$µ(s;θ)$和$ρ(s;θ)$的第$i$个元素。那么有$a_i ∼ \mathcal{N}(\hat{µ_i},\hat{σ_i^2})$,</p>
+<p><strong>训练策略网络</strong></p>
+<ul>
+<li>构造一个辅助神经网络帮助计算策略梯度。</li>
+<li>用策略梯度方法训练策略网络:<ul>
+<li>REINFORCE</li>
+<li>Actor-Critic</li>
+</ul>
+</li>
+</ul>
+<h3 id="构造辅助神经网络"><a href="#构造辅助神经网络" class="headerlink" title="构造辅助神经网络"></a>构造辅助神经网络</h3><p>策略梯度为：</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>π</mi><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mrow><mi mathvariant="bold">a</mi></mrow><mo>∣</mo><mi>s</mi><mo>;</mo><msup><mi mathvariant="bold-italic">θ</mi><mrow><mi>μ</mi></mrow></msup><mo>,</mo><msup><mi mathvariant="bold-italic">θ</mi><mrow><mi>ρ</mi></mrow></msup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>=</mo><munderover><mo data-mjx-texclass="OP">∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>d</mi></mrow></munderover><mfrac><mn>1</mn><mrow><msqrt><mn>6.28</mn></msqrt><msub><mi>σ</mi><mrow><mi>i</mi></mrow></msub></mrow></mfrac><mo>⋅</mo><mi>exp</mi><mo data-mjx-texclass="NONE">⁡</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mo>−</mo><mfrac><msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>a</mi><mrow><mi>i</mi></mrow></msub><mo>−</mo><msub><mi>μ</mi><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><mrow><mn>2</mn></mrow></msup><mrow><mn>2</mn><msubsup><mi>σ</mi><mrow><mi>i</mi></mrow><mrow><mn>2</mn></mrow></msubsup></mrow></mfrac><mo data-mjx-texclass="CLOSE">)</mo></mrow></math>
+
+<p>做控制的时候只需要均值网络$µ(s;θ)$和方差对数网络$ρ(s;θ)$不需要策略网络$π(a|s;θ)$。做训练的时候也不需要$π(a|s;θ)$,而是要用辅助网络$f(s,a;θ)$。总而言之，实际算法中不会出现π。</p>
+<p>辅助神经网络具体是这样定义的：</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>f</mi><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mrow><mi mathvariant="bold">a</mi></mrow><mo>;</mo><mi mathvariant="bold-italic">θ</mi><mo stretchy="false">)</mo><mo>=</mo><munderover><mo data-mjx-texclass="OP">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>d</mi></mrow></munderover><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mo>−</mo><mfrac><msub><mi>ρ</mi><mrow><mi>i</mi></mrow></msub><mn>2</mn></mfrac><mo>−</mo><mfrac><msup><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>a</mi><mrow><mi>i</mi></mrow></msub><mo>−</mo><msub><mi>μ</mi><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><mrow><mn>2</mn></mrow></msup><mrow><mn>2</mn><mo>⋅</mo><mi>exp</mi><mo data-mjx-texclass="NONE">⁡</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>ρ</mi><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow></mrow></mfrac><mo data-mjx-texclass="CLOSE">]</mo></mrow></math>
+
+<p>并且有:</p>
+<center>$f(s,a;θ) = lnπ(a|s'θ) + const$</center>
+
+<p><img src="/深度学习imgs/图片20.png"></p>
+<blockquote>
+<p>总而言之：使用$µ(s;θ^µ)$和$ρ(s;θ^ρ)$，构建出了$f(s,a;θ)$。其中θ包含了$θ^µ$和$θ^ρ$，训练时我们求$\frac{\partial f}{\partial θ}$，作为策略梯度。</p>
+</blockquote>
+<h3 id="训练策略梯度"><a href="#训练策略梯度" class="headerlink" title="训练策略梯度"></a>训练策略梯度</h3><p> 随机策略梯度:$g(a) = \frac{\partial \ln \pi(a \mid s ; \boldsymbol{\theta})}{\partial \boldsymbol{\theta}}\left(Q_{\pi}(s, a)\right)$.</p>
+<p> 将$f(s,a;θ) = lnπ(a|s’θ) + const$代入，就可以得到：<br> $g(a) = \frac{\partial f(s,a;\theta)}{\partial \boldsymbol{\theta}}\left(Q_{\pi}(s, a)\right)$.</p>
+<p> 然后使用策略学习章节中的知识做梯度上升。</p>
+<h1 id="PPO"><a href="#PPO" class="headerlink" title="PPO"></a>PPO</h1>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag"># 强化学习</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/23/%5B%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%5D%E7%AD%96%E7%95%A5%E5%AD%A6%E4%B9%A0/" rel="prev" title="[强化学习]策略学习">
+                  <i class="fa fa-chevron-left"></i> [强化学习]策略学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/26/%5B%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%5DDeep%20Reinforcement%20Learning%20for%20Task%20Offloading%20in%20Mobile%20Edge%20Computing%20Systems%E8%AF%91%E6%96%87:%20%E7%A7%BB%E5%8A%A8%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E4%B8%AD%E4%BB%BB%E5%8A%A1%E5%8D%B8%E8%BD%BD%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="next" title="[文献阅读] Deep Reinforcement Learning for Task Offloading in Mobile Edge Computing Systems 移动边缘计算系统中任务卸载的深度强化学习">
+                  [文献阅读] Deep Reinforcement Learning for Task Offloading in Mobile Edge Computing Systems 移动边缘计算系统中任务卸载的深度强化学习 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTkwNy8zMjM3MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>
