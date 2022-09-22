@@ -28,7 +28,7 @@
 <meta property="og:description" content="本文考虑了基于低电池焦虑导致的用户偏好的影响，提出了UPOA算法，以根据用户偏好在低延迟和能耗之间获得精确的卸载策略。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-19T07:42:43.000Z">
-<meta property="article:modified_time" content="2022-09-20T09:02:43.386Z">
+<meta property="article:modified_time" content="2022-09-22T05:43:01.388Z">
 <meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
 <meta property="article:tag" content="文献阅读">
 <meta property="article:tag" content="边缘计算">
@@ -119,7 +119,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81%E5%8F%8A%E5%85%B6%E8%B4%A1%E7%8C%AE"><span class="nav-number">1.</span> <span class="nav-text">摘要及其贡献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">系统模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%81%8F%E5%A5%BD%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">用户偏好的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">卸载模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E5%BB%B6%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">时延模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E5%BB%B6%E6%A8%A1%E5%9E%8B-1"><span class="nav-number">2.3.</span> <span class="nav-text">时延模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%BD%E8%80%97%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">能耗模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E9%A2%84%E6%B5%8B%E7%AE%97%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">任务预测算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E7%AE%97%E6%B3%95"><span class="nav-number">2.5.</span> <span class="nav-text">卸载算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98"><span class="nav-number">2.5.1.</span> <span class="nav-text">优化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.5.2.</span> <span class="nav-text">卸载算法设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">2.5.3.</span> <span class="nav-text">加法运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%8F%E6%B3%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">2.5.4.</span> <span class="nav-text">减法运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E5%BC%82%E7%AE%97%E5%AD%90"><span class="nav-number">2.5.5.</span> <span class="nav-text">变异算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.5.6.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.5.7.</span> <span class="nav-text">算法步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%8B%9F"><span class="nav-number">3.</span> <span class="nav-text">实验模拟</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">3.1.</span> <span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E7%AE%97%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">对比算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E7%BB%93%E6%9E%9C"><span class="nav-number">3.2.1.</span> <span class="nav-text">模拟结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E5%9C%B0%E5%9D%80"><span class="nav-number">4.</span> <span class="nav-text">论文地址</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81%E5%8F%8A%E5%85%B6%E8%B4%A1%E7%8C%AE"><span class="nav-number">1.</span> <span class="nav-text">摘要及其贡献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">系统模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%81%8F%E5%A5%BD%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">用户偏好的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">卸载模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E5%BB%B6%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">时延模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%BD%E8%80%97%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.2.</span> <span class="nav-text">能耗模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E9%A2%84%E6%B5%8B%E7%AE%97%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">任务预测算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E7%AE%97%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">卸载算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98"><span class="nav-number">2.4.1.</span> <span class="nav-text">优化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.4.2.</span> <span class="nav-text">卸载算法设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">2.4.3.</span> <span class="nav-text">加法运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%8F%E6%B3%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">2.4.4.</span> <span class="nav-text">减法运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E5%BC%82%E7%AE%97%E5%AD%90"><span class="nav-number">2.4.5.</span> <span class="nav-text">变异算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.4.6.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.4.7.</span> <span class="nav-text">算法步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%A8%A1%E6%8B%9F"><span class="nav-number">3.</span> <span class="nav-text">实验模拟</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">3.1.</span> <span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E7%AE%97%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">对比算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E7%BB%93%E6%9E%9C"><span class="nav-number">3.2.1.</span> <span class="nav-text">模拟结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E5%9C%B0%E5%9D%80"><span class="nav-number">4.</span> <span class="nav-text">论文地址</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +220,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-09-20 17:02:43" itemprop="dateModified" datetime="2022-09-20T17:02:43+08:00">2022-09-20</time>
+      <time title="修改时间：2022-09-22 13:43:01" itemprop="dateModified" datetime="2022-09-22T13:43:01+08:00">2022-09-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -244,7 +244,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="摘要及其贡献"><a href="#摘要及其贡献" class="headerlink" title="摘要及其贡献"></a>摘要及其贡献</h1><ul>
-<li>期刊： IEEE Transactions on Cloud Computing.sci-Q1</li>
+<li>期刊： IEEE Transactions on Cloud Computing.sci-Q2，CCF-C.</li>
 <li>简称：IMD（互联网移动设备），EN（边缘节点），CD（云数据中心）</li>
 <li>贡献：</li>
 <li>可以根据用户偏好来动态调整卸载策略。如用时延换能耗，用能耗换时延。</li>
@@ -255,12 +255,13 @@
 <li><p>定义公式：$U \equiv  \lim_{T \to \infty } \frac{1}{T} \sum^T_{t=0}E(\alpha T_{total}(t) + \beta P_{total} (t))$ .</p>
 <blockquote>
 <p> $T_{total}(t)$表示时隙内的时延，$P_{total} (t)$表示时隙内的能耗。$\alpha,\beta$为权重，$\alpha + \beta = 1$。</p>
-<ul>
-<li>用户的偏好规则：<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable columnalign="left" columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>α</mi><mo>&gt;</mo><mi>β</mi><mo>,</mo><msub><mi>Soc</mi><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&gt;</mo><msup><mi>Soc</mi><mrow><mi>U</mi><mi>p</mi></mrow></msup><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mi>α</mi><mo>=</mo><mi>β</mi><mo>,</mo><msup><mi>Soc</mi><mrow><mi>D</mi><mi>o</mi><mi>w</mi><mi>n</mi></mrow></msup><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&lt;</mo><msub><mi>Soc</mi><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>≤</mo><msup><mi>Soc</mi><mrow><mi>U</mi><mi>p</mi></mrow></msup><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mi>α</mi><mo>&lt;</mo><mi>β</mi><mo>,</mo><msub><mi>Soc</mi><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>≤</mo><msup><mi>Soc</mi><mrow><mtext>Down&nbsp;</mtext></mrow></msup><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></math>
-
+</blockquote>
 </li>
-</ul>
-<p>$\operatorname{Soc}^{U p}(t)$表示电池能量状态上限，\operatorname{Soc}^{D o w n}(t)表示电池能量状态下限，低于此标准，用户的将偏向节能。</p>
+<li><p>用户的偏好规则：</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable columnalign="left" columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>α</mi><mo>&gt;</mo><mi>β</mi><mo>,</mo><msub><mi>Soc</mi><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&gt;</mo><msup><mi>Soc</mi><mrow><mi>U</mi><mi>p</mi></mrow></msup><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mi>α</mi><mo>=</mo><mi>β</mi><mo>,</mo><msup><mi>Soc</mi><mrow><mi>D</mi><mi>o</mi><mi>w</mi><mi>n</mi></mrow></msup><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&lt;</mo><msub><mi>Soc</mi><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>≤</mo><msup><mi>Soc</mi><mrow><mi>U</mi><mi>p</mi></mrow></msup><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mi>α</mi><mo>&lt;</mo><mi>β</mi><mo>,</mo><msub><mi>Soc</mi><mrow><mi>i</mi></mrow></msub><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>≤</mo><msup><mi>Soc</mi><mrow><mtext>Down&nbsp;</mtext></mrow></msup><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></math>
+
+<blockquote>
+<p>$Soc^{U p}(t)$表示电池能量状态上限，$ \operatorname{Soc}^{D o w n}(t)$表示电池能量状态下限，低于此标准，用户的将偏向节能。</p>
 </blockquote>
 </li>
 <li><p>eg.</p>
@@ -276,7 +277,7 @@
 <li>中等敏感方案：$\operatorname{Soc}^{U p}(t)$:65%, $\operatorname{Soc}^{D o w n}(t)$:35%.设计了六个能量状态区间来调整α和β的值，以平衡能量消耗和延迟。仅当出现电池电量不足警告信息时，低能耗敏感用户才会注意节能。</li>
 <li>低敏感方案：$\operatorname{Soc}^{U p}(t)$:80%, $\operatorname{Soc}^{D o w n}(t)$:20%.当能量状态小于20%时，β值分别增加到0.75（能量状态为[20%，10%）和0.85（能量状况为[10%，0%]）。</li>
 </ul>
-<h2 id="卸载模型"><a href="#卸载模型" class="headerlink" title="卸载模型"></a>卸载模型</h2><h3 id="时延模型"><a href="#时延模型" class="headerlink" title="时延模型"></a>时延模型</h3><p>文中提出了五个子模型来表征每个节点在其卸载链路中的任务分配。<br><img src = "
+<h2 id="卸载模型"><a href="#卸载模型" class="headerlink" title="卸载模型"></a>卸载模型</h2><p>文中提出了五个子模型来表征每个节点在其卸载链路中的任务分配。<br><img src = "
 /UPOA/
 图片2.png
 " height = 400></p>
@@ -290,7 +291,7 @@
 </blockquote>
 </li>
 </ul>
-<h2 id="时延模型-1"><a href="#时延模型-1" class="headerlink" title="时延模型"></a>时延模型</h2><ul>
+<h3 id="时延模型"><a href="#时延模型" class="headerlink" title="时延模型"></a>时延模型</h3><ul>
 <li><p>根据little’s 定律，用户的平均等待时间为：$T^i_{av}(t) = \frac{B^i_{imd,q}(t)}{\lambda_i}$</p>
 <blockquote>
 <ul>
@@ -465,10 +466,55 @@
 /UPOA/
 图片10.png
 " ></p>
-<p>不同偏好对UPOA的影响。<br><img src = "
+<p>不同偏好对UPOA的影响。</p>
+<ul>
+<li>(a)：能量状态为[100%,50%]时，所有三种方案都会优化延迟，以满足用户对低延迟的需求。其中高敏感方案的延迟最高。</li>
+<li>(b)显示了UPOA在三种不同的方案下的节能性能。(值越高越好)。当能量状态为[100%,50%]时，三种方案的能量优化程度较低。当能源状态为[50%，0%]时，三种方案转向能源优化。结合这两个图的结果，它清楚地表明，当能量消耗到低水平（能量状态为[20%，0%]）时，这三种方案几乎都牺牲了延迟减少，以进一步节能。</li>
+<li>对于中敏感度方案，当能量状态处于[100%,60%]时，延迟权重为0.85或0.65，为了得到更低的延迟，会把更多的数据包传输到边缘节点，而不是在本地计算。<br><img src = "
 /UPOA/
 图片11.png
+"></li>
+<li>(a):延迟随着CPU频率的增加而减少。随着CPU频率的增加，可以在本地计算更多的任务，这会减少IMD LBQ中的任务数，从而缩短等待延迟。</li>
+<li><p>(b):不同CPU频率下四种方法的平均能耗。能源消耗的增加不受传输速度的限制。这是因为如果不对CPU应用节能技术，即使IMD LBQ中的任务很快完成，CPU在等待新任务时也会继续以高频率运行，这会导致更多的能耗。<br><img src = "
+/UPOA/
+图片12.png
 "></p>
+</li>
+<li><p>(a)：平均延迟随着数据包大小的增长而增加。upoa处于DRL-E2D和MUDRL之间。数据包越大，等待延迟越长。卸载的传输时间就越长。</p>
+<ul>
+<li>DRL-E2D的奖励功能更注重任务的完成率。任务传输时间的增加会降低任务的完成率。奖励功能将优化能量消耗，以获得更好的奖励值，从而增加更多延迟。</li>
+<li>MUDRL只关注延迟：随着数据包大小的增长，MUDRL会不断增加CPU功率，直到达到最大值。这种机制有效地减少了等待延迟和卸载延迟，但比其他两种方法消耗更多的能量。</li>
+<li>DRA的奖励功能考虑了任务的最大延迟。因此，当使用DRA方法时，CPU的能耗随着数据包大小的增加而增加。</li>
+</ul>
+</li>
+<li>(b):能耗随着数据包大小的增长而增加。</li>
+</ul>
+<p><img src = "
+/UPOA/
+图片13.png
+"></p>
+<ul>
+<li>在电量充足时的对比，电池电量高的用户更喜欢低延迟。</li>
+</ul>
+<p><img src = "
+/UPOA/
+图片14.png
+"></p>
+<ul>
+<li>电量低和极地状态下的对比。<ul>
+<li>可以看到UPOA对能量的保存时最好的。</li>
+<li>如果在极低的电池间隔中不卸载方法，电池的平均寿命只有2.6分钟。相比之下，UPOA的平均寿命增加到5.8分钟，额外增加了3.2分钟的时间，这将极低电池间隔的电池寿命延长123.07%。</li>
+</ul>
+</li>
+</ul>
+<p><img src = "
+/UPOA/
+图片14.png
+"></p>
+<ul>
+<li>用户设备寿命期间的CPU利用率。每条线上的圆点代表寿命耗尽。</li>
+<li>可以看出UPOA是最稳定和最低的。    </li>
+</ul>
 <h1 id="论文地址"><a href="#论文地址" class="headerlink" title="论文地址"></a>论文地址</h1><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=9839413">Yuan, Jingling, et al. “UPOA: A User Preference Based Latency and Energy Aware Intelligent Offloading Approach for Cloud-edge Systems.” IEEE Transactions on Cloud Computing (2022)</a></p>
 
     </div>
