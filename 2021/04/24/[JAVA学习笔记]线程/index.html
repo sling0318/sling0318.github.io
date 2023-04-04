@@ -28,7 +28,7 @@
 <meta property="og:description" content="线程">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-24T06:26:05.000Z">
-<meta property="article:modified_time" content="2023-04-02T12:22:24.754Z">
+<meta property="article:modified_time" content="2023-04-03T06:42:08.396Z">
 <meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -116,7 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">创建线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%91%E7%9C%A0%E5%92%8C%E4%B8%AD%E6%96%AD"><span class="nav-number">2.</span> <span class="nav-text">线程的休眠和中断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">3.</span> <span class="nav-text">线程的优先级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%A4%BC%E8%AE%A9%E5%8A%A0%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">线程的礼让加入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E9%94%81%E5%92%8C%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="nav-number">5.</span> <span class="nav-text">线程锁和线程同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%BB%E9%94%81"><span class="nav-number">6.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wait%E5%92%8Cnotify%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">wait和notify方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadLock"><span class="nav-number">8.</span> <span class="nav-text">ThreadLock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">9.</span> <span class="nav-text">定时器</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">创建线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%91%E7%9C%A0%E5%92%8C%E4%B8%AD%E6%96%AD"><span class="nav-number">2.</span> <span class="nav-text">线程的休眠和中断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">3.</span> <span class="nav-text">线程的优先级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%A4%BC%E8%AE%A9%E5%8A%A0%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">线程的礼让加入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E9%94%81%E5%92%8C%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="nav-number">5.</span> <span class="nav-text">线程锁和线程同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%BB%E9%94%81"><span class="nav-number">6.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wait%E5%92%8Cnotify%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">wait和notify方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadLock"><span class="nav-number">8.</span> <span class="nav-text">ThreadLock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">9.</span> <span class="nav-text">定时器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%88%E6%8A%A4%E7%BA%BF%E7%A8%8B"><span class="nav-number">10.</span> <span class="nav-text">守护线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%8D%E8%B0%88%E9%9B%86%E5%90%88%E7%B1%BB"><span class="nav-number">11.</span> <span class="nav-text">再谈集合类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">11.1.</span> <span class="nav-text">线程安全的方法</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -131,18 +131,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">目录</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -217,7 +217,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-04-02 20:22:24" itemprop="dateModified" datetime="2023-04-02T20:22:24+08:00">2023-04-02</time>
+      <time title="修改时间：2023-04-03 14:42:08" itemprop="dateModified" datetime="2023-04-03T14:42:08+08:00">2023-04-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -384,7 +384,51 @@
 </li>
 <li><p>run方法会循环地去读队列中是否还有任务</p>
 </li>
-<li>如果有任务一次执行，没有的话就处于休眠状态：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        mainLoop();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">// Someone killed this Thread, behave as if Timer cancelled</span></span><br><span class="line">        <span class="keyword">synchronized</span>(queue) &#123;</span><br><span class="line">            newTasksMayBeScheduled = <span class="literal">false</span>;</span><br><span class="line">            queue.clear();  <span class="comment">// Eliminate obsolete references</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The main timer loop.  (See class comment.)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">mainLoop</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">       TimerTask task;</span><br><span class="line">       <span class="type">boolean</span> taskFired;</span><br><span class="line">       <span class="keyword">synchronized</span>(queue) &#123;</span><br><span class="line">         	<span class="comment">// Wait for queue to become non-empty</span></span><br><span class="line">          <span class="keyword">while</span> (queue.isEmpty() &amp;&amp; newTasksMayBeScheduled)   <span class="comment">//当队列为空同时没有被关闭时，会调用wait()方法暂时处于等待状态，当有新的任务时，会被唤醒。</span></span><br><span class="line">                queue.wait();</span><br><span class="line">          <span class="keyword">if</span> (queue.isEmpty())</span><br><span class="line">             <span class="keyword">break</span>;    <span class="comment">//当被唤醒后都没有任务时，就会结束循环，也就是结束工作线程</span></span><br><span class="line">                      ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>如果有任务一次执行，没有的话就处于休眠状态：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        mainLoop();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">// Someone killed this Thread, behave as if Timer cancelled</span></span><br><span class="line">        <span class="keyword">synchronized</span>(queue) &#123;</span><br><span class="line">            newTasksMayBeScheduled = <span class="literal">false</span>;</span><br><span class="line">            queue.clear();  <span class="comment">// Eliminate obsolete references</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The main timer loop.  (See class comment.)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">mainLoop</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">       TimerTask task;</span><br><span class="line">       <span class="type">boolean</span> taskFired;</span><br><span class="line">       <span class="keyword">synchronized</span>(queue) &#123;</span><br><span class="line">         	<span class="comment">// Wait for queue to become non-empty</span></span><br><span class="line">          <span class="keyword">while</span> (queue.isEmpty() &amp;&amp; newTasksMayBeScheduled)   <span class="comment">//当队列为空同时没有被关闭时，会调用wait()方法暂时处于等待状态，当有新的任务时，会被唤醒。</span></span><br><span class="line">                queue.wait();</span><br><span class="line">          <span class="keyword">if</span> (queue.isEmpty())</span><br><span class="line">             <span class="keyword">break</span>;    <span class="comment">//当被唤醒后都没有任务时，就会结束循环，也就是结束工作线程</span></span><br><span class="line">                      ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException&#123;</span><br><span class="line">    <span class="type">Thread</span> <span class="variable">t</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;程序正常运行中...&quot;</span>);</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    t.setDaemon(<span class="literal">true</span>);   <span class="comment">//设置为守护线程（必须在开始之前，中途是不允许转换的）</span></span><br><span class="line">    t.start();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>守护线程在后台运行，不需要和用户交互，本质和普通进程类似。</li>
+<li>而守护线程就不一样了，当其他所有的非守护线程结束之后，守护线程自动结束。</li>
+<li>Java中所有的线程都执行完毕后，守护线程自动结束，因此守护线程不适合进行IO操作，只适合打打杂。</li>
+</ul>
+<h1 id="再谈集合类"><a href="#再谈集合类" class="headerlink" title="再谈集合类"></a>再谈集合类</h1><ul>
+<li>可拆分迭代器（Splitable Iterator）和Iterator一样，Spliterator也用于遍历数据源中的元素，但它是为了并行执行而设计的。</li>
+<li><p>在集合跟接口Collection中提供了一个spliterator()方法用于获取可拆分迭代器。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">default</span> Stream&lt;E&gt; <span class="title function_">parallelStream</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> StreamSupport.stream(spliterator(), <span class="literal">true</span>); <span class="comment">//parallelStream就是利用了可拆分迭代器进行多线程操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>并行流，其实就是一个多线程执行的流，它通过默认的ForkkJoinPool实现，可以提高多线程的速度：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(Arrays.asList(<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">0</span>));</span><br><span class="line">    list</span><br><span class="line">            .parallelStream()    <span class="comment">//获得并行流</span></span><br><span class="line">            .forEach(i -&gt; System.out.println(Thread.currentThread().getName()+<span class="string">&quot; -&gt; &quot;</span>+i));</span><br><span class="line">&#125;</span><br><span class="line">out:</span><br><span class="line">ForkJoinPool.commonPool-worker-<span class="number">7</span> -&gt; <span class="number">9</span></span><br><span class="line">main -&gt; <span class="number">3</span></span><br><span class="line">ForkJoinPool.commonPool-worker-<span class="number">5</span> -&gt; <span class="number">0</span></span><br><span class="line">ForkJoinPool.commonPool-worker-<span class="number">15</span> -&gt; <span class="number">6</span></span><br><span class="line">ForkJoinPool.commonPool-worker-<span class="number">13</span> -&gt; <span class="number">1</span></span><br><span class="line">ForkJoinPool.commonPool-worker-<span class="number">9</span> -&gt; <span class="number">3</span></span><br><span class="line">ForkJoinPool.commonPool-worker-<span class="number">3</span> -&gt; <span class="number">5</span></span><br><span class="line">ForkJoinPool.commonPool-worker-<span class="number">11</span> -&gt; <span class="number">2</span></span><br></pre></td></tr></table></figure></li>
+<li><p>我们发现，forEach操作的顺序，并不是我们实际List中的顺序，同时每次打印也是不同的线程在执行！</p>
+</li>
+<li><p>在Arrays数组工具类中，也包含大量的并行方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    Arrays.parallelSort(arr);   <span class="comment">//使用多线程进行并行排序，效率更高</span></span><br><span class="line">    System.out.println(Arrays.toString(arr));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更多地使用并行方法，可以更加充分地发挥现代计算机多核心的优势，但是同时需要注意多线程产生的异步问题！</p>
+</li>
+<li>因为多线程的加入，前面的集合类会出现问题：</li>
+</ul>
+<h2 id="线程安全的方法"><a href="#线程安全的方法" class="headerlink" title="线程安全的方法"></a>线程安全的方法</h2><p>Java中的线程安全是指在多线程并发执行的情况下，对共享的数据进行操作时，不会产生意外的结果，保证程序的正确性。</p>
+<p>当多个线程同时访问共享资源时，可能会出现以下问题：</p>
+<ul>
+<li>1.竞态条件(Race Condition)：多个线程同时对同一个数据进行读写，导致数据的值不确定。</li>
+<li>2.死锁(DeadLock)：两个或多个相互等待对方释放资源，导致程序无法继续执行。</li>
+<li>3.数据不一致(Inconsistent Data)：多个线程同时修改同一个数据，导致数据的值不一致。</li>
+</ul>
+<p>在Java中，可以通过以下方式来实现线程安全：</p>
+<ul>
+<li>1.使用synrchronized关键字：ynrchronized可以保证同一时间只有一个线程执行关键代码段，从而避免多个线程同时访问共享资源的问题。</li>
+<li>2.使用Lock接口：Lock接口时Java5中新增的一个借口，它提供了比ynrchronized更灵活的锁定机制，可以控制锁的获取和释放。</li>
+<li>3.使用线程安全的集合类：<ul>
+<li>ConcurrentHashMap：线程安全的HashMap，可以在多线程环境下高效的进行读写操作。</li>
+<li>ConcurrentLinkedQueue：线程安全的队列，支持多线程并发访问。</li>
+<li>CopyOnWeiteArrayList：线程安全的动态数组，每次修改都会复制一份新的数据，保证并发访问的安全性。</li>
+<li>CopyOnWeiteArraySet：线程安全的集合，基于CopyOnWeiteArrayList实现。</li>
+<li>ConcurrentSkpiListMap：线程安全的Map，使用跳表(Skip List)实现，支持高贤的多线程并发访问。</li>
+<li>ConcurrentSkpiListSet：线程安全的有序集合，基于ConcurrentSkpiListMap实现。</li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -407,8 +451,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/04/24/%5BJVM%5DJVM/" rel="next" title="[JVM]JVM">
-                  [JVM]JVM <i class="fa fa-chevron-right"></i>
+                <a href="/2021/04/24/%5BMySQL%5D%E7%B4%A2%E5%BC%95/" rel="next" title="[MySQL]索引">
+                  [MySQL]索引 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
