@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="多智能体强化学习简介。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[强化学习]多智能体强化学习">
+<meta property="og:url" content="http://example.com/2022/11/02/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="生灵">
+<meta property="og:description" content="多智能体强化学习简介。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-02T09:00:05.000Z">
+<meta property="article:modified_time" content="2022-11-02T09:32:48.036Z">
+<meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
+<meta property="article:tag" content="强化学习">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/11/02/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/11/02/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/","path":"2022/11/02/[强化学习]多智能体强化学习/","title":"[强化学习]多智能体强化学习"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[强化学习]多智能体强化学习 | 生灵</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">生灵</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>目录</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96-Fully-decentralized"><span class="nav-number">1.</span> <span class="nav-text">去中心化(Fully decentralized)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96AC"><span class="nav-number">1.2.</span> <span class="nav-text">去中心化AC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E4%B8%AD%E5%BF%83%E5%8C%96-Fullt-centeralized"><span class="nav-number">2.</span> <span class="nav-text">完全中心化(Fullt centeralized)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E5%BF%83%E5%8C%96AC"><span class="nav-number">2.1.</span> <span class="nav-text">中心化AC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.2.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AD%E5%BF%83%E5%8C%96%E8%AE%AD%E7%BB%83%EF%BC%8C%E5%88%86%E5%B8%83%E5%BC%8F%E6%89%A7%E8%A1%8C-Centeralized-tarining-with-decentralized-execution"><span class="nav-number">3.</span> <span class="nav-text">中心化训练，分布式执行(Centeralized tarining with decentralized execution)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="nav-number">3.1.</span> <span class="nav-text">介绍</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ciallo～(∠・ω< )⌒☆​"
+      src="/images/dh.png">
+  <p class="site-author-name" itemprop="name">Ciallo～(∠・ω< )⌒☆​</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">目录</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/02/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dh.png">
+      <meta itemprop="name" content="Ciallo～(∠・ω< )⌒☆​">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生灵">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[强化学习]多智能体强化学习 | 生灵">
+      <meta itemprop="description" content="多智能体强化学习简介。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [强化学习]多智能体强化学习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-02 17:00:05 / 修改时间：17:32:48" itemprop="dateCreated datePublished" datetime="2022-11-02T17:00:05+08:00">2022-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">收录于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">多智能体强化学习简介。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="去中心化-Fully-decentralized"><a href="#去中心化-Fully-decentralized" class="headerlink" title="去中心化(Fully decentralized)"></a>去中心化(Fully decentralized)</h1><ul>
+<li>每个Agent独立和环境交互，并且用自己的观测和奖励来更新自己的策略。</li>
+</ul>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><img src = "
+/MARL/
+图片1.png
+" height = 400></p>
+<ul>
+<li>每个Agent都是独立的个体，互相不沟通交流。</li>
+<li>每个Agent都独立和环境交互，获取o和r。</li>
+<li>每个Agent都有自己的策略网络。独立训练自己的策略网络，和单智能体强化学习一样。</li>
+<li>本质还是单智能体强化学习。</li>
+</ul>
+<h2 id="去中心化AC"><a href="#去中心化AC" class="headerlink" title="去中心化AC"></a>去中心化AC</h2><ul>
+<li>第i个智能体拥有一个策略网络(actor):$π(a^i|o^i;\theta^i).$</li>
+<li>第i个智能体拥有一个价值网络(critic):$q(o^i|a^i;w^i).$</li>
+<li>Agent之间不共享观测和动作。</li>
+<li>Actor网络和Critic网络的训练方式和单智能体一样。</li>
+</ul>
+<h1 id="完全中心化-Fullt-centeralized"><a href="#完全中心化-Fullt-centeralized" class="headerlink" title="完全中心化(Fullt centeralized)"></a>完全中心化(Fullt centeralized)</h1><ul>
+<li>所有agent都把信息传给中央控制器，中央控制器知道每个Agent的观测和奖励。Agent没有策略网络，自己不做决策，决策都由中央做。</li>
+</ul>
+<p><img src = "
+/MARL/
+图片2.png
+" height = 400></p>
+<ul>
+<li>Agent上没有策略网络，不能自己做决策。</li>
+<li>每个Agent把自己的观测上传给中央，中央作出决策后发送给每个Agent。</li>
+</ul>
+<h2 id="中心化AC"><a href="#中心化AC" class="headerlink" title="中心化AC"></a>中心化AC</h2><ul>
+<li>让 <strong>$a=[a^1,a^2,…a^n]$</strong> 表示所有Agent的动作。</li>
+<li>让 <strong>$o=[o^1,o^2,…o^n]$</strong> 表示所有Agent的观测。</li>
+<li>中央控制器知道所有的a,o和所有的奖励。</li>
+<li>中央控制器拥有n个策略网络和那个价值网络：<ul>
+<li>第i个Agent的策略网络:$π(a^i|o;\theta^i).$</li>
+<li>第i个Agent的价值网络:$q(o|a;w^i).$</li>
+</ul>
+</li>
+<li>训练完全由中央控制器执行:<ul>
+<li>使用策略梯度来训练策略网络。</li>
+<li>使用TD算法来训练价值网络。</li>
+</ul>
+</li>
+<li>训练技术后，中央控制器用策略网络做决策：<ul>
+<li>对于每个Agent，每个Agent把自己的观测$o^i$上传给中央。</li>
+<li>中央知道 <strong>$o=[o^1,o^2,…o^n]$</strong> 。</li>
+<li>对于全部Agent，中央从第i个策略网络$a^i~π(\cdot｜o;\theta^i)$随机抽样一个动作$a^i$并发送给第i个Agent。</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>好处：知道全局信息，可以更好的做决策。</li>
+<li>缺点：决策慢。决策过程需要通信，无法做到实时的决策。</li>
+</ul>
+<h1 id="中心化训练，分布式执行-Centeralized-tarining-with-decentralized-execution"><a href="#中心化训练，分布式执行-Centeralized-tarining-with-decentralized-execution" class="headerlink" title="中心化训练，分布式执行(Centeralized tarining with decentralized execution)"></a>中心化训练，分布式执行(Centeralized tarining with decentralized execution)</h1><ul>
+<li>Agent各自有各自的策略网络。</li>
+<li>中央控制器帮助Agent训练策略网络。</li>
+<li>训练结束后每个Agent根据自己的策略网络做决策，不需要和中央控制器通信。</li>
+</ul>
+<h2 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h2><ul>
+<li>每个Agent拥有自己的策略网络(actor):$π(a^i|o^i;\theta^).$</li>
+<li>中央控制器上有n个价值网络(critic):$q(o|a;w^i).$</li>
+<li>中心化训练：训练期间，中央控制器知道每个Agent的观测，动作和奖励。</li>
+<li>分布式执行:训练结束后，每个Agent独立做决策。不需要中央控制器。</li>
+</ul>
+<p><img src = "
+/MARL/
+图片3.png
+" height = 400></p>
+<ul>
+<li>每个Agent作出动作$a^i$与环境$o^i$交互，得到$r^i$，训练时讲动作，观测和奖励全部上传到中央。</li>
+</ul>
+<p><img src = "
+/MARL/
+图片4.png
+" height = 400></p>
+<ul>
+<li>中央控制器上有所有Agent的动作，环境和奖励。</li>
+<li>中央控制器训练所有的Critic,$q(o|a;w^i).$</li>
+<li>更新$w^i$，使用TD算法的输入为:<ul>
+<li>所有的动作:$a=[a^1,a^2,…a^n].$</li>
+<li>所有的观测:$o=[o^1,o^2,…o^n].$</li>
+<li>第i个智能体的奖励:$r^i.$</li>
+</ul>
+</li>
+</ul>
+<p><img src = "
+/MARL/
+图片5.png
+" height = 400></p>
+<ul>
+<li>第i个Critic网络的输出记为$q^i$，将他们发送给相应的Actor。</li>
+<li>买个Agent训练自己的策略网络$π(a^i|o^i;\theta^)$，使用策略梯度。</li>
+<li>去更新$\theta^i$，策略梯度算法的输入为$(a^i,o^i,q^i).$不需要知道其他Agent的策略和网络。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag"># 强化学习</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/31/%5B%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%5DDDPG,MADDPG/" rel="prev" title="[强化学习]DDPG,TD3">
+                  <i class="fa fa-chevron-left"></i> [强化学习]DDPG,TD3
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTkwNy8zMjM3MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>
