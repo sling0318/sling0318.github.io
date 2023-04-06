@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="集合类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[JAVA]面试基础">
+<meta property="og:url" content="http://example.com/2021/04/24/[JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0]%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="生灵">
+<meta property="og:description" content="集合类">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-24T06:26:05.000Z">
+<meta property="article:modified_time" content="2023-04-06T10:16:13.421Z">
+<meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
+<meta property="article:tag" content="JAVA">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/04/24/[JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0]%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/04/24/[JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0]%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95/","path":"2021/04/24/[JAVA学习笔记]基础面试/","title":"[JAVA]面试基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[JAVA]面试基础 | 生灵</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">生灵</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>目录</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">基本的数据类型和引用类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">抽象类和接口的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%BD%BD%E5%92%8C%E9%87%8D%E5%86%99%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">重载和重写的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#final%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">5.</span> <span class="nav-text">final关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E5%86%99equals-%E8%A6%81%E9%87%8D%E5%86%99hashCode"><span class="nav-number">6.</span> <span class="nav-text">重写equals()要重写hashCode()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="nav-number">7.</span> <span class="nav-text">类加载过程</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ciallo～(∠・ω< )⌒☆​"
+      src="/images/dh.png">
+  <p class="site-author-name" itemprop="name">Ciallo～(∠・ω< )⌒☆​</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">目录</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/24/[JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0]%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dh.png">
+      <meta itemprop="name" content="Ciallo～(∠・ω< )⌒☆​">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生灵">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[JAVA]面试基础 | 生灵">
+      <meta itemprop="description" content="集合类">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [JAVA]面试基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-24 14:26:05" itemprop="dateCreated datePublished" datetime="2021-04-24T14:26:05+08:00">2021-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-04-06 18:16:13" itemprop="dateModified" datetime="2023-04-06T18:16:13+08:00">2023-04-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">收录于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">集合类</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><p>三大基本特征：封装、继承、多态。</p>
+<ul>
+<li>封装：<ul>
+<li>将对象的状态信息隐藏在对象内部，不允许外部程序直接访问对象的内部信息。</li>
+<li>让外部程序通过该类提供的方法来实现对内部信息的操作和访问。</li>
+</ul>
+</li>
+<li>继承：<ul>
+<li>实现代码复用的重要手段。</li>
+<li>子类可以直接访问父类的公共属性，保护属性，构造方法，父类中被子类重写的方法，可以通过super关键字调用父类的被重写方法。</li>
+<li>不能继承私有成员的变量和方法，final、static。</li>
+</ul>
+</li>
+<li>多态：<ul>
+<li>继承统一父类的多个子类执行同一个方法时出现不同的情况。</li>
+<li>主要通过重写实现。</li>
+</ul>
+</li>
+</ul>
+<h1 id="基本的数据类型和引用类型"><a href="#基本的数据类型和引用类型" class="headerlink" title="基本的数据类型和引用类型"></a>基本的数据类型和引用类型</h1><ul>
+<li>8种数据类型：byte(8),short(166),int(32),long(64),float(32),double(64),char(16),boolean。</li>
+<li>其他类型都是引用类型：类，接口，数组，Strin等。</li>
+</ul>
+<h1 id="抽象类和接口的区别"><a href="#抽象类和接口的区别" class="headerlink" title="抽象类和接口的区别"></a>抽象类和接口的区别</h1><ul>
+<li>相同点：<ul>
+<li>都不能被实例化，都位于继承树的顶端，用于被其他类实现和继承。</li>
+<li>接口和抽象类都可以有抽象方法，实现接口或继承抽象类都必须实现这些方法。</li>
+</ul>
+</li>
+<li>不同点：<ul>
+<li>成员变量：<ul>
+<li>抽象类：可以有静态变量、常量和成员变量。</li>
+<li>接口：只能有常量。</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li>抽象类：可以有普通方法和抽象方法，抽象方法必须在子类中被实现，而具体方法可以在抽象类中被实现。</li>
+<li>接口：只能包含抽象方法，所有的方法必须在实现类中被实现。</li>
+</ul>
+</li>
+<li>构造函数：<ul>
+<li>抽象类：可以有构造函数。</li>
+<li>接口：不能有构造函数。</li>
+</ul>
+</li>
+<li>继承方式：<ul>
+<li>抽象类：单继承</li>
+<li>接口：一个类可是实现多个接口。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h1><ul>
+<li>重载：发生在一个类中，方法名相同，参数列表，返回值，访问修饰符都可以不同。</li>
+<li><p>重写：发生在父子类中。</p>
+<ul>
+<li>方法名相同，参数类型相同。</li>
+<li>子类返回类型小于等于父类方法返回类型。</li>
+<li>子类访问权限大于等于父类方法访问权限。</li>
+<li>子类抛出的异常大于等于父类抛出的异常。</li>
+</ul>
+</li>
+<li><p>final，private修饰的方法不能被重写，构造方法也不能重写。</p>
+</li>
+</ul>
+<h1 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h1><ul>
+<li>final可以修饰类、方法、变量。</li>
+<li>final修饰类：类不可以被继承。</li>
+<li>final修饰方法：该方法不能被重写。</li>
+<li>final修饰变量：如果是基本变量则不能再改变，如果是应用变量则引用地址不能改变，但值可以改变。</li>
+</ul>
+<h1 id="重写equals-要重写hashCode"><a href="#重写equals-要重写hashCode" class="headerlink" title="重写equals()要重写hashCode()"></a>重写equals()要重写hashCode()</h1><ul>
+<li>hashCode()：获取哈希吗的，eauals()比较两个对象是否相等。</li>
+<li>二者的两个约定：<ul>
+<li>若两个对象相等，他们必须拥有相同的哈希码。</li>
+<li>若两个对象的哈希码相同，它们却不一定相同。</li>
+</ul>
+</li>
+<li>也就是说equals()比较两个对象时，hashCode()一定相同。</li>
+<li>hashCode()相等的两个对象equals()不一定相同。</li>
+<li>由于两者具有联动关系，所以equals()重写时，hashCode()也要重写，否则可能会出现equals()相等，hashCode()却不同的情况。</li>
+</ul>
+<h1 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h1><p>首先检查类是否被加载，如没有没有则按以下顺序加载。<br>加载，验证，准备，解析，初始化</p>
+<ul>
+<li>加载：<ul>
+<li>类加载器通过将类的字节码从文件或网络中读取到JVM中来加载类。</li>
+<li>加载后会被存储到方法区。</li>
+</ul>
+</li>
+<li>验证：<ul>
+<li>JVM会检查类的字节码是否符合Java虚拟机规范，并且是否可以安全执行。</li>
+</ul>
+</li>
+<li>准备：<ul>
+<li>JVM回味类的静态变量分配内存，并设置默认值(0)。</li>
+</ul>
+</li>
+<li>解析：<ul>
+<li>JVM会将类中的符号引用转换成直接引用。</li>
+<li>例如将类中的方法调用转换成实际的内存地址。</li>
+</ul>
+</li>
+<li>初始化： <ul>
+<li>JVM为类的静态赋予程序中指定的值，并初始化类变量和其他资源，并执行类构造器。</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/24/%5BMybatis%5DMybatis%E5%9F%BA%E7%A1%80/" rel="prev" title="[Mybatis]Mybatis基础.">
+                  <i class="fa fa-chevron-left"></i> [Mybatis]Mybatis基础.
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/24/%5B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%5D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="[设计模式]设计模式">
+                  [设计模式]设计模式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTkwNy8zMjM3MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>

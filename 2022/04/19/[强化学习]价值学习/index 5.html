@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="强化学习中的价值学习，包含了DQN以及TD算法，以及其的改进版本。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[强化学习]价值学习">
+<meta property="og:url" content="http://example.com/2022/04/19/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E4%BB%B7%E5%80%BC%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="生灵">
+<meta property="og:description" content="强化学习中的价值学习，包含了DQN以及TD算法，以及其的改进版本。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/深度学习imgs/图片6.png">
+<meta property="og:image" content="http://example.com/深度学习imgs/图片7.png">
+<meta property="og:image" content="http://example.com/深度学习imgs/图片8.png">
+<meta property="og:image" content="http://example.com/深度学习imgs/图片9.png">
+<meta property="og:image" content="http://example.com/深度学习imgs/图片10.png">
+<meta property="og:image" content="http://example.com/深度学习imgs/图片23.png">
+<meta property="article:published_time" content="2022-04-19T05:53:05.000Z">
+<meta property="article:modified_time" content="2022-09-08T06:49:29.648Z">
+<meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
+<meta property="article:tag" content="强化学习">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/深度学习imgs/图片6.png">
+
+
+<link rel="canonical" href="http://example.com/2022/04/19/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E4%BB%B7%E5%80%BC%E5%AD%A6%E4%B9%A0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/04/19/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E4%BB%B7%E5%80%BC%E5%AD%A6%E4%B9%A0/","path":"2022/04/19/[强化学习]价值学习/","title":"[强化学习]价值学习"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[强化学习]价值学习 | 生灵</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">生灵</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>目录</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DQN"><span class="nav-number">2.</span> <span class="nav-text">DQN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DQN%E7%9A%84%E6%A2%AF%E5%BA%A6"><span class="nav-number">2.2.</span> <span class="nav-text">DQN的梯度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E7%9A%84TD%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">原始的TD算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E9%AA%8C%E5%9B%9E%E6%94%BE"><span class="nav-number">4.</span> <span class="nav-text">经验回放</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%85%88%E7%BB%8F%E9%AA%8C%E5%9B%9E%E6%94%BE"><span class="nav-number">4.1.</span> <span class="nav-text">优先经验回放</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.2.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E4%BC%B0%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">高估问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E5%8C%96"><span class="nav-number">5.1.</span> <span class="nav-text">最大化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%87%8A"><span class="nav-number">5.1.1.</span> <span class="nav-text">数学解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8DQN%E4%B8%AD"><span class="nav-number">5.1.2.</span> <span class="nav-text">在DQN中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrapping"><span class="nav-number">5.2.</span> <span class="nav-text">Bootstrapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E4%BC%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E5%AE%B3"><span class="nav-number">5.3.</span> <span class="nav-text">高估为什么有害</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E9%AB%98%E4%BC%B0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">解决高估的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Target-Network"><span class="nav-number">6.1.</span> <span class="nav-text">Target Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Double-DQN"><span class="nav-number">6.2.</span> <span class="nav-text">Double DQN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83"><span class="nav-number">6.3.</span> <span class="nav-text">比较</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dueling-Naetword"><span class="nav-number">7.</span> <span class="nav-text">Dueling Naetword</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">7.1.</span> <span class="nav-text">网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%94%AF%E4%B8%80%E6%80%A7%E9%97%AE%E9%A2%98"><span class="nav-number">7.2.</span> <span class="nav-text">解决唯一性问题</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ciallo～(∠・ω< )⌒☆​"
+      src="/images/dh.png">
+  <p class="site-author-name" itemprop="name">Ciallo～(∠・ω< )⌒☆​</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">目录</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/19/[%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0]%E4%BB%B7%E5%80%BC%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dh.png">
+      <meta itemprop="name" content="Ciallo～(∠・ω< )⌒☆​">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生灵">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[强化学习]价值学习 | 生灵">
+      <meta itemprop="description" content="强化学习中的价值学习，包含了DQN以及TD算法，以及其的改进版本。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [强化学习]价值学习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-19 13:53:05" itemprop="dateCreated datePublished" datetime="2022-04-19T13:53:05+08:00">2022-04-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-08 14:49:29" itemprop="dateModified" datetime="2022-09-08T14:49:29+08:00">2022-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">收录于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">强化学习中的价值学习，包含了DQN以及TD算法，以及其的改进版本。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p> $U_t$ = $R_t + \gamma · R_{t+1} + \gamma ^ 2 · R_{t+2} + … \gamma ^{n - t} · R_n$.<br>其中$U_t$为Return,$\gamma \in $ [0,1]为折扣率。$U_t$以来于从t时刻开始的所有动作和状态，未来的动作A和状态S都是随机变量，因此$U_t$也是随机的。我们对$U_t$求期望就可以排除掉随机性。<strong>动作价值函数</strong> 的定义为</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>Q</mi><mrow><mi>π</mi></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>s</mi><mrow><mi>t</mi></mrow></msub><mo>,</mo><msub><mi>a</mi><mrow><mi>t</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>=</mo><mrow><mi mathvariant="double-struck">E</mi></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><msub><mi>U</mi><mrow><mi>t</mi></mrow></msub><mo>∣</mo><msub><mi>S</mi><mrow><mi>t</mi></mrow></msub><mo>=</mo><msub><mi>s</mi><mrow><mi>t</mi></mrow></msub><mo>,</mo><msub><mi>A</mi><mrow><mi>t</mi></mrow></msub><mo>=</mo><msub><mi>a</mi><mrow><mi>t</mi></mrow></msub><mo data-mjx-texclass="CLOSE">]</mo></mrow></math>
+
+<p><strong>最优动作价值函数</strong> 用最大化消除策略π:</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>Q</mi><mrow><mo>⋆</mo></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>s</mi><mrow><mi>t</mi></mrow></msub><mo>,</mo><msub><mi>a</mi><mrow><mi>t</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>=</mo><munder><mo data-mjx-texclass="OP" movablelimits="true">max</mo><mrow><mi>π</mi></mrow></munder><msub><mi>Q</mi><mrow><mi>π</mi></mrow></msub><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>s</mi><mrow><mi>t</mi></mrow></msub><mo>,</mo><msub><mi>a</mi><mrow><mi>t</mi></mrow></msub><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>,</mo><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><mi mathvariant="normal">∀</mi><msub><mi>s</mi><mrow><mi>t</mi></mrow></msub><mo>∈</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">S</mi></mrow><mo>,</mo><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><msub><mi>a</mi><mrow><mi>t</mi></mrow></msub><mo>∈</mo><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">A</mi></mrow><mo>.</mo></math>
+
+<p>可以理解为已知$s_t$和$a_t$，不论未来采取什么样的 <strong>策略π</strong> ，<strong>回报$U_t$</strong> 的期望不可能 超过 <strong>$Q^*$</strong>。简单的说就是Agent根据$Q^*$函数的期望来选择价值最高的动作。 </p>
+<h1 id="DQN"><a href="#DQN" class="headerlink" title="DQN"></a>DQN</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>DQN是 一种价值学习的方法，利用一个神经网络Q(s,a;w)来近似$Q^*$(s,a)。神经网络的参数是w，输入是状态s，输出是很多数值a，这些事神经网络对每个动作的打分，通过奖励来寻训练神经网络。</p>
+<p><img src="/深度学习imgs/图片6.png"></p>
+<p>举个例子，动作空间是 A = {左, 右, 上}，那么动作空间的大小等于 |A| = 3，那么 DQN 的输出是 3 维的向量。由于上的得分(610)最高，所以Agent应该选择上这个动作。</p>
+<blockquote>
+<p>利用DQN玩游戏的过程</p>
+</blockquote>
+<p><img src="/深度学习imgs/图片7.png"></p>
+<h2 id="DQN的梯度"><a href="#DQN的梯度" class="headerlink" title="DQN的梯度"></a>DQN的梯度</h2><p>在训练 DQN 的时候，需要对 DQN 关于神经网络参数 w 求梯度。</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi mathvariant="normal">∇</mi><mrow><mi mathvariant="bold-italic">w</mi></mrow></msub><mi>Q</mi><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo>;</mo><mi mathvariant="bold-italic">w</mi><mo stretchy="false">)</mo><mo>≜</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>Q</mi><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo>;</mo><mi mathvariant="bold-italic">w</mi><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">∂</mi><mi mathvariant="bold-italic">w</mi></mrow></mfrac></math>
+
+<p>表示函数值 Q(s, a; w) 关于参数 w 的梯度。因为函数值 Q(s, a; w) 是一个实数，所以梯度的形状与 w 完全相同。</p>
+<blockquote>
+<p>我们一般使用TD算法来训练DQN</p>
+</blockquote>
+<h1 id="原始的TD算法"><a href="#原始的TD算法" class="headerlink" title="原始的TD算法"></a>原始的TD算法</h1><p>Agent观测到当前状态$s_t$并且执行动作$a_t$。<br>环境给出新的状态$s_{t+1}$并给出奖励$r_t$</p>
+<ul>
+<li>A transition：($s_t,a_t,r_t,s_{t+1}$)</li>
+<li>TD target:</li>
+</ul>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>y</mi><mrow><mi>t</mi></mrow></msub><mo>=</mo><msub><mi>r</mi><mrow><mi>t</mi></mrow></msub><mo>+</mo><mi>γ</mi><mo>⋅</mo><munder><mo data-mjx-texclass="OP" movablelimits="true">max</mo><mrow><mi>a</mi></mrow></munder><mi>Q</mi><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>a</mi><mo>;</mo><mrow><mi mathvariant="bold">w</mi></mrow><mo data-mjx-texclass="CLOSE">)</mo></mrow></math>
+
+<ul>
+<li>TD error:$\delta _t$ = $q_t$ - $y_t$, where $q_t$ = Q($s_t,a_t$,w)</li>
+<li><p>goal:使$q_t$更加接近$y_t$。也就是说让TD error尽量小。</p>
+</li>
+<li><p>TD learning: L(w) = $\frac{1}{T} \sum_{t=1}^T  \frac{\delta ^2}{2}$</p>
+</li>
+<li><p>Online Gradient descent：</p>
+<ul>
+<li>观察($s_t,a_t,r_t,s_{t+1}$) 求出$\delta_t$</li>
+<li>计算梯度:$g_t$ = $\delta_t$* $ \frac{\partial Q(s_t,a_T;w)}{\partial w}$</li>
+<li>梯度下降：w &lt;- w - $\alpha $ * $g_t$</li>
+<li>丢弃($s_t,a_t,r_t,s_{t+1}$)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>缺点：</p>
+<ul>
+<li>浪费经验:原始的TD算法在做完一个transition就被丢弃不再使用，造成了经验的 浪费，事实上这些经验是可以重复使用的。这就是做“经验回放的主要原因”。</li>
+<li>transitions之间的相关性:我们按顺序使用每一条transition来更新w,前后两条transitions之间有很强的关联,实验证明这种相关性是有害的。如果能把序列打散，消除相关性，则有利于把DQN训练得更好。</li>
+</ul>
+</blockquote>
+<p>“经验回放”可以有效克服刚才提到的两个缺点。</p>
+<h1 id="经验回放"><a href="#经验回放" class="headerlink" title="经验回放"></a>经验回放</h1><ul>
+<li>A transition ($s_t,a_t,r_t,s_{t+1}$)</li>
+<li>存储最近b个transition放在replay buff中：<br><img src="/深度学习imgs/图片8.png"><br>如果存满了则删除最久的一条transition，放入最新的transition。</li>
+</ul>
+<h2 id="优先经验回放"><a href="#优先经验回放" class="headerlink" title="优先经验回放"></a>优先经验回放</h2><p>优先经验回放(prioritized experience replay)是一种特殊的经验回放方法，它比普通 的经验回放效果更好:既能让收敛更快，也能让收敛时的平均回报更高。<br>基本想法是用非均匀抽样代替均匀抽样。两种方法设置抽样概率。</p>
+<ul>
+<li>一种抽样概率是:</li>
+</ul>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>p</mi><mrow><mi>j</mi></mrow></msub><mo>∝</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">|</mo><msub><mi>δ</mi><mrow><mi>j</mi></mrow></msub><mo data-mjx-texclass="CLOSE">|</mo></mrow><mo>+</mo><mi>ϵ</mi></math>
+
+<p>此处的ϵ是个很小的数，防止抽样概率接近零，用于保证所有样本都以非零的概率被抽到。</p>
+<ul>
+<li>另一种抽样方式先对|$δ_j$|做降序排列，然后计算<br><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>p</mi><mrow><mi>j</mi></mrow></msub><mo>∝</mo><mfrac><mn>1</mn><mrow><mi>rank</mi><mo data-mjx-texclass="NONE">⁡</mo><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></mfrac></math><br>此处的 rank(j) 是 |$δ_j$| 的序号。大的 |$δ_j$| 的序号小，小的 |$δ_j$| 的序号大。两种方式的原理 是一样的，|$δ_j$| 大的样本被抽样到的概率大。</li>
+</ul>
+<p>两种抽样的原理是一样的，<strong>TD error越大，transition被抽到的概率就越大</strong>。<br>抽样的概率是不同的，也就是非均匀抽样。这样会导致DQN的预测有偏差，应该相应 <strong>调整学习率</strong> ，抵消掉不同抽样概率造成的偏差。这里的 <strong>𝛼</strong> 是学习率也叫做步长。如果做均匀抽样，所有 transitions 都有相同的学习率。如果做非均匀抽样的话，应该根据抽样概率来调整学习率。<strong>如果一条 transition 有较大的抽样的概率，那么应该把它的学习率设置得较小</strong></p>
+<ul>
+<li>计算 𝑛 乘以$𝑝_𝑡$，求负𝛽次幂$(np_t)^{-𝛽}$把它乘到学习率上.𝛽$\in$[0,1]</li>
+<li>在均匀抽样下，抽样概率$p_1,..,p_n = \frac{1}{n}$ ,在这种情况下所有的n乘以$p_t$都等于1，不会影响学习率。</li>
+<li>如果是非均匀抽样，$𝑝_1$ 到 $𝑝_n$各不相同，于是学习率会有所不同。对于概率较大的$𝑝_𝑡$，算出来的幂较小，会让学习率变小，反之亦然。</li>
+<li>𝛽是个超参数，需要调参。论文里建议一开始让 𝛽 很小，然后逐渐让 𝛽 增长，最终增长到1。</li>
+</ul>
+<hr>
+<ul>
+<li>为了做“优先经验回放”，要把每一条transition 都标记上 TD Error$𝛿_𝑡$，$𝛿_𝑡$决定了这一条 transition 的重要性，决定了它被抽样的概率。</li>
+<li>如果一个transition刚刚被收集到，还没有被用来训练DQN，我们不知道它的$𝛿_𝑡$：<ul>
+<li>我们就把它的$𝛿_𝑡$设置为最大。</li>
+<li>给予它最大的权重。</li>
+</ul>
+</li>
+<li>在训练 DQN 的同时，要对$𝛿_𝑡$做更新。每次我们使用一条 transition 的时候，我们要重新计算它的$𝛿_𝑡$,这条 transition 就有了新的权重。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/深度学习imgs/图片9.png"></p>
+<h1 id="高估问题"><a href="#高估问题" class="headerlink" title="高估问题"></a>高估问题</h1><p>用TD算法训练DQN，会导致DQN高估真实的动作价值。</p>
+<blockquote>
+<p>高估的原因：<br>    •最大化:是计算 TD target 用到了最大化，它会导致高估<br>    •Bootstrapping:如果当前 DQN 已经出现高估，下一轮的 TD target更会高估，再进一步推高DQN的输出,一步步让DQN的高估越来越严重。</p>
+</blockquote>
+<h2 id="最大化"><a href="#最大化" class="headerlink" title="最大化"></a>最大化</h2><h3 id="数学解释"><a href="#数学解释" class="headerlink" title="数学解释"></a>数学解释</h3><ul>
+<li>设$𝑥_1,..,𝑥_𝑛$为任意 n 个观测到的实数.</li>
+<li>在$𝑥_1,..,𝑥_𝑛$中添加均值为零的随机噪声，将得到的输出记为$𝑄_1,..,𝑄_𝑛$</li>
+<li>由于噪声的均值等于零，噪声不会影响 Q 的均值,我们可以得到Q的均值求期望，结果就等于x的均值:<br>$\mathbb{E} [mean_i(Q_i)]= mean_i(x_i)$</li>
+<li>但是噪声会让最大值增长，Q的最大值往往大于x的最大值,对Q的最大值求期望，结果一定会大于等于x的最大值:<br>$\mathbb{E} [max_i(Q_i)] ≥ max_i(x_i)$</li>
+<li>同样的道理，随机噪声会让最小值变得更小,Q 的最小值往往会小于 x 的最小值:<br>$\mathbb{E} [min_i(Q_i)] ≤ min_i(x_i)$</li>
+</ul>
+<h3 id="在DQN中"><a href="#在DQN中" class="headerlink" title="在DQN中"></a>在DQN中</h3><ul>
+<li>设 $𝑥(𝑎_1),..,𝑥(𝑎_𝑛)$为真实的动作价值,$𝑎_1,..,𝑎_𝑛$是动作空间中所有的动作。</li>
+<li>DQN的估算价值为：$𝑄(𝑠, 𝑎_1;𝐰),..,𝑄(𝑠, 𝑎_𝑛;𝐰)$。</li>
+<li>假设没有误差，同理有:<br>$\mathbb{E} mean_a(x(a))= mean_a𝑄(𝑠, 𝑎;𝐰)$</li>
+<li>计算TD target的时候，要对DQN关于动作a求最大化，把结果记做q = $max_a𝑄(𝑠, 𝑎;𝐰)$,之前我们分析过，往 x 里面加噪声，然后求最大化，得到的结果会高估 x 的最大值.同理也有<br>q ≥ $max_a(x(a))$</li>
+</ul>
+<blockquote>
+<p>求最大化使得 TD target 大于真实价值，因此导致 DQN 高估</p>
+</blockquote>
+<h2 id="Bootstrapping"><a href="#Bootstrapping" class="headerlink" title="Bootstrapping"></a>Bootstrapping</h2><p>在强化学习中，Bootstrapping的意思是“用一个估算去更新同类的估算”，也就是自己把自己举起来。例如在TD算法中，我们为了更新DQN咋t时刻的预测，用来DQN在t+1时刻做出的预测。就算是Bootstrapping。</p>
+<ul>
+<li>TD中的Bootstrapping<ul>
+<li>TD target用到了DQN在t+1时刻的估计值$q_{t+1} = max_a Q (s_{t+1},a;w)$。</li>
+<li>我们拿 TD target 来更新 DQN 在 t 时刻的估计，这就是用 DQN 来更新 DQN 自己，所以叫做Bootstrapping</li>
+</ul>
+</li>
+<li>假设DQN已经高估了动作价值。</li>
+<li>那么Q($s_{t+1},a,w$)也是一个高估。</li>
+<li>最大化$q_{t+1}$也会被高估，进一步推高高估价值。</li>
+<li>拿$q_{t+1}$计算 TD target，再更新DQN,这样高估又被传播回 DQN，让DQN的高估变得更严重。</li>
+</ul>
+<h2 id="高估为什么有害"><a href="#高估为什么有害" class="headerlink" title="高估为什么有害"></a>高估为什么有害</h2><p> DQN输出的动作价值，Agent选择价值最大的动作执行。这个决策根据的是 <strong>相对大小</strong> 而不是绝对大小。</p>
+<blockquote>
+<p>高估本身不是问题，只要高估是均匀的就好。<br> 假设三个动作的价值：a = 200,b = 100, c = 230<br> 如果高估是均匀的，那么对决策不会产生影响。如果高估是非均匀的，有的动作被高估一点，有的则被高估很多，DQN的输出变成了<br> a = 280,b = 300,c = 240。这样的价值就产生了误导，会做出错误的决策。</p>
+<p>实际上DQN的高估是非均匀的，如果一个transition在replay buffer里出现的越频繁，高估就越严重。（每次更新都会造成一次高估 ）</p>
+</blockquote>
+<h1 id="解决高估的方法"><a href="#解决高估的方法" class="headerlink" title="解决高估的方法"></a>解决高估的方法</h1><ul>
+<li>避免 Bootstrapping：不要用 DQN 自己算出来的TD Target来更新 DQN，而是用另一个神经网络来计算TD target，另一个神经网络被称作 target network ，目标网络。</li>
+<li><p>Double DQN：用来缓解“最大化”造成的高估。Double DQN 也用 target network，但是具体用法有一点点区别。</p>
+<h2 id="Target-Network"><a href="#Target-Network" class="headerlink" title="Target Network"></a>Target Network</h2><p>用两个神经网络,第二个神经网络叫做 target network。 </p>
+<ul>
+<li>Taregt Network:Q(s,a;$W^-$)<ul>
+<li>与DQN有相同的网络结构，Q(s,a;w)。</li>
+<li>不同在于参数$w^-$ ≠ w。</li>
+</ul>
+</li>
+<li>DQN,Q(s,a;w)用来控制Agent，并收集经验，经验为多条transition{($s_t,a_t,r_t,s_{t+1}$)}。</li>
+<li>Target Network,Q(s,a;$w^-$)唯一的用途是用来计算TD target。<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>y</mi><mrow><mi>t</mi></mrow></msub><mo>=</mo><msub><mi>r</mi><mrow><mi>t</mi></mrow></msub><mo>+</mo><mi>γ</mi><mo>⋅</mo><munder><mo data-mjx-texclass="OP" movablelimits="true">max</mo><mrow><mi>a</mi></mrow></munder><mi>Q</mi><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>a</mi><mo>;</mo><mrow><mi mathvariant="bold">w–</mi></mrow><mo data-mjx-texclass="CLOSE">)</mo></mrow></math>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>用在TD算法上</p>
+<ul>
+<li><p>使用transition($s_t,a_t,r_t,s_{t+1}$)来更新w。</p>
+<ul>
+<li>TD target：$y_t=r_t+\gamma * \max_a (s_{t+1},a;w^-)$  （这里用的是Target Network中的参数$w^-$）</li>
+<li>TD erroe:$\delta _t$ = $q_t$ - $y_t$, where $q_t$ = Q($s_t,a_t$,w)</li>
+<li>SGD: w &lt;- w - $\alpha $ <em> $\delta_t$</em> $ \frac{\partial Q(s_t,a_T;w)}{\partial w}$ <strong>(这里只更新DQN中的参数w，不更新TargetNetwok的参数)</strong></li>
+</ul>
+</li>
+<li><p>Target Network中的参数$w^-$需要隔一段时间更新:</p>
+<ul>
+<li>方式一:直接拷贝DQN中的参数w。 $w^-$ &lt;- w </li>
+<li>方式二:做加权平均。$w^-$ &lt;- $\tau$ <em> w + (1 - $\tau $) </em> $w^-$ </li>
+</ul>
+</li>
+<li><p>比较</p>
+<ul>
+<li>DQN自己更新：$y_t=r_t+\gamma * \max_a $($s_{t+1}$,a;w)</li>
+<li>Target Network更新：$y_t=r_t+\gamma * \max_a $($s_{t+1}$,a;$w^-$)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>用 target network 会减小DQN高估的程度,让DQN表现得更好,但还是无法避免高估。即使用了 target network，也还有最大化操作，仍然会让 TD target 大于真实价值,除此之外，target network会用到DQN的参数，target network 无法独立于 DQN,所以无法完全避免 bootstrapping。</p>
+</blockquote>
+<h2 id="Double-DQN"><a href="#Double-DQN" class="headerlink" title="Double DQN"></a>Double DQN</h2><p>TD Target：$y_t=r_t+\gamma * \max_a $($s_{t+1}$,a;$w$)<br>将TD target的公式拆成两步:</p>
+<ul>
+<li>在<strong>DQN</strong>中,选出能最大化 Q 函数的动作，记为$a^*$:  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msup><mi>a</mi><mrow><mo>⋆</mo></mrow></msup><mo>=</mo><munder><mi>argmax</mi><mi>a</mi></munder><mi>Q</mi><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>a</mi><mo>;</mo><mrow><mi mathvariant="bold">w</mi></mrow><mo data-mjx-texclass="CLOSE">)</mo></mrow></math></li>
+<li>然后再<strong>Target Network</strong>中计算 TD target:<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>y</mi><mrow><mi>t</mi></mrow></msub><mo>=</mo><msub><mi>r</mi><mrow><mi>t</mi></mrow></msub><mo>+</mo><mi>γ</mi><mo>⋅</mo><mi>Q</mi><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>a*</mi><mo>;</mo><mrow><mi mathvariant="bold">w-</mi></mrow><mo data-mjx-texclass="CLOSE">)</mo></mrow></math>
+
+</li>
+</ul>
+<blockquote>
+<p>不同于前面的原始DQN和Target Network都是在自己的网络中计算最大值和求Target Network。</p>
+</blockquote>
+<p>我们可以知道：<br>Q($s_{t+1,a^*;w^-}$) ≤ $\max _a Q(t+1,a;w^-)$</p>
+<h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><p><img src="/深度学习imgs/图片10.png"></p>
+<h1 id="Dueling-Naetword"><a href="#Dueling-Naetword" class="headerlink" title="Dueling Naetword"></a>Dueling Naetword</h1><h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><ul>
+<li>最优动作价值函数:$Q^{\ast}(s,a)=\max_πQ_π(s,a)$.</li>
+<li>最优状态价值函数:$V^{\ast}(s)=\max_πV_π(s)$.</li>
+<li>优势函数:$A^{\ast} (s,a)=Q^{\ast}(s,a)-V^{\ast}(s)$.</li>
+</ul>
+<blockquote>
+<p>优势函数的意思是动作a相对于baseline的优势。</p>
+<ul>
+<li>定理1:$V^{\ast}(s)=\max_aQ^{\ast}(s,a)$</li>
+<li>由（1）可知:$\max_a A^{\ast}(s,a)=\max_aQ^{\ast}(s,a)-V^{\ast}(s)=0$.</li>
+<li>变化优势函数的定义可以得到:$Q^{\ast}(s,a)=V^{\ast}(s)+A^{\ast}(s,a)-\max_aQ^{\ast}(s,a)$.</li>
+</ul>
+</blockquote>
+<ul>
+<li>构建网络:<br><img src="/深度学习imgs/图片23.png"></li>
+</ul>
+<p>训练过程和DQN网络一样。</p>
+<h2 id="解决唯一性问题"><a href="#解决唯一性问题" class="headerlink" title="解决唯一性问题"></a>解决唯一性问题</h2><ul>
+<li>公式1:$Q^{\ast}(s,a)=V^{\ast}(s)+A^{\ast}(s,a)$.</li>
+</ul>
+<ul>
+<li>公式1缺点：无法通过学习$Q^{\ast}(s,a)$，来唯一确定$V^{\ast}(s)$和$A^{\ast}(s,a)$。<ul>
+<li>让$V^{‘}=V^+10$和$A^{‘}=A^-10$。</li>
+<li>那么$Q^{\ast}(s,a)=V^{\ast}(s)+A^{\ast}(s,a)=V^{‘}(s)+A^{‘}(s,a)$.</li>
+<li>得到的结果不唯一。</li>
+<li>不唯一会导致神经网络不稳定，训练不好。</li>
+</ul>
+</li>
+<li>公式2:$Q^{\ast}(s,a)=V^{\ast}(s)+A^{\ast}(s,a)-\max_aQ^{\ast}(s,a)$可以避免不唯一性。</li>
+<li>$Q^{\ast}(s,a)=V^{\ast}(s)+A^{\ast}(s,a)-meanQ^{\ast}(s,a)$效果更好。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag"># 强化学习</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/16/%5B%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%5D%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="prev" title="[强化学习]强化学习基本概念">
+                  <i class="fa fa-chevron-left"></i> [强化学习]强化学习基本概念
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/23/%5B%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%5D%E7%AD%96%E7%95%A5%E5%AD%A6%E4%B9%A0/" rel="next" title="[强化学习]策略学习">
+                  [强化学习]策略学习 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTkwNy8zMjM3MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>

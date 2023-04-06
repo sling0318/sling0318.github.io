@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="MySQL 基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[MySQL]基础">
+<meta property="og:url" content="http://example.com/2021/04/24/[MySQL]%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="生灵">
+<meta property="og:description" content="MySQL 基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-24T06:27:05.000Z">
+<meta property="article:modified_time" content="2023-04-04T13:02:47.765Z">
+<meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
+<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/04/24/[MySQL]%E5%9F%BA%E7%A1%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/04/24/[MySQL]%E5%9F%BA%E7%A1%80/","path":"2021/04/24/[MySQL]基础/","title":"[MySQL]基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[MySQL]基础 | 生灵</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">生灵</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>目录</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">数据模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">数据库的规范化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F-1NF"><span class="nav-number">2.1.</span> <span class="nav-text">第一范式(1NF)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F-2NF"><span class="nav-number">2.2.</span> <span class="nav-text">第二范式(2NF)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F-3NF"><span class="nav-number">2.3.</span> <span class="nav-text">第三范式(3NF)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BCNF"><span class="nav-number">2.4.</span> <span class="nav-text">BCNF</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.</span> <span class="nav-text">SQL语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80-DDL"><span class="nav-number">4.</span> <span class="nav-text">数据库定义语言(DDL)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E7%BA%A7%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">列级约束条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E7%9A%84%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6"><span class="nav-number">4.2.</span> <span class="nav-text">表的约束条件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80-DQL"><span class="nav-number">5.</span> <span class="nav-text">数据库查询语言(DQL)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%9A%E9%9B%86%E5%87%BD%E6%95%B0"><span class="nav-number">5.1.</span> <span class="nav-text">聚集函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E5%92%8C%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.2.</span> <span class="nav-text">分组和分页查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.3.</span> <span class="nav-text">多表查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E8%BA%AB%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.4.</span> <span class="nav-text">自身连接查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E9%93%BE%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.5.</span> <span class="nav-text">外链接查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.6.</span> <span class="nav-text">嵌套查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%94%E6%9F%A5"><span class="nav-number">5.7.</span> <span class="nav-text">联查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">7.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%88%97%E7%B4%A2%E5%BC%95"><span class="nav-number">7.1.</span> <span class="nav-text">单列索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E7%B4%A2%E5%BC%95"><span class="nav-number">7.2.</span> <span class="nav-text">组合索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">7.3.</span> <span class="nav-text">索引的底层原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash"><span class="nav-number">7.3.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B"><span class="nav-number">7.3.2.</span> <span class="nav-text">B+</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-number">8.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">8.1.</span> <span class="nav-text">事务的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%81%E6%9C%BA%E5%88%B6"><span class="nav-number">8.2.</span> <span class="nav-text">锁机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E9%94%81%E5%92%8C%E5%86%99%E9%94%81"><span class="nav-number">8.2.1.</span> <span class="nav-text">读锁和写锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E9%94%81%E3%80%81%E8%A1%A8%E9%94%81%E5%92%8C%E8%A1%8C%E9%94%81"><span class="nav-number">8.2.2.</span> <span class="nav-text">全局锁、表锁和行锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E9%94%81"><span class="nav-number">8.2.2.1.</span> <span class="nav-text">全局锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E9%94%81"><span class="nav-number">8.2.2.2.</span> <span class="nav-text">表锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%8C%E9%94%81"><span class="nav-number">8.2.2.3.</span> <span class="nav-text">行锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E9%94%81%E3%80%81%E9%97%B4%E9%9A%99%E9%94%81%E5%92%8C%E4%B8%B4%E5%81%A5%E9%94%81"><span class="nav-number">8.2.3.</span> <span class="nav-text">记录锁、间隙锁和临健锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E9%94%81"><span class="nav-number">8.2.3.1.</span> <span class="nav-text">记录锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%B4%E9%9A%99%E9%94%81"><span class="nav-number">8.2.3.2.</span> <span class="nav-text">间隙锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%B4%E5%81%A5%E9%94%81"><span class="nav-number">8.2.3.3.</span> <span class="nav-text">临健锁</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81"><span class="nav-number">8.3.</span> <span class="nav-text">乐观锁与悲观锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVCC"><span class="nav-number">8.4.</span> <span class="nav-text">MVCC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="nav-number">9.</span> <span class="nav-text">日志系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97"><span class="nav-number">9.1.</span> <span class="nav-text">重做日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%BB%9A%E6%97%A5%E5%BF%97"><span class="nav-number">9.2.</span> <span class="nav-text">回滚日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97"><span class="nav-number">9.3.</span> <span class="nav-text">二进制日志</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">10.</span> <span class="nav-text">存储过程</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ciallo～(∠・ω< )⌒☆​"
+      src="/images/dh.png">
+  <p class="site-author-name" itemprop="name">Ciallo～(∠・ω< )⌒☆​</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">目录</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/24/[MySQL]%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dh.png">
+      <meta itemprop="name" content="Ciallo～(∠・ω< )⌒☆​">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生灵">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[MySQL]基础 | 生灵">
+      <meta itemprop="description" content="MySQL 基础">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [MySQL]基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-24 14:27:05" itemprop="dateCreated datePublished" datetime="2021-04-24T14:27:05+08:00">2021-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-04-04 21:02:47" itemprop="dateModified" datetime="2023-04-04T21:02:47+08:00">2023-04-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">收录于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">MySQL 基础</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h1><p>数据模型与现实世界中的模型一样，是对现实世界数据特征的一种抽象。比如一个学生的特征暴扣姓名、年轻、学号等，这些特征被称为属性，属性具有以下特点：</p>
+<ul>
+<li>属性不可再分。</li>
+<li>一个实体的属性可以有很多歌。</li>
+<li>用于唯一区分不同实体的属性，称为key，比如每个学生的学号都是不一样的。</li>
+<li><p>属性取值可以有一定的约束，比如性别只能是男或女。</p>
+</li>
+<li><p>属性追安可以具有一定的联系：</p>
+<ul>
+<li>一个老师教很多学生就是一对多(1:n)</li>
+<li>学生与学好唯一对应(1:1)</li>
+<li>一个老师可以教多个学生，一个学生也可以有多个老师，多对多。(n:m)</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据库的规范化"><a href="#数据库的规范化" class="headerlink" title="数据库的规范化"></a>数据库的规范化</h1><h2 id="第一范式-1NF"><a href="#第一范式-1NF" class="headerlink" title="第一范式(1NF)"></a>第一范式(1NF)</h2><p>第一范式是指数据库的每一列都是不可分割的基本数据项，而下面这样的就存在可分割的情况：</p>
+<ul>
+<li>学生（姓名，电话号码）</li>
+</ul>
+<p>电话号码实际上包括了家用座机号码和移动电话，因此它可以拆分为：</p>
+<ul>
+<li>学生（姓名，座机号码，手机号码）</li>
+</ul>
+<p>满足第一范式是关系数据库最基本的要求。</p>
+<h2 id="第二范式-2NF"><a href="#第二范式-2NF" class="headerlink" title="第二范式(2NF)"></a>第二范式(2NF)</h2><p>第二范式要求表中必须存在逐渐，且其他属性必须完全依赖于主键，比如：</p>
+<ul>
+<li>学生(<u>学号</u>，姓名，性别)</li>
+</ul>
+<p>学号是每个学生的唯一标识，每个学生都有着不同的学号，因此次表中存在一个主键，并且每个学生的所有属性都依赖于学号，学号发生改变表示学生发生改变，姓名和性别都会因此改变，所以此表满足第二范式。</p>
+<h2 id="第三范式-3NF"><a href="#第三范式-3NF" class="headerlink" title="第三范式(3NF)"></a>第三范式(3NF)</h2><p>再满足第二范式的情况下，所有的属性都不传递依赖于主键，满足第三范式。</p>
+<ul>
+<li>学生借书情况(<u>借阅编号</u>，学生编号，书籍编号，书籍名称，书籍作者)</li>
+</ul>
+<p>实际上书籍编号依赖于借阅编号，而书籍名称和书籍作者依赖于书籍编号，因此存在传递依赖的情况，我们可以将书籍信息进行单独拆分为另一张表：</p>
+<ul>
+<li>学生借书情况(<u>借阅编号</u>，学生编号，书籍编号)</li>
+<li>书籍(<u>书籍编号</u>，书籍名称，书籍作者)</li>
+</ul>
+<p>这样就消除了传递依赖。从而满足第三范式</p>
+<h2 id="BCNF"><a href="#BCNF" class="headerlink" title="BCNF"></a>BCNF</h2><p>BCNF作为第三范式的补充。</p>
+<ul>
+<li>假设仓库管理关系表为StorehouseManage(仓库D,存储物品ID,管理员ID,数量)。</li>
+<li>且有一个管理员只在一个仓库工作;</li>
+<li>一个仓库可以存储多种物品。这个数据库表中存在如下决定关系:<ul>
+<li>(仓库ID，存储物品ID) -&gt; (管理员ID,数量)</li>
+<li>(管理员ID，存储物品ID) -&gt; (仓库ID，数量)<br>所以，(仓库ID，存储物品ID)和(管理员ID，存储物品ID)都是StorehouseManage的候选关键字，表中的唯一非关键字段为数量，它是符合第三范式的。但是由于存在如下决定关系：<br>(仓库ID) -&gt; (管理员ID)<br>(管理员ID) -&gt; (仓库ID)</li>
+</ul>
+</li>
+</ul>
+<p>即粗在关键字段决定关键字短的情况，如果修改管理员ID，那么就必须逐一进行修改，所以其不符合BCNF范式。</p>
+<h1 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h1><p>主要分为四类：</p>
+<ul>
+<li>数据查询语言(Data Query Language,DQL) 基本结构是由SELECT子句，FROM子句，WHERE子句组成的查询块</li>
+<li>数据操纵语言(Data Manipulation Language,DML)是SQL语言中，负责对数据库对象运行数据访问工作的指令集，以INSERT、UPDATE、DELETE三种指令为核心，分别代表插入、更新与删除，是开发以数据为中心的应用程席必定会使用到的指令。</li>
+<li>数据库定义语言DDL(Data Definition Language)，是用于描述数据库中要存储的现实世界实体的语言。</li>
+<li>DCL(Data ControlLanguage) 是数据库控制语言。是用来设置或更改数据库用户或角色权限的语句，包括(grant,deny,revoke等)语句。在默认状态下，只有sysadmin,dbcreatordb owner或db securityadmin等人员才有权力执行DCL.</li>
+</ul>
+<p>我们平时所说的CRUD其实就是增删改查 (Create/Retrieve/Update/Delete)</p>
+<h1 id="数据库定义语言-DDL"><a href="#数据库定义语言-DDL" class="headerlink" title="数据库定义语言(DDL)"></a>数据库定义语言(DDL)</h1><ul>
+<li>通过create database创建一个数据库：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database 数据库名</span><br></pre></td></tr></table></figure></li>
+<li>创建时设置编码格式来支持中文:<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> 数据库名 <span class="keyword">DEFAULT</span> CHARSET utf8 <span class="keyword">COLLATE</span> utf8_general_ci;</span><br></pre></td></tr></table></figure></li>
+<li>通过drop database 删除数据库<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database 数据库名</span><br></pre></td></tr></table></figure>
+<h2 id="列级约束条件"><a href="#列级约束条件" class="headerlink" title="列级约束条件"></a>列级约束条件</h2></li>
+<li>NOT NULL：指定列不能为空</li>
+<li>UNIQUE ：指定列中的值必须是唯一的，不能重复</li>
+<li>主键：指定列表为主键，可以唯一标识每一行数据。不能为NULL，且唯一</li>
+<li>外健：可以关联到另一张表中的主键列。外健列的值必须存在于关联表的主键列中，否则会出现出发关联失败的错误。</li>
+<li>CHECK检查： 指定列中的值必须满足指定条件。常见的条件包括大小、范围、正则表达式。(MySQL不支持)</li>
+<li>默认：指定列的默认值。</li>
+</ul>
+<h2 id="表的约束条件"><a href="#表的约束条件" class="headerlink" title="表的约束条件"></a>表的约束条件</h2><p>主键、外键、唯一、检查</p>
+<h1 id="数据库查询语言-DQL"><a href="#数据库查询语言-DQL" class="headerlink" title="数据库查询语言(DQL)"></a>数据库查询语言(DQL)</h1><h2 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h2><p>一般用于作统计，包括：</p>
+<ul>
+<li>count([distinct]*)统计所有的行数(distinct表示去重再统计，下同)。</li>
+<li>count([distinct]列名)统计某列的值的种类的总和.</li>
+<li>sum([distinct]列名)求一列的和。（注意必须是数字类型的）</li>
+<li>avg([distinct]列名)求一列的平均值。（注意必须是数字类型的）</li>
+<li>max([distinct]列名)求一列的最小值。</li>
+<li>min([distinct]列名)求一列的最大值。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">count</span>(<span class="keyword">distinct</span> 列名) <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 条件 </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="分组和分页查询"><a href="#分组和分页查询" class="headerlink" title="分组和分页查询"></a>分组和分页查询</h2><p>通过group by来对查询结果进行分组，它需要结合聚合函数一起使用：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">sum</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 条件 <span class="keyword">GROUP</span> <span class="keyword">BY</span> 列名</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>), sex <span class="keyword">FROM</span> student <span class="keyword">GROUP</span> <span class="keyword">BY</span> sex</span><br></pre></td></tr></table></figure><br><img src = "
+/JAVA/
+图片67.png
+" ></p>
+<ul>
+<li><p>通过having来限制条件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">sum</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 条件 <span class="keyword">GROUP</span> <span class="keyword">BY</span> 列名 <span class="keyword">HAVING</span> 约束条件</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>), sex <span class="keyword">FROM</span> student <span class="keyword">GROUP</span> <span class="keyword">BY</span> sex <span class="keyword">HAVING</span> sex <span class="operator">=</span> <span class="string">&#x27;男&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过limit来限制查询数量</p>
+</li>
+<li>只查询前三条<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表名 LIMIT 数量</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> student LIMIT <span class="number">3</span></span><br></pre></td></tr></table></figure></li>
+<li>分页<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表名 LIMIT 起始位置,数量</span><br></pre></td></tr></table></figure>
+一页显示2个，查第一页<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> student LIMIT <span class="number">0</span>,<span class="number">2</span></span><br></pre></td></tr></table></figure>
+第二页<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> student LIMIT <span class="number">1</span>,<span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><ul>
+<li><p>多表查询是同时查询的两个或两个以上的表，多表查询会提通过连接转换为单表查询。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表<span class="number">1</span>, 表<span class="number">2</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> student, teacher</span><br></pre></td></tr></table></figure>
+<p><img src = "
+/JAVA/
+图片50.png
+" ></p>
+</li>
+<li><p>直接这样查询会得到两张表的笛卡尔积，也就是每一项数据和另一张表的每一项数据都结合一次，会产生庞大的数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表<span class="number">1</span>, 表<span class="number">2</span> <span class="keyword">WHERE</span> 条件</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> student, teacher <span class="keyword">WHERE</span> sid <span class="operator">=</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><img src = "
+/JAVA/
+图片51.png
+" ></p>
+</li>
+</ul>
+<p>这样，只会从笛卡尔积的结果中得到满足条件的数据。</p>
+<h2 id="自身连接查询"><a href="#自身连接查询" class="headerlink" title="自身连接查询"></a>自身连接查询</h2><p>自身连接，就是将表本身和表进行笛卡尔积计算，得到结果，但由于表名相同，因此需要先起一个别名：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表名 别名<span class="number">1</span>, 表名 别名<span class="number">2</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> student s1, student s2 </span><br></pre></td></tr></table></figure></p>
+<p><img src = "
+/JAVA/
+图片52.png
+" ></p>
+<ul>
+<li>其实自身连接查询和前面的是一样的，只是连接对象变成自己和自己了。</li>
+</ul>
+<h2 id="外链接查询"><a href="#外链接查询" class="headerlink" title="外链接查询"></a>外链接查询</h2><ul>
+<li>专门用于联合查询情景的。</li>
+<li>比如现在有一个存储所有用户的表，还有一张用户详细信息的表，我希望将这两张表结合到一起来查看完整的数据，我们就可以通过使用外连接来进行查询。</li>
+<li>外连接有三种方式：<ul>
+<li>通过使用inner join进行内连接，只会返回两个表满足条件的交集部分：<br><img src = "
+/JAVA/
+图片53.png
+" ><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">INNER</span> <span class="keyword">JOIN</span> teach <span class="keyword">on</span> student.sid <span class="operator">=</span> teach.sid</span><br></pre></td></tr></table></figure>
+<img src = "
+/JAVA/
+图片54.png
+" ><br><img src = "
+/JAVA/
+图片55.png
+" ></li>
+<li>left join进行左连接，不仅会返回两个表满足条件的交集部分，也会返回左边表中的全部数据，而在右表中缺失的数据会使用null来代替(右连接同理)：<br><img src = "
+/JAVA/
+图片56.png
+" ><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> student <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> teach <span class="keyword">on</span> student.sid <span class="operator">=</span> teach.sid</span><br></pre></td></tr></table></figure>
+<img src = "
+/JAVA/
+图片57.png
+" ><br>连续左连接<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> student <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> teach <span class="keyword">on</span> student.sid <span class="operator">=</span> teach.sid</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> teacher  <span class="keyword">on</span> teach.tid <span class="operator">=</span> teacher.tid</span><br></pre></td></tr></table></figure>
+<img src = "
+/JAVA/
+图片58.png
+" ><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> student <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> teach <span class="keyword">on</span> student.sid <span class="operator">=</span> teach.sid</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> teacher  <span class="keyword">on</span> teach.tid <span class="operator">=</span> teacher.tid <span class="keyword">WHERE</span> teacher.name <span class="operator">=</span> <span class="string">&#x27;张三&#x27;</span></span><br></pre></td></tr></table></figure>
+<img src = "
+/JAVA/
+图片59.png
+" ></li>
+</ul>
+</li>
+</ul>
+<h2 id="嵌套查询"><a href="#嵌套查询" class="headerlink" title="嵌套查询"></a>嵌套查询</h2><ul>
+<li>我们可以将查询的结果作为另一个查询的条件，比如：<br>查找张三教的学生<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 列名 <span class="operator">=</span> (<span class="keyword">SELECT</span> 列名 <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 条件)</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sid <span class="keyword">in</span> (<span class="keyword">SELECT</span> sid <span class="keyword">FROM</span> teach <span class="keyword">WHERE</span> tid <span class="operator">=</span> (<span class="keyword">SELECT</span> tid <span class="keyword">from</span> teacher <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;张三&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<img src = "
+/JAVA/
+图片60.png
+" ></li>
+</ul>
+<h2 id="联查"><a href="#联查" class="headerlink" title="联查"></a>联查</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">FROM</span> student s <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> teach t <span class="keyword">on</span> s.sid <span class="operator">=</span> t.sid <span class="keyword">WHERE</span> tid <span class="operator">=</span> (<span class="keyword">SELECT</span> tid <span class="keyword">FROM</span> teacher <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;张三&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src = "
+/JAVA/
+图片61.png
+" ></p>
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><ul>
+<li>视图本质就是一个查询结果，不过我们每次都可以通过打开视图来按照我们想要的样子查看数据。</li>
+<li>既然视图的本质就是一个查询结果，那么它本身就是一个虚表，并不是真实存在的，数据实际上还是存放在原来的表中。</li>
+<li>可以通过create view来创建视图<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> 视图名称(列名) <span class="keyword">as</span> 子查询语句 [<span class="keyword">WITH</span> <span class="keyword">CHECK</span> OPTION];</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> test <span class="keyword">as</span> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sex <span class="operator">=</span> <span class="string">&#x27;男&#x27;</span></span><br></pre></td></tr></table></figure>
+<img src = "
+/JAVA/
+图片62.png
+" ></li>
+</ul>
+<ul>
+<li>创建后，我们就可以使用select语句来直接查询视图上的数据了，因此，还能在视图的基础上，导出其他的视图。<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> test</span><br></pre></td></tr></table></figure>
+<img src = "
+/JAVA/
+图片63.png
+" ><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> test <span class="keyword">set</span> name <span class="operator">=</span> <span class="string">&#x27;小蓝&#x27;</span> <span class="keyword">WHERE</span> sid <span class="operator">=</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<img src = "
+/JAVA/
+图片64.png
+" ><br><img src = "
+/JAVA/
+图片65.png
+" ></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> test <span class="keyword">as</span> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sex <span class="operator">=</span> ‘男’ <span class="keyword">WITH</span> <span class="keyword">CHECK</span> OPTION</span><br></pre></td></tr></table></figure>
+<ul>
+<li>WITH CHECK OPTION是指当创建后，如果更新视图中的数据，是否要满足子查询中的条件表达式，不满足将无法插入.<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> test <span class="keyword">SET</span> sex <span class="operator">=</span> <span class="string">&#x27;女&#x27;</span> <span class="keyword">WHERE</span> sid <span class="operator">=</span> <span class="number">1</span></span><br></pre></td></tr></table></figure></li>
+<li>无法更改，报错：1369 - CHECK OPTION failed ‘learn.test’。即限定条件是sex=男，不能更改这个限定数据变成其他的，改成男的可以。</li>
+<li><p>若视图是由两个及以上基本表导出的，则此试图不允许更新。</p>
+<ul>
+<li>创建两个表的视图：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> test <span class="keyword">as</span> <span class="keyword">SELECT</span> s.sid sid, name ,sex ,tid <span class="keyword">FROM</span> student s <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> teach t <span class="keyword">on</span> s.sid <span class="operator">=</span> t.sid </span><br></pre></td></tr></table></figure></li>
+<li>不能使用 *，因为两张表都有sid<br><img src = "
+/JAVA/
+图片66.png
+" ></li>
+</ul>
+</li>
+<li><p>若视图的字段来自字段表达式或常数，则不允许对此视图执行INSERT和UPDATE操作，但允许执行DELETE操作。</p>
+</li>
+<li>若视图的字段来自集函数，则此视图不允许更新。</li>
+<li>若视图定义中含有GROUP BY子句，则此视图不允许更新。</li>
+<li>若视图定义中含有DISTINCT短语，则此视图不允许更新。</li>
+<li>若视图定义中有嵌套查询，并且内层查询的FROM子句中涉及的表也是导出该视图的基本表，则此视图不允许更新。例如将成绩在平均成绩之上的元组定义成一个视图GOOD_SC： CREATE VIEW GOOD_SC AS SELECT Sno, Cno, Grade FROM SC WHERE Grade &gt; (SELECT AVG(Grade) FROM SC); 　　导出视图GOOD_SC的基本表是SC，内层查询中涉及的表也是SC，所以视图GOOD_SC是不允许更新的。</li>
+<li>一个不允许更新的视图上定义的视图也不允许更新。</li>
+</ul>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><ul>
+<li>在数据量非常庞大时，通过创建索引，来提高我们的查询效率。</li>
+<li>就像Hash一样，他能快速地定位到元素存放的位置。<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建索引</span></span><br><span class="line"><span class="keyword">CREATE</span> INDEX 索引名称 <span class="keyword">ON</span> 表名 (列名)</span><br><span class="line"><span class="keyword">CREATE</span> INDEX i <span class="keyword">ON</span> student(name)</span><br><span class="line"><span class="comment">-- 查看表中的索引</span></span><br><span class="line"><span class="keyword">show</span> INDEX <span class="keyword">FROM</span> student</span><br></pre></td></tr></table></figure>
+<img src = "
+/JAVA/
+图片68.png
+" ></li>
+</ul>
+<h2 id="单列索引"><a href="#单列索引" class="headerlink" title="单列索引"></a>单列索引</h2><p>单列索引只针对某一列数据创建索引，单列索引有以下几种类型：</p>
+<ul>
+<li>NORMAL：普通索引，完完全全相当于一本书的目录。</li>
+<li>UNIQUE：唯一索引，一旦建立，那么整个列中将不允许出现重复数据。每个表的主键列，都有一个特殊的唯一索引，叫做Primary Key，它不仅仅要求不允许出现重复，还要求不能为NULL，它还可以自动递增。每张表可以有多个唯一索引，但是只能有一个Primary索引。</li>
+<li>SPATIAL：空间索引，对空间数据类型的字段建立的索引，MYSQL中的空间索引有四种。</li>
+<li>FULLTEXT：全文索引，它是模糊匹配的一种更好的解决方案，它的效率比使用like更高，并且还支持多种匹配方式，灵活性也更加强大，只有字段的数据类型为char、varchar、text及其系列才可以建立全文索引。</li>
+</ul>
+<p>我们来看看如何使用全文索引，首先创建一张用于测试全文索引的表：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> articles (</span><br><span class="line">  id <span class="type">INT</span> UNSIGNED AUTO_INCREMENT <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">  title <span class="type">VARCHAR</span>(<span class="number">200</span>),</span><br><span class="line">  body TEXT,</span><br><span class="line">  FULLTEXT (body));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> articles <span class="keyword">VALUES</span></span><br><span class="line">	(<span class="keyword">NULL</span>,<span class="string">&#x27;MySQL Tutorial&#x27;</span>, <span class="string">&#x27;DBMS stands for DataBase ...&#x27;</span>),</span><br><span class="line">	(<span class="keyword">NULL</span>,<span class="string">&#x27;How To Use MySQL Efficiently&#x27;</span>, <span class="string">&#x27;After you went through a ...&#x27;</span>),</span><br><span class="line">	(<span class="keyword">NULL</span>,<span class="string">&#x27;Optimising MySQL&#x27;</span>,<span class="string">&#x27;In this tutorial we will show ...&#x27;</span>),</span><br><span class="line">	(<span class="keyword">NULL</span>,<span class="string">&#x27;1001 MySQL Tricks&#x27;</span>,<span class="string">&#x27;1. Never run mysqld as root. 2. ...&#x27;</span>),</span><br><span class="line">	(<span class="keyword">NULL</span>,<span class="string">&#x27;MySQL vs. YourSQL&#x27;</span>, <span class="string">&#x27;In the following database comparison ...&#x27;</span>),</span><br><span class="line">	(<span class="keyword">NULL</span>,<span class="string">&#x27;MySQL Security&#x27;</span>, <span class="string">&#x27;When configured properly, MySQL ...&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure><br><img src = "
+/JAVA/
+图片69.png
+" ></p>
+<ul>
+<li><p>使用全文索引进行模糊匹配</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span><span class="keyword">FROM</span> articles <span class="keyword">WHERE</span> <span class="keyword">MATCH</span>(body) AGAINST (<span class="string">&#x27;database&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src = "
+/JAVA/
+图片70.png
+" ></p>
+</li>
+<li><p>match中就是必须是哪些字段，against中定义需要模糊匹配的字符。</p>
+</li>
+<li>我们用作查找的字符串实际上是被分词之后的结果。</li>
+<li>如果进行模糊匹配的不是一个词语，那么会查找失败，但是它的效率远高于以下这种写法：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> articles <span class="keyword">WHERE</span> body <span class="keyword">like</span> <span class="string">&#x27;%database%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="组合索引"><a href="#组合索引" class="headerlink" title="组合索引"></a>组合索引</h2><ul>
+<li>组合索引实际上就是将多行捆绑在一起，作为一个索引，同样支持以上几种索引类型。</li>
+<li>注意组合索引进行匹配时，遵循最左原则。</li>
+<li>唯一索引时只要有一个数据不一样就可以插入。</li>
+</ul>
+<h2 id="索引的底层原理"><a href="#索引的底层原理" class="headerlink" title="索引的底层原理"></a>索引的底层原理</h2><ul>
+<li>索引是存储在硬盘上的，跟我们之前使用的HashMap之类的不同，它们都是在内存中的，但是硬盘的读取速度远小于内存的速度，每一次IO操作都会耗费大量的时间。</li>
+<li>我们也不可能把整个磁盘上的索引全部导入内存，因此我们需要考虑尽可能多的减少IO次数，索引的实现可以依靠两种数据结构，一种是我们在JavaSE阶段已经学习过的Hash表，还有一种就是B-Tree。</li>
+</ul>
+<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><p><img src = "
+/JAVA/
+图片71.png
+" ></p>
+<p>通过对Key进行散列值计算，我们可以直接得到对应数据的存放位置，它的查询效率能够达到O(1)，但是它也存在一定的缺陷：</p>
+<ul>
+<li>Hash索引仅仅能满足“=”，“in”查询条件，不能使用范围查询。</li>
+<li>Hash碰撞问题。</li>
+<li>不同用部分索引健来搜索，因为组合索引在计算哈希值时时一起计算的。</li>
+</ul>
+<h3 id="B"><a href="#B" class="headerlink" title="B+"></a>B+</h3><p><img src = "
+/JAVA/
+图片72.png
+" ></p>
+<ul>
+<li>有n棵子树的结点中含有n个健值。</li>
+<li>所有的键值信息只在叶子节点中包含，非叶子节点仅仅保存节点的最小值(或最大值)，和指向叶子节点的指针。</li>
+<li>所有的叶子节点都有一个根据大小顺序只想下一个叶子节点的指针Q，本质上数据就是一个链表。</li>
+</ul>
+<p>这样，读取IO的时间相比BTree就减少了很多，并且查询任何键值信息都需要完整地走到叶子节点，保证了查询的IO读取次数一致。因此MySQL默认选择B+Tree作为索引的存储数据结构。</p>
+<ul>
+<li><p>这是MyISAM存储引擎下的B+Tree实现：<br><img src = "
+/JAVA/
+图片73.png
+" ></p>
+</li>
+<li><p>这是InnoDB存储引擎下的B+Tree实现：<br><img src = "
+/JAVA/
+图片74.png
+" ></p>
+</li>
+<li><p>区别：</p>
+<ul>
+<li>主键：InnoDB直接存数据，MyISAM存的是地址。数据本身就是索引的一部分（所以这里建议主键使用自增）。</li>
+<li>不是主键：最后存的是主键ID。（因此InnoDB必须有主键，若没有也会自动查找替代）。</li>
+</ul>
+</li>
+</ul>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><ul>
+<li>当我们要进行的操作非常多时，比如要依次删除很多个表的数据，我们就需要大量的SQL语句来完成。</li>
+<li>这些数据库操作语句就可以构成一个事务。</li>
+<li>只有Innodb引擎支持事务。</li>
+</ul>
+<h2 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h2><ul>
+<li>原子性：<ul>
+<li>一个事务(transaction)中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。</li>
+<li>事务在执行过程中发生错误，会被回滚(Rollback)到事务开始前的状态，就像这个事务从来没有执行过一样。</li>
+</ul>
+</li>
+<li>一致性：<ul>
+<li>在事务开始之前和结束之后，数据库的完整性没有被破坏。</li>
+<li>这表示写入的资料必须完全符合所有预设规则，包括资料的精确度，串联性以及后续数据库可以自发性地完成预定的工作。</li>
+</ul>
+</li>
+<li>隔离性：<ul>
+<li>数据库运去多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行由于交叉执行导致数据的不一致。</li>
+<li>事务隔离分为不同级别，包括未提交，读提交，可重复读和串行化。</li>
+</ul>
+</li>
+<li>持久性：事务处理结束后，对数据的修改就是永久的，即使系统故障也不会丢失。</li>
+</ul>
+<h2 id="锁机制"><a href="#锁机制" class="headerlink" title="锁机制"></a>锁机制</h2><p>在MySQL中，很容易出现多线程同时操作表中数据的情况，如果要避免潜在的并发问题，那么我们就可以使用事务隔离机制来处理，就用到了锁机制。<br>隔离级别包括：</p>
+<ul>
+<li>读未提交：能够读取到其他事务中未提交的内容，存在脏读问题。<ul>
+<li>脏读：假设有两个事务T1和T2，T1在执行的过程中，读取到了T2未提交的数据，这时如果T2回滚了，那么T1读取到的数据是不一致的。</li>
+</ul>
+</li>
+<li>读已提交：只能读取到其他事务已经提交的内容，避免了脏读的问题，但存在不可重复读的问题。<ul>
+<li>不可重复读问题：在同一个事务中，多次读取同一行数据时，得到的结果不同。这时因为在两次读取之间，另一个事务修改了这一行的数据，导致了第一次读取和第二次读取的结果不同。</li>
+</ul>
+</li>
+<li>可重复读：在读取某行后不允许其他事务操作此行，直到事务结束，但是依然存在幻读问题。<ul>
+<li>幻读：在一个事务中多次执行同一个查询，但得到结果却不同。这是因为在两次查询之间，有另一个数据提交了一些新的数据，导致查询结果发生了变化。可重复读只限制了update，但未限制insert。</li>
+</ul>
+</li>
+<li>串行读：一个事务的开始必须等待另一个事务的完成。</li>
+</ul>
+<p>在RR级别下，MySQL在一定程度上解决了幻读问题：</p>
+<ul>
+<li>在快照读(不加锁)读情况下，mysql通过mvcc来避免幻读。</li>
+<li>在当前读(加锁)读情况下，mysql通过next-key来避免幻读。</li>
+</ul>
+<blockquote>
+<p>MVCC，全称 Multi-Version Concurrency Control ，即多版本并发控制。MVCC 是一种并发控制的方法，一般在数据库管理系统中，实现对数据库的并发访问，在编程语言中实现事务内存。</p>
+</blockquote>
+<h3 id="读锁和写锁"><a href="#读锁和写锁" class="headerlink" title="读锁和写锁"></a>读锁和写锁</h3><p>从对数据的操作类型上来说，锁分为读锁和写锁：</p>
+<ul>
+<li>读锁：也叫共享锁，当一个事务添加了读锁后，其他的事务也可以添加读锁或是读取数据，但是不能进行写操作，只能等到所有的读锁全部释放。</li>
+<li>写锁：也叫排他锁，当一个书屋添加了写锁后，其他事务不能读也不能写也不能添加任何锁，只能等待当前事务释放锁。</li>
+</ul>
+<h3 id="全局锁、表锁和行锁"><a href="#全局锁、表锁和行锁" class="headerlink" title="全局锁、表锁和行锁"></a>全局锁、表锁和行锁</h3><p>从锁的作用范围上划分，分为全局锁、表锁和行锁：</p>
+<ul>
+<li>全局锁：作用于全局，整个数据库的所有操作全部受到锁限制。</li>
+<li>表锁：作用于整个表，所有对表的操作都会受到锁的下肢。</li>
+<li>行锁：作用于表中的某一行，只会通过锁限制对某一行的操作。（仅InnoDB支持）</li>
+</ul>
+<h4 id="全局锁"><a href="#全局锁" class="headerlink" title="全局锁"></a>全局锁</h4><p>我们首先来看全局锁，它作用于整个数据库，我们可以使用以下命令来开启读全局锁：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush tables <span class="keyword">with</span> read lock;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>开启后，整个数据库被上读锁，我们只能去读数据，但是不允许写数据。（包括更新、插入、删除等）一旦执行写操作，会被阻塞，直到锁被释放，我们可以使用以下命令来解锁：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unlock tables;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>除了手动释放锁之外，当我们的会话结束后，锁也会被自动释放。</p>
+</li>
+</ul>
+<h4 id="表锁"><a href="#表锁" class="headerlink" title="表锁"></a>表锁</h4><ul>
+<li>表锁作用于某一张表，也是MyISAM和InnoDB存储引擎支持的方式，我们可以使用以下命令来为表添加锁：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lock <span class="keyword">table</span> 表名称 read<span class="operator">/</span>write;</span><br></pre></td></tr></table></figure></li>
+<li>在我们为表添加写锁后，我们发现其他地方是无法访问此表的，一律都被阻塞。</li>
+</ul>
+<h4 id="行锁"><a href="#行锁" class="headerlink" title="行锁"></a>行锁</h4><ul>
+<li>表锁的作用范围太广了，如果我们仅仅只是对某一行进行操作，那么大可不必对整个表进行加锁，因此InnoDB支持了行锁，我们可以使用以下命令来对某一行进行加锁：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 添加读锁（共享锁）</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> ... lock <span class="keyword">in</span> share mode;</span><br><span class="line"><span class="comment">-- 添加写锁（排他锁）</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> ... <span class="keyword">for</span> <span class="keyword">update</span>;</span><br></pre></td></tr></table></figure></li>
+<li>使用InnoDB的情况下，在执行更新、删除、插入操作时，数据库也会自动为所设计的行添加写锁(排他锁)，直到事务提交时，才会释放锁。</li>
+<li>执行普通的查询操作时，不会添加任何锁。</li>
+<li><p>在使用MyISAM的情况下，在执行更新、删除、插入操作时，数据库会对设计的表添加写锁，在执行查询操作时，数据库会对设计的表添加读锁。</p>
+</li>
+<li><p>如果不使用ID进行选择，行锁将发生变化(行锁升级)：</p>
+<ul>
+<li><pre><code class="lang-SQL">  select * from student where name = &#39;小明&#39; lock in share mode;
+</code></pre>
+  其他人的信息也无法进行修改。</li>
+<li>因为没有索引，他不知道SQL语句的是哪一行，锁会升级成类似于表锁。</li>
+<li>添加索引就可以了。</li>
+</ul>
+</li>
+<li><p>行锁需要索引。</p>
+</li>
+</ul>
+<h3 id="记录锁、间隙锁和临健锁"><a href="#记录锁、间隙锁和临健锁" class="headerlink" title="记录锁、间隙锁和临健锁"></a>记录锁、间隙锁和临健锁</h3><p>行锁可以继续分为多个类型</p>
+<h4 id="记录锁"><a href="#记录锁" class="headerlink" title="记录锁"></a>记录锁</h4><p>（Record Locks）记录锁。</p>
+<ul>
+<li>仅仅锁住索引记录的一行。</li>
+<li>Record Locks锁住的永远是索引，而非记录本身，即使该表上没有任何索引，那么innodb会在后台创建一个隐藏的聚集主键索引，那么锁住的就是这个隐藏的聚集主键索引。</li>
+<li>当一条sql没有走任何索引时，那么将会在每一条聚合索引后面加写锁，这个类似于表锁，但在原理上和表锁不同。</li>
+</ul>
+<h4 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h4><ul>
+<li>（Gap Locks）仅仅锁住一个索引区间（开区间，不包括双端端点）。</li>
+<li>在索引记录之间的间隙中加锁，或者是在某一条索引记录之前或者之后加锁，并不包括索引记录本身。</li>
+<li>比如在 1、2中，间隙锁的可能值有 (-∞, 1)，(1, 2)，(2, +∞)，间隙锁可用于防止幻读，保证索引间的不会被插入数据。</li>
+</ul>
+<h4 id="临健锁"><a href="#临健锁" class="headerlink" title="临健锁"></a>临健锁</h4><ul>
+<li>（Next-Key Locks）Record lock + Gap lock，左开右闭区间。</li>
+<li>默认情况下，InnoDB正是使用Next-key Locks来锁定记录（如select … for update语句）它还会根据场景进行灵活变换：<br><img src = "
+/JAVA/
+图片75.png
+" ></li>
+<li>假设数据库有10条数据，事务中修改第100条，查询不到，变成间隙锁，此时锁(10, +∞)数据，10和10之前的还可以修改，但不可插入新数据。</li>
+</ul>
+<h2 id="乐观锁与悲观锁"><a href="#乐观锁与悲观锁" class="headerlink" title="乐观锁与悲观锁"></a>乐观锁与悲观锁</h2><ul>
+<li>乐观锁：是一种基于版本号(或时间戳)的并发控制策略。<ul>
+<li>假设数据在一般情况下不会发生冲突，因此对数据的读取和修改操作并不加锁。</li>
+<li>而是在数据更新的时候，对数据版本进行比对，如果版本号不一致，则说明数据依据被其他事务修改过，此时会回滚事务，重新读取数据进行修改。</li>
+<li>适用于多读少写的场景，可以提高并发性能。</li>
+</ul>
+</li>
+<li>悲观锁：是一种基于锁的并发控制策略：<ul>
+<li>假设数据在一般情况下可能发生冲突，因此在进行数据读取和修改操作时，会先对数据进行加锁。</li>
+<li>其他事务此时无法对该数据进行操作，直到锁被释放。</li>
+<li>适用于多写少读的场景，可以保证数据的一致性。</li>
+</ul>
+</li>
+</ul>
+<h2 id="MVCC"><a href="#MVCC" class="headerlink" title="MVCC"></a>MVCC</h2><p>是一种多版本并发控制技术，用于实现数据库系统的并发控制和事务隔离。</p>
+<ul>
+<li>基于乐观锁的思想，通过在数据行中保存多个版本的数据，使得每个数据在读取数据的时候都可以读取到一个对应版本的数据，从而避免了数据的冲突和并发反问的问题。</li>
+<li>在MVCC中，每个事务可以读取到自己开始之前提交的数据版本，但是无法读取到其他书屋还未提交的数据版本。</li>
+</ul>
+<p>在MySQL中，MVCC主要通过以下两种方式实现：</p>
+<ul>
+<li>Undo日志：<ul>
+<li>在更新操作时，会先记录原来的数据，称为Undo日志。</li>
+<li>当有事务需要读取数据时，MySQL会根据事务的隔离级别，在日志中找到对应的版本数据，并将其返回给事务进行操作。</li>
+</ul>
+</li>
+<li>Read View：<ul>
+<li>事务在执行过程中维护的一个数据视图，包含了事务开始之前已经提交的所有数据版本。</li>
+<li>当事务需要读取数据时，会根据事务的隔离级别，生成一个ReadView，并将其作为参数传递给存储引擎</li>
+<li>读取数据时至返回符合ReadView条件的数据版本，从而实现了MVCC的效果。</li>
+</ul>
+</li>
+</ul>
+<h1 id="日志系统"><a href="#日志系统" class="headerlink" title="日志系统"></a>日志系统</h1><p>日志可以保证数据的一致性和可靠性，并提供数据恢复和复制功能。</p>
+<p>InnoDB存储引擎提供了多种日志，包括重做日志(Redo Log)、回滚日志(Undo Log)、二进制日志等。</p>
+<h2 id="重做日志"><a href="#重做日志" class="headerlink" title="重做日志"></a>重做日志</h2><ul>
+<li>用于恢复记录，记录了每个事务对数据所做的修改。</li>
+<li>当系统出现异常时，通过重做日志可以将系统恢复到最新的状态。</li>
+</ul>
+<h2 id="回滚日志"><a href="#回滚日志" class="headerlink" title="回滚日志"></a>回滚日志</h2><ul>
+<li>用于事务回滚和MVCC功能的实现，记录了事务所做的操作修改的逆操作。</li>
+<li>当一个事务需要回滚时，通过回滚日志可以将数据恢复到修改前的状态。</li>
+<li>InnoDB shying回滚段来回滚日志。</li>
+</ul>
+<h2 id="二进制日志"><a href="#二进制日志" class="headerlink" title="二进制日志"></a>二进制日志</h2><ul>
+<li>用于复制和恢复数据。</li>
+<li>在主从复制场景下，主服务器将数据修改操作写入二进制日志，从服务器读取二进制日志并执行相应操作以保证数据同步。</li>
+<li>在数据恢复场景下，通过重放二进制日志可以将数据恢复到特定的时间点货状态。</li>
+</ul>
+<h1 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h1><ul>
+<li>存储过程是一个包含多条SQL语句的集合，专用于特性操作。</li>
+<li>比如我们之前创建用户，那么我们就需要一次性为两张表添加数据，如果使用SQL，则需要敲两次，非常麻烦。</li>
+<li>因此我们可以提前将这些操作定义好，预留出需要填写数据的位置，下次输入参数直接调用即可。</li>
+<li>这里很容易与函数混淆，存储过程也是执行多条SQL语句，但是它们的出发点不一样。</li>
+<li>函数是专用于数据处理，并将结果返回给调用者，它更多的情况下是一条SQL语句的参与者，无法直接运行，并且不涉及某个特定表。</li>
+<li>而存储过程是多条SQL语句的执行着，这是它们的本质区别。</li>
+<li>定义存储过程与定义函数类似，它也可以包含函数，函数中使用的语句这里也能使用，但是它没有返回值：</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/24/%5BMySQL%5D%E7%B4%A2%E5%BC%95/" rel="prev" title="[MySQL]索引">
+                  <i class="fa fa-chevron-left"></i> [MySQL]索引
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/24/%5BJVM%5DJVM/" rel="next" title="[JVM]JVM">
+                  [JVM]JVM <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTkwNy8zMjM3MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>
