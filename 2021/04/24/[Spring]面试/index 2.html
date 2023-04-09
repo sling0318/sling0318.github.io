@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Spring面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Spring]基础">
+<meta property="og:url" content="http://example.com/2021/04/24/[Spring]%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="生灵">
+<meta property="og:description" content="Spring面试">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-24T06:26:05.000Z">
+<meta property="article:modified_time" content="2023-04-08T13:07:06.998Z">
+<meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
+<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/04/24/[Spring]%E9%9D%A2%E8%AF%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/04/24/[Spring]%E9%9D%A2%E8%AF%95/","path":"2021/04/24/[Spring]面试/","title":"[Spring]基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[Spring]基础 | 生灵</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">生灵</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>目录</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC"><span class="nav-number">1.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringMVC"><span class="nav-number">2.</span> <span class="nav-text">SpringMVC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">3.</span> <span class="nav-text">Bean的生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="nav-number">4.</span> <span class="nav-text">Spring的核心</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC"><span class="nav-number">4.1.</span> <span class="nav-text">IoC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP"><span class="nav-number">4.2.</span> <span class="nav-text">AOP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring%E5%AE%B9%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">Spring容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BeanFactory"><span class="nav-number">5.1.</span> <span class="nav-text">BeanFactory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ApplocationContext"><span class="nav-number">5.2.</span> <span class="nav-text">ApplocationContext:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BeanFactory-1"><span class="nav-number">6.</span> <span class="nav-text">BeanFactory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring%E6%98%AF%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86Bean%E7%9A%84"><span class="nav-number">7.</span> <span class="nav-text">Spring是如何管理Bean的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">8.</span> <span class="nav-text">SpringBoot的理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">9.</span> <span class="nav-text">SpringBoot的启动流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%B4"><span class="nav-number">9.1.</span> <span class="nav-text">简单的说</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sprigboot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D"><span class="nav-number">10.</span> <span class="nav-text">Sprigboot自动装配</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ciallo～(∠・ω< )⌒☆​"
+      src="/images/dh.png">
+  <p class="site-author-name" itemprop="name">Ciallo～(∠・ω< )⌒☆​</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">目录</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/24/[Spring]%E9%9D%A2%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dh.png">
+      <meta itemprop="name" content="Ciallo～(∠・ω< )⌒☆​">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生灵">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[Spring]基础 | 生灵">
+      <meta itemprop="description" content="Spring面试">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [Spring]基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-24 14:26:05" itemprop="dateCreated datePublished" datetime="2021-04-24T14:26:05+08:00">2021-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-04-08 21:07:06" itemprop="dateModified" datetime="2023-04-08T21:07:06+08:00">2023-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">收录于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">Spring面试</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h1><p>MVC是一种设计模式，将软件分成三层：模型层、视图层、控制器层。</p>
+<ul>
+<li>模型层代表数据。</li>
+<li>视图层代表界面。</li>
+<li>控制器层代表的是逻辑处理，是连接视图与模型之间的桥梁。</li>
+</ul>
+<h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><p><img src = "
+/JAVA/
+图片94.png
+" ></p>
+<ul>
+<li><ol>
+<li>用户点击某个请求路径，会发起一个HTTPrequest请求，该请求会被提交到DispatcherServlet(前端控制器)。</li>
+</ol>
+</li>
+<li><ol>
+<li>由DispatcherServlet请求一个或多个HandlerMapping(处理器映射)，并返回一个执行链。</li>
+</ol>
+</li>
+<li><ol>
+<li>DispatcherServle将执行链返回的Handler信息发送给HandlerAdapter。</li>
+</ol>
+</li>
+<li><ol>
+<li>HandlerAdapter根据Handler信息找到执行相应的Handler(或者说Controller)。</li>
+</ol>
+</li>
+<li><ol>
+<li>Handler执行完毕后给HandlerAdapter一个ModeAndView对象(Spring MVC的底层对象，包括Model数据模型和View视图信息)。</li>
+</ol>
+</li>
+<li><ol>
+<li>HandlerAdapter接收到ModelAndView对象后，将其返回给DispatcherServle。</li>
+</ol>
+</li>
+<li><ol>
+<li>DispatcherServle接收到ModelAndView后，请求ViewResolver(视图解析器)对视图进行解析。</li>
+</ol>
+</li>
+<li><ol>
+<li>ViewResolver根据View匹配相应的视图结果，返回给DispatcherServle。</li>
+</ol>
+</li>
+<li><ol>
+<li>DispatcherServle接收到具体的View视图后，渲染视图，将Model中的模型数据填充到View视图中的request域，生成最终的View。</li>
+</ol>
+</li>
+<li><ol>
+<li>视图负责将结果显示到浏览器(客户端)。s s</li>
+</ol>
+</li>
+</ul>
+<h1 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h1><ul>
+<li>创建：<ul>
+<li>Spring启动，查找并加载所需的Bean，然后初始化。</li>
+</ul>
+</li>
+<li><p>初始化：</p>
+<ul>
+<li>对Bean进行依赖注入。</li>
+<li>如果Bean中实现了BeanNameAware接口(@Resouce、@Qualifiter),Spring会将Bean的Id传入SeBeanName方法去执行。<ul>
+<li>Aware接口：实现了Aware接口的bean在被初始化之后，可以获取相应资源。Aware的中文意思为感知。</li>
+</ul>
+</li>
+<li>如果Bean实现了BeanFactoryAware接口，Spring会调用Bean的setBeanFactory方法将BeanFactory的ioc容器传入。</li>
+</ul>
+</li>
+<li><p>调用：</p>
+<ul>
+<li>正常使用</li>
+</ul>
+</li>
+<li>销毁：<ul>
+<li>容器关闭时，调用Bean的销毁方法。</li>
+</ul>
+</li>
+</ul>
+<p>这个过程主要有Spring自己来管理，但是我们可以自定义初始化方法和销毁方法。<br>总结：</p>
+<ul>
+<li>[Bean定义]首先扫描Bean，加载Bean定义 -&gt; </li>
+<li>[Bean定义]Bean定义和Bean工厂后置处理 -&gt;</li>
+<li>[依赖注入]根据Bean定义通过反射创建Bean实例 -&gt; </li>
+<li>[依赖注入]进行依赖注入（顺便解决循环依赖问题）-&gt; </li>
+<li>[初始化Bean]BeanPostProcessor的初始化之前方法 -&gt; </li>
+<li>[初始化Bean]Bean初始化方法 -&gt; </li>
+<li>[初始化Bean]BeanPostProcessor的初始化之前后方法 -&gt; </li>
+<li>[完成]最终得到的Bean加载完成的实例</li>
+</ul>
+<h1 id="Spring的核心"><a href="#Spring的核心" class="headerlink" title="Spring的核心"></a>Spring的核心</h1><h2 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h2><ul>
+<li>IoC是控制反转的意思，是一种面向对象编程的设计思想。他帮我们维护了对象与对象之间的依赖关系，降低对象之间的耦合度。</li>
+<li>依赖注入是Ioc的实现方式。，它的本质是一个工厂。<br>具体的实现中，主要有三种注入方式:</li>
+<li><ol>
+<li>构造方法注入</li>
+</ol>
+</li>
+<li><ol>
+<li>setter方法注入。</li>
+</ol>
+</li>
+<li><ol>
+<li>接口注入</li>
+</ol>
+</li>
+</ul>
+<h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><ul>
+<li>面向切面编程。原理是通过动态代理实现的。</li>
+<li>他将程序抽象成各个切面。可实现业务逻辑与系统逻辑的分离。</li>
+</ul>
+<h1 id="Spring容器"><a href="#Spring容器" class="headerlink" title="Spring容器"></a>Spring容器</h1><h2 id="BeanFactory"><a href="#BeanFactory" class="headerlink" title="BeanFactory"></a>BeanFactory</h2><ul>
+<li>是基础类型的Ioc容器，提供完整的Ioc服务支持。</li>
+<li>如果没有特殊指定，默认采用延迟初始化策略。(懒汉模式)<ul>
+<li>只有当客户端对象需要访问容器中某个受管对象的时候，才会对这个对象进行初始化以及依赖注入操作。</li>
+</ul>
+</li>
+</ul>
+<h2 id="ApplocationContext"><a href="#ApplocationContext" class="headerlink" title="ApplocationContext:"></a>ApplocationContext:</h2><ul>
+<li>它是在BeanFactory的基础上构造的。拥有BeanFactory的所有实现。</li>
+<li>它的管理的对象在该类容器启动之后，默认全部初始化并完成绑定。</li>
+</ul>
+<h1 id="BeanFactory-1"><a href="#BeanFactory-1" class="headerlink" title="BeanFactory"></a>BeanFactory</h1><ul>
+<li>它是一个工厂，与传统类工不同的是，它是类的通用工厂，可以创建并管理各种类的对象。</li>
+<li>BeanFactory是Spring容器的顶层接口。</li>
+</ul>
+<h1 id="Spring是如何管理Bean的"><a href="#Spring是如何管理Bean的" class="headerlink" title="Spring是如何管理Bean的"></a>Spring是如何管理Bean的</h1><ul>
+<li>通过Ioc容器管理Bean，</li>
+<li>一般会采用XML或者注解的方法，现在大多数时候会使用注解配置方式:<ul>
+<li>1.@ComponentScan用于生命扫描测量。</li>
+<li>2.@Component、@Repository、@Service、@Controller用于声明Bean，它们的作用一样，但是语义不同：<ul>
+<li>@Component用于声明通用的Bean。</li>
+<li>@Repository用于声明DAO层的Bean。</li>
+<li>@Service用于声明业务层的Bean。</li>
+<li>@Controller用于声明是吐槽的控制器Bean。</li>
+<li>被这些注解声明的类可以被容器扫描并创建。</li>
+</ul>
+</li>
+<li>3.@Autowired、@Qualifier用于注入Bean，即告诉容器当前属性注入到哪个Bean中。<ul>
+<li>@Autowired：只能按照类型注入。也可以通过@Qualifier指定类的名称，消除歧义。</li>
+<li>@Resource:默认按照名称注入，如果指定了name属性，则按照指定的名称注入；没有则按照属性名称进行匹配。</li>
+</ul>
+</li>
+<li>4.@Scope用于声明Bean的作用域：<ul>
+<li>默认情况下Bean是单例的，即在整个容器中这个类型只有一个实例。</li>
+<li>peototype:声明为多例。</li>
+<li>seeesion：同一个HttpsSession共享一个bean，不同的Sesiion使用不同的Ben。</li>
+<li>request：每次请求都会创建一个新的Bean。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="SpringBoot的理解"><a href="#SpringBoot的理解" class="headerlink" title="SpringBoot的理解"></a>SpringBoot的理解</h1><ul>
+<li>从本质上来说，SpringBoot就是Spring，帮助我完成了一些SpringBean的配置。</li>
+<li>使用”习惯优于配置”的理念让你的项目快速地运行起来。</li>
+<li>自动配置：针对很多Spring应用程序常见的应用功能，他能自动提供相关配置。</li>
+<li>优点：<ul>
+<li>可以快速构建项目</li>
+<li>针对主流开发框架的无配置集成。</li>
+<li>项目可以独立运行，无需外部依赖Servlet容器。</li>
+<li>提供运行时的应用监控。</li>
+</ul>
+</li>
+</ul>
+<h1 id="SpringBoot的启动流程"><a href="#SpringBoot的启动流程" class="headerlink" title="SpringBoot的启动流程"></a>SpringBoot的启动流程</h1><ul>
+<li>默认生成一个Application类，通过此启动。</li>
+<li><p>此类上有@SpringBootApplication的启动类，此类由以下洒哥注解连起来构成：</p>
+<ul>
+<li>@EnableAutoConfiguration:<ul>
+<li>核心。</li>
+<li>启动时会将所有符合条件的@Configuration配置都进行加载。</li>
+</ul>
+</li>
+<li>@SpringBootConfiguration<ul>
+<li>等价于Configuration，会被加载到容器中，</li>
+</ul>
+</li>
+<li>@ComponentScan<ul>
+<li>自动扫描并加载符合条件的类。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>run方法：</p>
+<ul>
+<li>服务构建：<ul>
+<li>构建SpringApplication：<ul>
+<li>将资源加载器、主方法类记录在内存中。</li>
+<li>逐一判断对应的服务类是否存在，判断Web服务类型。 </li>
+<li>加载初始化类，读取Meta-INF/Spring.factories文件中“注册初始化”、“上下文初始化”和“监听器”这三类配置。“注册初始化”没有默认的方法。</li>
+<li>通过运行栈判断出main方法所在的类。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>环境准备<ul>
+<li>调用run方法进行环境准备阶段。</li>
+<li>new一个“启动上下文”。</li>
+<li>逐一调用刚刚加载的“注册初始化器”。</li>
+<li>启动“运行监听器”，发布启动事件。</li>
+<li>通过prepareEnvironment方法“组装启动参数”：<ul>
+<li>构造一个“可配置环境”，根据不同的Web服务类型构造不同的环境，</li>
+<li>加载系统环境变量、jvm系统属性。</li>
+<li>元数据不加载</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>容器创建<ul>
+<li>创建构造和BeanFactory，</li>
+<li>用来解析@ComponentScan,@Component等注解的后处理器。</li>
+<li>用来解析@Autowired、@Value、@Inject等注解的自动注解Bean处理器。</li>
+</ul>
+</li>
+<li>填充容器</li>
+</ul>
+</li>
+</ul>
+<h2 id="简单的说"><a href="#简单的说" class="headerlink" title="简单的说"></a>简单的说</h2><ul>
+<li>创建SpringApplication实例化，再这个对象调用自己的run方法。</li>
+<li>获取监听器参数配置。</li>
+<li>打印Banner信息。</li>
+<li>创建并初始化容器。</li>
+<li>监听器发送通知。</li>
+</ul>
+<h1 id="Sprigboot自动装配"><a href="#Sprigboot自动装配" class="headerlink" title="Sprigboot自动装配"></a>Sprigboot自动装配</h1><p>简单的说就是将第三方组建的bean装在到IOC容器里，不用开发者再去写Bean的装配配置。</p>
+<ul>
+<li>通过@SpringApplcation注解总的@EnableAutoConfigration注解完成。</li>
+<li>首先冲Spring.facotories中寻找autoconfiguration类，当某个类满足指定条件时，便会实例化该类并注册，放入ioc容器中进行管理，实现依赖卡u宫颈癌的自动配置。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+              <a href="/tags/Spring/" rel="tag"># Spring</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/24/%5B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%5D%E6%A0%91/" rel="prev" title="[数据结构]树">
+                  <i class="fa fa-chevron-left"></i> [数据结构]树
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/24/%5BSpring%5D%E5%9F%BA%E7%A1%80/" rel="next" title="[Spring]基础">
+                  [Spring]基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTkwNy8zMjM3MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>

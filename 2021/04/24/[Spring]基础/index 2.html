@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Spring基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Spring]基础">
+<meta property="og:url" content="http://example.com/2021/04/24/[Spring]%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="生灵">
+<meta property="og:description" content="Spring基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-24T06:26:05.000Z">
+<meta property="article:modified_time" content="2023-04-08T11:51:12.623Z">
+<meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
+<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/04/24/[Spring]%E5%9F%BA%E7%A1%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/04/24/[Spring]%E5%9F%BA%E7%A1%80/","path":"2021/04/24/[Spring]基础/","title":"[Spring]基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[Spring]基础 | 生灵</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">生灵</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>目录</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaBean"><span class="nav-number">1.</span> <span class="nav-text">JavaBean</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaBeande%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.1.</span> <span class="nav-text">JavaBeande的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E4%B8%AD%E7%9A%84Bean%E5%91%A8%E6%9C%9F"><span class="nav-number">1.2.</span> <span class="nav-text">Spring中的Bean周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC%E5%AE%B9%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">IOC容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8IOC%E5%AE%B9%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">使用IOC容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86JavaBean%E4%BA%A4%E7%BB%99IoC%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">将JavaBean交给IoC容器管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">依赖注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOP"><span class="nav-number">3.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0AOP"><span class="nav-number">3.1.</span> <span class="nav-text">使用注解实现AOP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">源码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E5%8E%9F%E7%90%86"><span class="nav-number">4.1.</span> <span class="nav-text">自动配置原理</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ciallo～(∠・ω< )⌒☆​"
+      src="/images/dh.png">
+  <p class="site-author-name" itemprop="name">Ciallo～(∠・ω< )⌒☆​</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">目录</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/24/[Spring]%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dh.png">
+      <meta itemprop="name" content="Ciallo～(∠・ω< )⌒☆​">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生灵">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[Spring]基础 | 生灵">
+      <meta itemprop="description" content="Spring基础">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [Spring]基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-24 14:26:05" itemprop="dateCreated datePublished" datetime="2021-04-24T14:26:05+08:00">2021-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-04-08 19:51:12" itemprop="dateModified" datetime="2023-04-08T19:51:12+08:00">2023-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">收录于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">Spring基础</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h1><ul>
+<li>JavaBean就是有一定规范的Java实体类，跟普通的类差不多。</li>
+<li>不通过的hi类内部提供了一些公共方法以便外界对该对象内部属性进行操作，比如set、get操作，实际上，就是我们之前一直在用的：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getAge</span><span class="params">()</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span>&#123;</span><br><span class="line">		<span class="built_in">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span>&#123;</span><br><span class="line">		<span class="built_in">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>它的所有属性都是private，所有的属性都可以通过get/set方法进行访问，同时还需要有一个无参构造（默认就有）</li>
+</ul>
+<h2 id="JavaBeande的生命周期"><a href="#JavaBeande的生命周期" class="headerlink" title="JavaBeande的生命周期"></a>JavaBeande的生命周期</h2><ul>
+<li>1.创建：<ul>
+<li>当程序创建Java Bean的实例时，Java虚拟机将分配内存来存储对象。</li>
+<li>并可以对JavaBean的属性进行初始化。</li>
+</ul>
+</li>
+<li>2.初始化：<ul>
+<li>在JavaBean实例化之后，程序可以对JavaBean的属性进行设置。</li>
+<li>通常，这些属性可以通过公共setter方法设置。</li>
+</ul>
+</li>
+<li>3.活动：<ul>
+<li>JavaBean处于活动状态时，可以执行一些操作。</li>
+<li>例如响应事件、更新属性等。</li>
+</ul>
+</li>
+<li>4.销毁：<ul>
+<li>当JavaBean不再需要时，Java虚拟机会释放对象所占用的内存。</li>
+<li>此时调用JavaBean的析构函数，可以在该函数中释放与JavaBean相关的资源。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>JavaBean的生命周期通常由JVM自动管理，程序员不需要显式的控制JavaBean的生命周期。</li>
+<li>但是，可以通过编写JavaBean的构造函数和析构函数等方法来实现自定义生命周期管理。</li>
+<li>也可以通过容器框架来更方便的管理JavaBean的生命周期。</li>
+</ul>
+</blockquote>
+<h2 id="Spring中的Bean周期"><a href="#Spring中的Bean周期" class="headerlink" title="Spring中的Bean周期"></a>Spring中的Bean周期</h2><ul>
+<li>1.实例化：通过反射或者工厂方式创建Bean的实例。</li>
+<li>2.配置Bean属性：创建实例后，容器将使用setter方法或依赖注入的方式设置bean的属性。</li>
+<li>3.BeanPostProcessor前置处理器：在bean实例化之后，容器会调用所有实现了BeanPostProcessor接口的类的postProcessBeforeInitialization()方法。</li>
+<li>4.初始化Bean：在所有的属性都被设置了之后，容器会调用bean的初始化方法。初始化方法可以时自定义的方法，也可以时通过InitializingBean接口调用afterPropertiesSet()方法。</li>
+<li>5.BeanPostProcessor后置处理器：在bean初始化之后，容器会调用所有实现了BeanPostProcessor接口类的postProcessAfterInitialization()方法。</li>
+<li>6.使用Bean：现在Bean可以被应用程序使用了。</li>
+<li>7.销毁Bean：当应用程序关闭时，容器会销毁Bean。销毁方法可以是自定义的方法，也可以时通过DisposableBean接口来调用destory()方法。</li>
+</ul>
+<h1 id="IOC容器"><a href="#IOC容器" class="headerlink" title="IOC容器"></a>IOC容器</h1><ul>
+<li>控制反转(IOC)是一种设计模式。</li>
+<li>它的目的是降低代码之间的耦合度，提高带啊的可重用行、可扩展性和可维护性。 </li>
+<li>把复杂系统分解成相互合作的对象，这些对象类通过封装后，内部实现对外部是透明的，从而降低了解决问题的复杂读，可以灵活地重用和扩展。</li>
+<li><p>Service的实现类，不再由我们实现，而是让程序自己决定，所有的实现类对象，全部交友程序来管理，所有对象之间的关系，也由程序来动态决定，这样就引入了IOC理论。<br><img src = "
+/JAVA/
+图片85.png
+" ></p>
+</li>
+<li><p>将对象交给Ioc容器进行管理。</p>
+</li>
+<li>当我们需要一个接口的实现时，由它根据配置文件决定到底给我们哪一个实现类，这样我们就可以不用再关系我们需要哪一个实现类了</li>
+</ul>
+<h2 id="使用IOC容器"><a href="#使用IOC容器" class="headerlink" title="使用IOC容器"></a>使用IOC容器</h2><p><img src = "
+/JAVA/
+图片86.png
+" ></p>
+<h2 id="将JavaBean交给IoC容器管理"><a href="#将JavaBean交给IoC容器管理" class="headerlink" title="将JavaBean交给IoC容器管理"></a>将JavaBean交给IoC容器管理</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;student&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.test.bean.Student&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中name属性（也可以是id属性），全局唯一，不可出现重复的名称，我们发现，之前其实就是通过Bean的名称来向IoC容器索要对应的对象，也可以通过其他方式获取。</p>
+<ul>
+<li>现在在主方法中连续获取两个对象：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ClassPathXmlApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassPathXmlApplicationContext</span>(<span class="string">&quot;test.xml&quot;</span>);</span><br><span class="line"><span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> (Student) context.getBean(<span class="string">&quot;student&quot;</span>);</span><br><span class="line"><span class="type">Student</span> <span class="variable">student2</span> <span class="operator">=</span> (Student) context.getBean(<span class="string">&quot;student&quot;</span>);</span><br><span class="line">System.out.println(student);</span><br><span class="line">System.out.println(student2);</span><br><span class="line">out:</span><br><span class="line">com.test.bean.Student@367ffa75</span><br><span class="line">com.test.bean.Student@367ffa75</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src = "
+/JAVA/
+图片87.png
+" ></p>
+<ul>
+<li>我们发现两次获取到的实际上是同一个对象，也就是说，默认情况下，通过IoC容器进行管理的JavaBean是单例模式的。<ul>
+<li>单例模式：确保一个类只有一个实例，并提供一个全局访问点。</li>
+<li>单例模式的实现方法由很多种，常见的是饿汉模式和懒汉模式：<ul>
+<li>饿汉模式：<ul>
+<li>类加载时就创建实例，因此他的实例化是先安全的。</li>
+<li>饿汉模式实现比较简单，可以直接在类中定义一个私有的静态实例，并提供给一个公共的静态方法来获取该实例。</li>
+<li>由于类加载时就创建实例，所以可能会造成资源的浪费。</li>
+</ul>
+</li>
+<li>懒汉模式：<ul>
+<li>第一次使用时才创建实例，因此他的实例时延迟的。</li>
+<li>实现比较复杂，需要考虑多线程环节下的线程安全问题。</li>
+<li>常见的实现方法欧双重检查锁和静态内部类。<br>-双重检查锁指在获取实例时先进行一次判断，如果实例不存在就加锁创建实例，可以避免多次加锁，提高效率。</li>
+<li>静态内部类则是利用了类的加载机制实现延迟加载。静态内部类只有被调用时才会加载，因此可以实现延迟加载并保证线程安全。</li>
+</ul>
+</li>
+<li>都是为了保证系统中只有一个实例存在。饿汉模式适用于单线程，懒汉模式适用于多线程。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无论怎么获取始终为那一个对象，那么如何进行修改呢？只需要修改其作用域即可，添加scope属性：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;student&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.test.bean.Student&quot;</span> <span class="attr">scope</span>=<span class="string">&quot;prototype&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>通过将其设定为prototype（原型模式）来使得其每次都会创建一个新的对象。</p>
+</li>
+<li><p>单例模式时，对象在一开始就被创建。Bean会被IoC容器存储，只要容器没有被销毁，那么对象将一直存在。</p>
+</li>
+<li>原型模式下，只有在获取时才会被创建。相当于直接new了一个对象，并不会被保存。</li>
+</ul>
+<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><ul>
+<li>向Bean成员属性进行赋值时，可以使用property标签来实现</li>
+</ul>
+<h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><ul>
+<li>在运行时，动态地将代码切入到类的指定当发、指定位置的编程思想。</li>
+<li>也就是说，我么可以使用AOP来帮助我们在方法执行之前或执行之后，做一些额外的操作，实际上就是代理。<br><img src = "
+/JAVA/
+图片87.png
+" ></li>
+</ul>
+<p>AOP的核心概念包括：</p>
+<ul>
+<li>1.切面(Aspet)：定一个横切关注点的模块，例如日志记录、事务管理等。</li>
+<li>2.连接点(Join Point)：程序执行过程中的一个点，例如方法调用或异常抛出等。</li>
+<li>3。通知(Advice)：定义了在连接点执行之前、执行之后或执行过程进行拦截和处理的逻辑。</li>
+<li>4.引入(Introductio):允许在运行时为类添加新的方法或属性。</li>
+<li>5.切点(PointCut)：用于定义连接点的匹配规则，例如指定拦截哪些方法或哪些类。</li>
+<li>6.织入(Weaving)：将切面应用程序代码中，可以在编译时、类加载时或运行时进行。</li>
+</ul>
+<p>根据通知的执行时间，AOP可以分为以下几种类型：</p>
+<ul>
+<li>前置通知(Before Advice)：在连接点之前执行的通知，通常用于记录日志或进行安全性检查。</li>
+<li>后置通知(After Advice)：在连接点之后进行的通知，通常用于清理资源或记录日志。</li>
+<li>环绕通知(Around Advice)：在连接点之前和之后都执行点饿通知，通常用于事务管理或者性能监控。</li>
+<li>异常通知(After Throwing Advice):在连接点抛出异常时执行的通知，通常用于处理异常并记录日志。</li>
+<li>返回通知(After Returning Advice):在连接点正常返回结果时执行的通知，通常用于记录日志或进行缓存操作。</li>
+</ul>
+<h2 id="使用注解实现AOP"><a href="#使用注解实现AOP" class="headerlink" title="使用注解实现AOP"></a>使用注解实现AOP</h2><ul>
+<li>首先我们需要在主类添加@EnableAspectJAutoProxy注解，开启AOP注解支持：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableAspectJAutoProxy</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;org.example.entity&quot;)</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainConfiguration</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>类上直接添加@Component快速注册Bean：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">study</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是学习方法！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>需要在定义AOP增强操作的类上添加@Aspect注解和@Component将其注册为Bean即可，就像我们之前在配置文件中也要将其注册为Bean那样：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentAOP</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>比如我们希望在Student的study方法执行之前执行我们的before方法：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我是之前执行的内容！&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>那么只需要添加@Before注解即可：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Before(&quot;execution(* org.example.entity.Student.study())&quot;)</span>  <span class="comment">//execution写法跟之前一样</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我是之前执行的内容！&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><h2 id="自动配置原理"><a href="#自动配置原理" class="headerlink" title="自动配置原理"></a>自动配置原理</h2><ul>
+<li>主类已经在初始阶段注册为Bean，那么在加载时，就会根据注解定义，进行更多的额外操作。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+              <a href="/tags/Spring/" rel="tag"># Spring</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/24/%5BSpring%5D%E9%9D%A2%E8%AF%95/" rel="prev" title="[Spring]基础">
+                  <i class="fa fa-chevron-left"></i> [Spring]基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/24/%5BSpring%5DSpringMVC/" rel="next" title="[Spring]SpringMVC">
+                  [Spring]SpringMVC <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTkwNy8zMjM3MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>
