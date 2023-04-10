@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="计算机基础面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[计算机基础]面试基础">
+<meta property="og:url" content="http://example.com/2021/04/24/[%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80]%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%20copy/index.html">
+<meta property="og:site_name" content="生灵">
+<meta property="og:description" content="计算机基础面试题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-24T06:26:05.000Z">
+<meta property="article:modified_time" content="2023-04-06T12:49:34.022Z">
+<meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
+<meta property="article:tag" content="JAVA">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/04/24/[%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80]%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%20copy/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/04/24/[%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80]%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%20copy/","path":"2021/04/24/[计算机基础]基础面试 copy/","title":"[计算机基础]面试基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[计算机基础]面试基础 | 生灵</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">生灵</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>目录</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">线程和进程的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%BB%E9%94%81"><span class="nav-number">2.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-number">2.2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A7%E7%94%9F%E6%AD%BB%E9%94%81%E7%9A%84%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">产生死锁的必要条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%AD%BB%E9%94%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">处理死锁的基本方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Get%E4%B8%8EPost"><span class="nav-number">3.</span> <span class="nav-text">Get与Post</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">DNS请求过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number">5.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">5.1.</span> <span class="nav-text">HTTP常见的状态码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">6.</span> <span class="nav-text">TCP三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%A2%E5%A4%B1"><span class="nav-number">6.1.</span> <span class="nav-text">第一次握手丢失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%A2%E5%A4%B1"><span class="nav-number">6.2.</span> <span class="nav-text">第二次握手丢失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%A2%E5%A4%B1"><span class="nav-number">6.3.</span> <span class="nav-text">第三次握手丢失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SYN%E6%94%BB%E5%87%BB"><span class="nav-number">6.4.</span> <span class="nav-text">SYN攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%BF%E5%85%8D-SYN-%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%9C%89%E4%BB%A5%E4%B8%8B%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">6.5.</span> <span class="nav-text">避免 SYN 攻击方式，可以有以下四种方法：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ciallo～(∠・ω< )⌒☆​"
+      src="/images/dh.png">
+  <p class="site-author-name" itemprop="name">Ciallo～(∠・ω< )⌒☆​</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">目录</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/24/[%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80]%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%20copy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/dh.png">
+      <meta itemprop="name" content="Ciallo～(∠・ω< )⌒☆​">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生灵">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[计算机基础]面试基础 | 生灵">
+      <meta itemprop="description" content="计算机基础面试题">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [计算机基础]面试基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-24 14:26:05" itemprop="dateCreated datePublished" datetime="2021-04-24T14:26:05+08:00">2021-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-04-06 20:49:34" itemprop="dateModified" datetime="2023-04-06T20:49:34+08:00">2023-04-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">收录于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">计算机基础面试题</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="线程和进程的区别"><a href="#线程和进程的区别" class="headerlink" title="线程和进程的区别"></a>线程和进程的区别</h1><ul>
+<li>进程是系统进行资源分配和调度的基本单位，线程是CPU调度和分配的基本单位。</li>
+<li>线程依赖于进程而存在，一个进程至少有一个线程。</li>
+<li>进程拥有自己的独立地址空间，线程共享所属进程的地址空间。</li>
+<li>进程是拥有系统资源的一个独立单位，而线程自己基本上不拥有系统资源，和其他线程共享本进程的相关资源。</li>
+<li>进程切换时，涉及到整个当前CPU环境的保存设置以及被调度运行的CPU环境设置，而线程切换只需要保存和设置少量寄存器的内容，并不涉及存储器管理方面的操作，进程切换的开销远大于线程。</li>
+</ul>
+<h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>指两个或两个以上的进程在执行的过程中，因争夺资源而陷入的一种互相等待的状态，若无外力作用，他们将无法推荐。此时系统处于死锁，这些永远在相互等待的进程被称为死锁进程。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><ul>
+<li>系统资源不足</li>
+<li>进程的推进顺序不当(P1拥有A申请B，P2拥有B申请A)</li>
+</ul>
+<h2 id="产生死锁的必要条件"><a href="#产生死锁的必要条件" class="headerlink" title="产生死锁的必要条件"></a>产生死锁的必要条件</h2><ul>
+<li>互斥条件：线程对所分配到的资源进行排他式使用，即一段时间内某个资源只由一个进程占用。</li>
+<li>请求和保持条件：线程至少拥有了一个资源，但又提出了新的资源请求，但此资源已被其他进程占有，此时请求进程阻塞，但又对自己所持有的资源保持不放。</li>
+<li>不剥夺条件：线程已获得的资源，在未使用完之前，不能被剥夺。只能在使用完后由自己释放。</li>
+<li>环路等待：发生死锁时，必然存在一个进程的环形链。<h2 id="处理死锁的基本方法"><a href="#处理死锁的基本方法" class="headerlink" title="处理死锁的基本方法"></a>处理死锁的基本方法</h2></li>
+<li>检测死锁：了解死锁发生的情况和位置，可以通过死锁检测工具来检测死锁。</li>
+<li>解除死锁：一旦检测到死锁，可以通过以下方法解除死锁：<ul>
+<li>终止其中一个或多个死锁进程。</li>
+<li>撤销死锁进程占用的资源</li>
+<li>抢占死锁进程占用的资源。</li>
+</ul>
+</li>
+<li>避免死锁：<ul>
+<li>避免线程同时请求多个资源。当线程需要多个资源时，一次只请求一个。</li>
+<li>避免持有资源的时间过长。当线程池持有一个资源的时间的时间过长时，其他线程可能会等待很长时间，从而导致死锁。</li>
+<li>避免循环等待。</li>
+<li>明确资源获取顺序。</li>
+<li>使用超时机制。如果线程请求资源一段时间未果，则应释放当前占有的资源，并重新请求。</li>
+</ul>
+</li>
+</ul>
+<h1 id="Get与Post"><a href="#Get与Post" class="headerlink" title="Get与Post"></a>Get与Post</h1><ul>
+<li>Get的语义是从服务器获取指定的资源。<ul>
+<li>用于从服务器请求数据的HTTP方法。</li>
+<li>在浏览器地址输入连接时，会向服务器发送一个GET请求。</li>
+<li>请求参数会包含在URL中。</li>
+<li>比如打开我的文章，浏览器就会发送 GET 请求给服务器，服务器就会返回文章的所有文字及资源。</li>
+</ul>
+</li>
+<li>POST的语义时根据请求负荷对制定的资源做出处理。<ul>
+<li>用于向服务器提交数据的HTTP方法。</li>
+<li>填写表单并提交数据时，会向服务器发送一个POST请求。</li>
+<li>POST请求可以用于向服务器提交敏感数据，例如用户名和密码，并且可以改变服务器状态。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>GET请求适用于提交数据，而POST请求适用于提交数据。</p>
+</blockquote>
+<h1 id="DNS请求过程"><a href="#DNS请求过程" class="headerlink" title="DNS请求过程"></a>DNS请求过程</h1><p>假设请求<a target="_blank" rel="noopener" href="https://chat.openai.com/域名：">https://chat.openai.com/域名：</a></p>
+<ul>
+<li>1.本地DNS服务器查询：<ul>
+<li>首先向本地DNS服务器发起请求，询问该域名对应的IP地址。</li>
+<li>如果缓存了直接返回，负责向根域名服务器请求。</li>
+<li>询问<a target="_blank" rel="noopener" href="https://chat.openai.com/">https://chat.openai.com/</a></li>
+</ul>
+</li>
+<li>2.根域名服务器查询<ul>
+<li>根域名服务器里面存储的都是各个顶级域名服务器的位置。如.com.cn服务器的位置</li>
+<li>会返回顶级域名服务器的IP地址给本地DNS服务器。</li>
+</ul>
+</li>
+<li>3.顶级域名服务器查询<ul>
+<li>本地服务器向顶级域名服务器发起请求。</li>
+<li>顶级域名服务器返回一个IP地址，该IP地址指向与该URL相关的权威DNS服务器。</li>
+<li>询问.com</li>
+</ul>
+</li>
+<li>4.权威DNS查询<ul>
+<li>本地服务器向权威DNS服务器发起请求。</li>
+<li>如果权威DNS服务器由该域名的IP地址记录，则返回。否则，返回一个没有该域名的响应。</li>
+<li>询问openai.com</li>
+</ul>
+</li>
+<li>5.返回IP地址<ul>
+<li>得到该域名的IP地址后，给计算机并放入缓存，以便下快速响应下一次请求。</li>
+</ul>
+</li>
+</ul>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><p>超文本传输协议</p>
+<ul>
+<li>协议：<ul>
+<li>HTTP是一个用在计算机世界里的协议。它使用计算机能够理解的语言确定了一种计算机之间交流通信的规范，以及相关的各种控制和错误处理方式。</li>
+</ul>
+</li>
+<li>传输：<ul>
+<li>HTTP是一个在计算机世界里专门用来在两点之间传输数据的约定和规范。</li>
+</ul>
+</li>
+<li>超文本：<ul>
+<li>HTTP是一个在计算机世界里专门在[两点]之间[传输]文字、图片、音频、视频等[超文本]数据的[约定和规范]。</li>
+</ul>
+</li>
+</ul>
+<h2 id="HTTP常见的状态码"><a href="#HTTP常见的状态码" class="headerlink" title="HTTP常见的状态码"></a>HTTP常见的状态码</h2><ul>
+<li>1xx:提示成功，表示目前是协议处理的中间状态，需要后续的操作。</li>
+<li>2xx:提示成功，豹纹已收到并被正确处理。</li>
+<li>3xx:重定向</li>
+<li>4xx:客户端错误。</li>
+<li>5XX:服务器错误</li>
+</ul>
+<h1 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h1><p><img src = "
+/JAVA/
+图片104.png
+" ></p>
+<h2 id="第一次握手丢失"><a href="#第一次握手丢失" class="headerlink" title="第一次握手丢失"></a>第一次握手丢失</h2><ul>
+<li>客户端重传SYN，达到一定次数后关闭连接。<br><img src = "
+/JAVA/
+图片105.png
+" ></li>
+</ul>
+<h2 id="第二次握手丢失"><a href="#第二次握手丢失" class="headerlink" title="第二次握手丢失"></a>第二次握手丢失</h2><ul>
+<li>因为第二次握手报文里是包含对客户端的第一次握手的 ACK 确认报文，所以，如果客户端迟迟没有收到第二次握手，那么客户端就觉得可能自己的 SYN 报文（第一次握手）丢失了，于是客户端就会触发超时重传机制，重传 SYN 报文。</li>
+<li>同时因为第二次握手丢失了，服务端就收不到第三次握手，于是服务端这边会触发超时重传机制，重传 SYN-ACK 报文。会忽略客户端重传的SYN报文。<br><img src = "
+/JAVA/
+图片106.png
+" ></li>
+</ul>
+<h2 id="第三次握手丢失"><a href="#第三次握手丢失" class="headerlink" title="第三次握手丢失"></a>第三次握手丢失</h2><ul>
+<li>ACK 报文是不会有重传的，当 ACK 丢失了，就由对方重传对应的报文。<br><img src = "
+/JAVA/
+图片107.png
+" ></li>
+</ul>
+<h2 id="SYN攻击"><a href="#SYN攻击" class="headerlink" title="SYN攻击"></a>SYN攻击</h2><ul>
+<li>假设攻击者短时间伪造不同 IP 地址的 SYN 报文。</li>
+<li>服务端每接收到一个 SYN 报文，就进入SYN_RCVD 状态。</li>
+<li>但服务端发送出去的 ACK + SYN 报文，无法得到未知 IP 主机的 ACK 应答。</li>
+<li>久而久之就会占满服务端的半连接队列，使得服务端不能为正常用户服务。</li>
+<li>SYN 攻击方式最直接的表现就会把 TCP 半连接队列打满。</li>
+<li>这样当 TCP 半连接队列满了，后续再在收到 SYN 报文就会丢弃，导致客户端无法和服务端建立连接。</li>
+</ul>
+<h2 id="避免-SYN-攻击方式，可以有以下四种方法："><a href="#避免-SYN-攻击方式，可以有以下四种方法：" class="headerlink" title="避免 SYN 攻击方式，可以有以下四种方法："></a>避免 SYN 攻击方式，可以有以下四种方法：</h2><ul>
+<li>调大 netdev_max_backlog；</li>
+<li>增大 TCP 半连接队列；</li>
+<li>开启 tcp_syncookies；</li>
+<li>减少 SYN+ACK 重传次数</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/24/%5B%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%5DAndrod/" rel="prev" title="[项目问题]Android">
+                  <i class="fa fa-chevron-left"></i> [项目问题]Android
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/24/%5B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%5D%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/" rel="next" title="[设计模式]七大原则">
+                  [设计模式]七大原则 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTkwNy8zMjM3MQ=="></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ciallo～(∠・ω< )⌒☆​</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"mhchem":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>
