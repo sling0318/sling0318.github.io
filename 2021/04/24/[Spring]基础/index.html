@@ -28,7 +28,7 @@
 <meta property="og:description" content="Spring基础">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-24T06:26:05.000Z">
-<meta property="article:modified_time" content="2023-04-08T11:51:12.623Z">
+<meta property="article:modified_time" content="2023-04-09T12:46:50.499Z">
 <meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
 <meta property="article:tag" content="JAVA">
 <meta property="article:tag" content="Spring">
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaBean"><span class="nav-number">1.</span> <span class="nav-text">JavaBean</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaBeande%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.1.</span> <span class="nav-text">JavaBeande的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E4%B8%AD%E7%9A%84Bean%E5%91%A8%E6%9C%9F"><span class="nav-number">1.2.</span> <span class="nav-text">Spring中的Bean周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC%E5%AE%B9%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">IOC容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8IOC%E5%AE%B9%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">使用IOC容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86JavaBean%E4%BA%A4%E7%BB%99IoC%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">将JavaBean交给IoC容器管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">依赖注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOP"><span class="nav-number">3.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0AOP"><span class="nav-number">3.1.</span> <span class="nav-text">使用注解实现AOP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">源码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E5%8E%9F%E7%90%86"><span class="nav-number">4.1.</span> <span class="nav-text">自动配置原理</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaBean"><span class="nav-number">1.</span> <span class="nav-text">JavaBean</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaBeande%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.1.</span> <span class="nav-text">JavaBeande的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E4%B8%AD%E7%9A%84Bean%E5%91%A8%E6%9C%9F"><span class="nav-number">1.2.</span> <span class="nav-text">Spring中的Bean周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC%E5%AE%B9%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">IOC容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8IOC%E5%AE%B9%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">使用IOC容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86JavaBean%E4%BA%A4%E7%BB%99IoC%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">将JavaBean交给IoC容器管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">依赖注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOP"><span class="nav-number">3.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0AOP"><span class="nav-number">3.1.</span> <span class="nav-text">使用注解实现AOP</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -132,7 +132,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -218,7 +218,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-04-08 19:51:12" itemprop="dateModified" datetime="2023-04-08T19:51:12+08:00">2023-04-08</time>
+      <time title="修改时间：2023-04-09 20:46:50" itemprop="dateModified" datetime="2023-04-09T20:46:50+08:00">2023-04-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -375,9 +375,6 @@
 <li>那么只需要添加@Before注解即可：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Before(&quot;execution(* org.example.entity.Student.study())&quot;)</span>  <span class="comment">//execution写法跟之前一样</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我是之前执行的内容！&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><h2 id="自动配置原理"><a href="#自动配置原理" class="headerlink" title="自动配置原理"></a>自动配置原理</h2><ul>
-<li>主类已经在初始阶段注册为Bean，那么在加载时，就会根据注解定义，进行更多的额外操作。</li>
-</ul>
 
     </div>
 
@@ -395,13 +392,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/04/24/%5BRedis%5DRedis%E5%9F%BA%E7%A1%80/" rel="prev" title="[[Redis]Redis基础">
-                  <i class="fa fa-chevron-left"></i> [[Redis]Redis基础
+                <a href="/2021/04/24/%5BSpring%5D%E9%9D%A2%E8%AF%95/" rel="prev" title="[Spring]面试">
+                  <i class="fa fa-chevron-left"></i> [Spring]面试
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/04/24/%5BSpring%5DSpringMVC/" rel="next" title="[Spring]SpringMVC">
-                  [Spring]SpringMVC <i class="fa fa-chevron-right"></i>
+                <a href="/2021/04/24/%5BJAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5D%E7%BA%BF%E7%A8%8B/" rel="next" title="[JAVA]线程">
+                  [JAVA]线程 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

@@ -28,7 +28,7 @@
 <meta property="og:description" content="如何使用Redis辅助注册">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-24T06:26:05.000Z">
-<meta property="article:modified_time" content="2023-04-08T09:02:05.407Z">
+<meta property="article:modified_time" content="2023-04-09T12:44:55.353Z">
 <meta property="article:author" content="Ciallo～(∠・ω&lt; )⌒☆​">
 <meta property="article:tag" content="JAVA">
 <meta property="article:tag" content="Redis">
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringSecurity%E5%AF%B9%E7%99%BB%E9%99%86%E7%94%A8%E6%88%B7%E8%BF%9B%E8%A1%8C%E6%9D%83%E9%99%90%E5%88%92%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">SpringSecurity对登陆用户进行权限划分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E5%AE%9E%E7%8E%B0%E8%AE%B0%E4%BD%8F%E6%88%91%E5%8A%9F%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">Redis实现记住我功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81"><span class="nav-number">3.</span> <span class="nav-text">邮件发送</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis%E4%BF%9D%E5%AD%98cookie%EF%BC%8C%E5%AE%8C%E6%88%90%E8%AE%B0%E4%BD%8F%E6%88%91%E5%8A%9F%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">redis保存cookie，完成记住我功能</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringSecurity%E5%AF%B9%E7%99%BB%E9%99%86%E7%94%A8%E6%88%B7%E8%BF%9B%E8%A1%8C%E6%9D%83%E9%99%90%E5%88%92%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">SpringSecurity对登陆用户进行权限划分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E5%AE%9E%E7%8E%B0%E8%AE%B0%E4%BD%8F%E6%88%91%E5%8A%9F%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">Redis实现记住我功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81"><span class="nav-number">3.</span> <span class="nav-text">邮件发送</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis%E5%AE%8C%E6%88%90%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.</span> <span class="nav-text">Mybatis完成分页查询</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -132,7 +132,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -218,7 +218,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-04-08 17:02:05" itemprop="dateModified" datetime="2023-04-08T17:02:05+08:00">2023-04-08</time>
+      <time title="修改时间：2023-04-09 20:44:55" itemprop="dateModified" datetime="2023-04-09T20:44:55+08:00">2023-04-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -269,7 +269,7 @@
 </ul>
 </li>
 <li>removeToken:更新Token<ul>
-<li>当用户注销或Token过期时，调用该方法删除置顶用户的所有Token。</li>
+<li>当用户注销或Token过期时，调用该方法删除指定用户的所有Token。</li>
 </ul>
 </li>
 </ul>
@@ -285,8 +285,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">VerifyServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">VerifyService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//JavaMailSender是专门用于发送邮件的对象，自动配置类已经提供了Bean</span></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    JavaMailSender sender;</span><br><span class="line">    <span class="comment">//Redis的模版类</span></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    StringRedisTemplate template;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;spring.mail.username&#125;&quot;)</span></span><br><span class="line">    String from;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendVerifyCode</span><span class="params">(String mail)</span> &#123;</span><br><span class="line">          <span class="comment">//SimpleMailMessage是一个比较简易的邮件封装，支持设置一些比较简单内容</span></span><br><span class="line">        <span class="type">SimpleMailMessage</span> <span class="variable">message</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleMailMessage</span>();</span><br><span class="line">        message.setSubject(<span class="string">&quot;【测试】你的网站注册验证码&quot;</span>);</span><br><span class="line">        <span class="comment">//生成随机验证码</span></span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">code</span> <span class="operator">=</span> random.nextInt(<span class="number">899999</span>) + <span class="number">100000</span>;</span><br><span class="line">        <span class="comment">//设置键值存入，并设定存在时间为3分钟</span></span><br><span class="line">        template.opsForValue().set(<span class="string">&quot;verity:code&quot;</span> + mail, code+<span class="string">&quot;&quot;</span>, <span class="number">3</span>, TimeUnit.MINUTES);</span><br><span class="line">        <span class="comment">//邮件内容格式</span></span><br><span class="line">        message.setText(<span class="string">&quot;您的验证码为：&quot;</span> + code + <span class="string">&quot;，三分钟内有效，请及时完成注册！&quot;</span>);</span><br><span class="line">        <span class="comment">//设置邮件发送给谁，可以多个，这里就发给你的QQ邮箱</span></span><br><span class="line">        message.setTo(mail);</span><br><span class="line">        <span class="comment">//邮件发送者，这里要与配置文件中的保持一致</span></span><br><span class="line">        message.setFrom(from);</span><br><span class="line">        <span class="comment">//OK，万事俱备只欠发送</span></span><br><span class="line">        sender.send(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">doVerify</span><span class="params">(String mail, String code)</span> &#123;</span><br><span class="line">        <span class="comment">//从Redis中取值</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">verify</span> <span class="operator">=</span> template.opsForValue().get(<span class="string">&quot;verity:code&quot;</span> + mail);</span><br><span class="line">        <span class="comment">//如果不存在或者错误返回错误</span></span><br><span class="line">        <span class="keyword">if</span>(verify == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(!verify.equals(code)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//正确返回并删除此认证码</span></span><br><span class="line">        template.delete(<span class="string">&quot;verity:code&quot;</span> + mail);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="redis保存cookie，完成记住我功能"><a href="#redis保存cookie，完成记住我功能" class="headerlink" title="redis保存cookie，完成记住我功能"></a>redis保存cookie，完成记住我功能</h1><ul>
-<li>当用户登陆成功后，</li>
+<h1 id="Mybatis完成分页查询"><a href="#Mybatis完成分页查询" class="headerlink" title="Mybatis完成分页查询"></a>Mybatis完成分页查询</h1><ul>
+<li>接收前端发送的一个list，里面包含用户名，电话号码，当前页数，页面大小等参数</li>
+<li>如果用户名，电话号码为空，则查询全部，否则按条件查询。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from student where name = #&#123;name&#125; limit #&#123;pageNo&#125;, #&#123;pageSize&#125;&quot; )</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
     </div>
@@ -305,13 +307,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/04/24/%5B%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%5DAndrod/" rel="prev" title="[项目问题]Android">
-                  <i class="fa fa-chevron-left"></i> [项目问题]Android
+                <a href="/2021/04/24/%5B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%5D%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/" rel="prev" title="[设计模式]七大原则">
+                  <i class="fa fa-chevron-left"></i> [设计模式]七大原则
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/04/24/%5B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%5D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="[设计模式]设计模式">
-                  [设计模式]设计模式 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/04/24/%5B%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%5DAndrod/" rel="next" title="[项目问题]Android">
+                  [项目问题]Android <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
